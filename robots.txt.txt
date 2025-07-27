@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://123movies-uk.pages.dev/sitemap.xml
