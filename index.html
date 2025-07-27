@@ -167,7 +167,7 @@
         }
 
         /* Hide elements by default for layers */
-        .layer-2, .layer-3 {
+        .layer-2, .layer-3, .layer-4 { /* Added .layer-4 */
             display: none;
         }
 
@@ -274,6 +274,78 @@
         #home-logo-link:hover {
             text-decoration: none; /* Ensures no underline on hover */
         }
+
+        /* Styling for Layer 4 SEO content */
+        .layer-4 { /* Target the section, not the inner content div */
+            background-color: #1f2937; /* bg-gray-800 */
+            padding: 2rem; /* p-8, or adjust as needed */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            color: #e2e8f0; /* text-gray-200 */
+            line-height: 1.6;
+            position: relative; /* Ensure absolute positioning of back button works */
+            width: 100%; /* Ensure it takes full width of its parent (main) */
+        }
+
+        .layer-4-content { /* This is the inner div for the text */
+            /* Removed max-width and margin: auto to allow it to expand within the section's padding */
+        }
+
+        .layer-4-content h1, .layer-4-content h2, .layer-4-content h3 {
+            color: #f9fafb; /* text-gray-100 */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1rem;
+        }
+
+        .layer-4-content h1 {
+            font-size: 2.5rem; /* text-4xl */
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .layer-4-content h2 {
+            font-size: 2rem; /* text-3xl */
+            margin-top: 2rem;
+        }
+
+        .layer-4-content h3 {
+            font-size: 1.5rem; /* text-2xl */
+            margin-top: 1.5rem;
+        }
+
+        .layer-4-content p {
+            margin-bottom: 1rem;
+            text-align: justify; /* Added for justified text */
+        }
+
+        .layer-4-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .layer-4-content ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .layer-4-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .layer-4-content strong {
+            color: #cbd5e1; /* text-gray-300 */
+        }
+
+        .layer-4-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1.5rem auto;
+            display: block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
@@ -291,6 +363,8 @@
             </div>
             <nav class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
                 <div class="flex w-full sm:w-auto sm:space-x-6">
+                    <!-- New Home Button -->
+                    <button id="nav-home-button" class="nav-button bg-gray-800 hover:bg-green-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">Home</button>
                     <button id="nav-movies-button" class="nav-button bg-gray-800 hover:bg-blue-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">Movies</button>
                     <button id="nav-tvseries-button" class="nav-button bg-gray-800 hover:bg-rose-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">TV Series</button>
                 </div>
@@ -429,7 +503,7 @@
                 <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
                     <div class="static-movie-card" data-media-id="0" data-media-type="site">
-                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="123Movies UK Site Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="[Gambar Poster Situs 123Movies UK]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>123Movies UK</h3>
                             <p>Site</p>
@@ -437,7 +511,7 @@
                     </div>
                     <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
                     <div class="static-movie-card" data-media-id="67308" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="3-D Sex and Zen: Extreme Ecstasy (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="[Gambar Poster 3-D Sex and Zen: Extreme Ecstasy (2011)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>3-D Sex and Zen: Extreme Ecstasy</h3>
                             <p>2011</p>
@@ -445,7 +519,7 @@
                     </div>
                     <!-- Static Movie Card: Fidelity (2019) -->
                     <div class="static-movie-card" data-media-id="575299" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="Fidelity (2019) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="[Gambar Poster Fidelity (2019)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Fidelity</h3>
                             <p>2019</p>
@@ -453,7 +527,7 @@
                     </div>
                     <!-- Static Movie Card: Killing Me Softly (2002) -->
                     <div class="static-movie-card" data-media-id="14365" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="Killing Me Softly (2002) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="[Gambar Poster Killing Me Softly (2002)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Killing Me Softly</h3>
                             <p>2002</p>
@@ -461,7 +535,7 @@
                     </div>
                     <!-- Static Movie Card: They Are Mine (2023) -->
                     <div class="static-movie-card" data-media-id="1180449" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="They Are Mine (2023) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="[Gambar Poster They Are Mine (2023)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>They Are Mine</h3>
                             <p>2023</p>
@@ -469,7 +543,7 @@
                     </div>
                     <!-- Static Movie Card: Hate Story 2 (2014) -->
                     <div class="static-movie-card" data-media-id="282346" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="Hate Story 2 (2014) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="[Gambar Poster Hate Story 2 (2014)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Hate Story 2</h3>
                             <p>2014</p>
@@ -477,7 +551,7 @@
                     </div>
                     <!-- Static Movie Card: Cashback (2006) -->
                     <div class="static-movie-card" data-media-id="12225" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="Cashback (2006) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="[Gambar Poster Cashback (2006)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Cashback</h3>
                             <p>2006</p>
@@ -485,7 +559,7 @@
                     </div>
                     <!-- Static Movie Card: Room in Rome (2010) -->
                     <div class="static-movie-card" data-media-id="48650" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="Room in Rome (2010) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="[Gambar Poster Room in Rome (2010)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Room in Rome</h3>
                             <p>2010</p>
@@ -493,7 +567,7 @@
                     </div>
                     <!-- Static Movie Card: Fifty Shades Freed (2018) -->
                     <div class="static-movie-card" data-media-id="337167" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="Fifty Shades Freed (2018) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="[Gambar Poster Fifty Shades Freed (2018)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Fifty Shades Freed</h3>
                             <p>2018</p>
@@ -501,7 +575,7 @@
                     </div>
                     <!-- Static Movie Card: Jan Dara (2001) -->
                     <div class="static-movie-card" data-media-id="68507" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="Jan Dara (2001) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="[Gambar Poster Jan Dara (2001)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Jan Dara</h3>
                             <p>2001</p>
@@ -509,7 +583,7 @@
                     </div>
                     <!-- New Static Movie Card: Hotel Desire (2011) - Re-added with new image and position -->
                     <div class="static-movie-card" data-media-id="82023" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="Hotel Desire (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="[Gambar Poster Hotel Desire (2011)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Hotel Desire</h3>
                             <p>2011</p>
@@ -517,13 +591,23 @@
                     </div>
                     <!-- New Static Movie Card: When Night is Falling (1995) -->
                     <div class="static-movie-card" data-media-id="8391" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="When Night is Falling (1995) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="[Gambar Poster When Night is Falling (1995)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>When Night is Falling</h3>
                             <p>1995</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Layer 4: SEO Content -->
+        <section id="layer-4" class="layer-4 px-4 py-12">
+            <button id="back-from-seo-button" class="absolute top-4 left-4 bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md transition-colors duration-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <div id="seo-content" class="layer-4-content">
+                <!-- SEO content will be injected here by JavaScript -->
             </div>
         </section>
 
@@ -591,8 +675,10 @@
         const layer1 = document.getElementById('layer-1');
         const layer2 = document.getElementById('layer-2');
         const layer3 = document.getElementById('layer-3');
+        const layer4 = document.getElementById('layer-4'); // New Layer 4
         const backToListButton = document.getElementById('back-to-list-button');
         const backToDetailButton = document.getElementById('back-to-detail-button');
+        const backFromSeoButton = document.getElementById('back-from-seo-button'); // New back button for Layer 4
         const stream1Button = document.getElementById('stream-1-button');
         const stream2Button = document.getElementById('stream-2-button'); 
         const stream3Button = document.getElementById('stream-3-button');
@@ -609,6 +695,7 @@
         const loadingSpinnerLayer2 = document.getElementById('loading-spinner-layer2');
         const loadingSpinnerLayer3 = document.getElementById('loading-spinner-layer3');
 
+        const navHomeButton = document.getElementById('nav-home-button'); // New Home button
         const navMoviesButton = document.getElementById('nav-movies-button');
         const navTvSeriesButton = document.getElementById('nav-tvseries-button');
 
@@ -618,6 +705,7 @@
             metaDescription: "123Movies UK: Stream thousands of free movies and TV series online in HD quality. Discover the latest blockbusters, classic films, and popular TV shows with no subscription required. Your ultimate destination for unlimited entertainment, available on any device. Start watching now!",
             metaKeywords: "123Movies UK, free movies, watch movies online, free TV series, stream TV shows, HD streaming, latest movies, popular TV series, no subscription, free entertainment, online cinema, movie streaming site, TV show streaming, watch films, full HD movies, free streaming platform, best free movies, watch series online, online entertainment, movie database, TV show database",
             ogDescription: "123Movies UK: Stream thousands of free movies and TV series online in HD quality. Discover the latest blockbusters, classic films, and popular TV shows with no subscription required. Your ultimate destination for unlimited entertainment, available on any device. Start watching now!",
+            homeButton: "Home", // New
             moviesButton: "Movies",
             tvSeriesButton: "TV Series",
             searchMoviesPlaceholder: "Search movies...",
@@ -727,6 +815,7 @@
             layer1.style.display = 'none';
             layer2.style.display = 'none';
             layer3.style.display = 'none';
+            layer4.style.display = 'none'; // Hide Layer 4 by default
             layerToShow.style.display = 'block';
             window.scrollTo(0, 0); // Scroll to top when changing layers
         }
@@ -974,7 +1063,7 @@
 
                 const detailContentHtml = `
                     <div class="flex flex-col md:flex-row gap-8 mb-8">
-                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="Media Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
+                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="[Gambar Poster Media]" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
                         <div class="flex-1">
                             <h2 id="detail-title" class="text-4xl font-bold text-gray-100 mb-2">${media.title || media.name || TEXT_CONSTANTS.notAvailable}</h2>
                             <p class="text-gray-400 mb-2">${media.genres.map(g => g.name).join(', ') || TEXT_CONSTANTS.notAvailable}</p>
@@ -1130,6 +1219,10 @@
                 loadMediaSection('tv', 'now-playing', 1);
                 document.getElementById('section-title-now-playing').textContent = TEXT_CONSTANTS.popularTvSeries; // Update title
                 showLayer(layer1);
+            } else if (hash === '#/home-seo') { // New hash for Layer 4
+                console.log("[DEBUG] Handling #/home-seo hash.");
+                showLayer(layer4);
+                loadSeoContent(); // Call loadSeoContent when navigating to Layer 4
             }
             else {
                 // Default: empty hash or unrecognized hash, load movies home
@@ -1190,6 +1283,12 @@
             document.getElementById('streaming-player').src = '';
             document.getElementById('streaming-player-container').classList.add('hidden');
             // No need to change hash here, as we are navigating within the detail view context
+        });
+
+        backFromSeoButton.addEventListener('click', () => { // New event listener for Layer 4 back button
+            console.log("[DEBUG] Back from SEO button clicked.");
+            showLayer(layer1);
+            window.location.hash = ''; // Clear hash when going back to list
         });
 
         /**
@@ -1298,6 +1397,11 @@
         window.addEventListener('hashchange', handleHashChange);
 
         // Handle navigation buttons (Movies/TV Series)
+        navHomeButton.addEventListener('click', () => { // New Home button event listener
+            console.log("[DEBUG] Navigating to Home SEO page via hash change.");
+            window.location.hash = '#/home-seo';
+        });
+
         navMoviesButton.addEventListener('click', () => {
             console.log("[DEBUG] Navigating to Movies home via hash change.");
             currentSearchQuery = ''; // Clear search
@@ -1345,6 +1449,97 @@
                 }
             }
         });
+
+        // Function to load the SEO content into Layer 4
+        function loadSeoContent() {
+            const seoContentDiv = document.getElementById('seo-content');
+            seoContentDiv.innerHTML = `
+                <h1>Welcome to 123Movies UK: Your Ultimate Free Streaming Destination</h1>
+                <img src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="[Gambar Spanduk 123Movies UK]" class="w-full h-auto object-cover mb-6 rounded-lg">
+                <p>In an era where entertainment is at our fingertips, finding a reliable and free streaming platform can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of free movies and TV series. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in high-definition quality, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of unlimited entertainment and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond.</p>
+
+                <h2>The Evolution of Free Online Streaming: Why 123Movies UK Stands Out</h2>
+                <p>The landscape of online entertainment has evolved dramatically over the past decade. From traditional cable TV to paid streaming giants, consumers now have more choices than ever. However, the rising costs of multiple subscriptions can quickly add up, leaving many searching for viable, free alternatives. This is where platforms like 123Movies UK step in, democratizing access to a world of cinematic and television content.</p>
+                <p>What sets 123Movies UK apart from the myriad of free streaming sites? It's a combination of factors:</p>
+                <ul>
+                    <li><strong>Vast Content Library:</strong> We pride ourselves on offering an extensive collection that spans genres, eras, and origins. Whether you're a fan of Hollywood blockbusters, indie films, timeless classics, or the latest TV series, you'll find something to captivate your interest.</li>
+                    <li><strong>High-Definition Quality:</strong> Gone are the days of pixelated streams and poor audio. 123Movies UK is committed to providing content in HD quality, ensuring a crisp, clear, and immersive viewing experience.</li>
+                    <li><strong>User-Friendly Interface:</strong> Our website is designed with you in mind. The intuitive layout makes it easy to navigate, search for titles, and discover new content effortlessly.</li>
+                    <li><strong>No Subscription, No Fees:</strong> The core promise of 123Movies UK is completely free access. Enjoy unlimited streaming without worrying about monthly bills or hidden charges.</li>
+                    <li><strong>Device Compatibility:</strong> Stream on any device – your laptop, desktop, tablet, or smartphone. Our responsive design ensures optimal viewing regardless of your screen size.</li>
+                </ul>
+
+                <h2>Unrivaled Content Selection: Movies for Every Mood</h2>
+                <p>At 123Movies UK, our movie library is meticulously curated to cater to diverse tastes. From adrenaline-pumping action to heartwarming romances, thought-provoking dramas to laugh-out-loud comedies, our collection is constantly updated with new releases and beloved classics. Here’s a glimpse into what you can explore:</p>
+                <h3>Action & Adventure: Get Your Adrenaline Fix</h3>
+                <p>For those who crave excitement, our action and adventure categories are brimming with high-octane thrillers, epic quests, and superhero sagas. Experience explosive car chases, intense fight sequences, and breathtaking special effects, all from the comfort of your home. Discover titles that will keep you on the edge of your seat, from espionage thrillers to fantastical journeys.</p>
+                <h3>Comedy: Laugh Out Loud</h3>
+                <p>Need a good laugh? Our comedy section offers a wide array of films designed to lighten your mood. From witty romantic comedies to slapstick farces and dark satires, you'll find endless opportunities for amusement. Gather your friends and family for a night of shared laughter with our diverse comedic offerings.</p>
+                <h3>Drama: Explore Human Emotions</h3>
+                <p>Delve into the complexities of the human experience with our extensive drama collection. These films offer compelling narratives, powerful performances, and often explore profound themes. Whether you prefer historical dramas, legal thrillers, or poignant character studies, our drama category provides rich storytelling that resonates deeply.</p>
+                <h3>Horror & Thriller: A Frighteningly Good Time</h3>
+                <p>If you enjoy a good scare or a suspenseful plot, our horror and thriller genres are perfect for you. From psychological thrillers that mess with your mind to supernatural horrors that make you jump, prepare for an unforgettable viewing experience. Our collection includes both modern masterpieces and cult classics that will keep you awake at night.</p>
+                <h3>Sci-Fi & Fantasy: Journey Beyond Imagination</h3>
+                <p>Escape to other worlds and explore futuristic possibilities with our science fiction and fantasy films. Witness groundbreaking visual effects, innovative concepts, and imaginative storytelling. From dystopian futures to magical realms, these genres push the boundaries of creativity and offer truly immersive experiences.</p>
+                <h3>Romance: For the Heart</h3>
+                <p>Indulge in heartwarming tales of love, passion, and relationships with our romance movie selection. Whether you prefer classic love stories, contemporary romantic comedies, or intense romantic dramas, our collection is designed to stir your emotions and leave you feeling uplifted.</p>
+
+                <h2>Binge-Worthy TV Series: Endless Entertainment</h2>
+                <p>Beyond movies, 123Movies UK also boasts an impressive collection of TV series, allowing you to binge-watch your favorite shows or discover new obsessions. Our TV series library includes:</p>
+                <ul>
+                    <li><strong>Popular Series:</strong> Catch up on the latest seasons of critically acclaimed shows and fan favorites.</li>
+                    <li><strong>Classic TV:</strong> Revisit timeless sitcoms, dramas, and sci-fi series that have shaped television history.</li>
+                    <li><strong>International Hits:</strong> Explore captivating series from around the globe, expanding your viewing horizons.</li>
+                    <li><strong>Diverse Genres:</strong> From crime procedurals to fantasy epics, animated adventures to gripping documentaries, our TV series selection mirrors the diversity of our movie library.</li>
+                </ul>
+                <p>With new episodes and series added regularly, you'll never run out of engaging content to watch. Our platform makes it easy to track your progress and pick up exactly where you left off.</p>
+
+                <h2>Seamless Streaming Experience: Technology at Your Service</h2>
+                <p>We understand that a great streaming experience goes beyond just content. That's why 123Movies UK is built on robust technology designed for seamless, uninterrupted viewing:</p>
+                <ul>
+                    <li><strong>Fast Loading Times:</strong> Minimize buffering and start watching your chosen title almost instantly.</li>
+                    <li><strong>Adaptive Streaming:</strong> Our player adjusts video quality based on your internet connection, ensuring smooth playback even with varying bandwidth.</li>
+                    <li><strong>Intuitive Player Controls:</strong> Easy-to-use controls for play, pause, volume, and full-screen mode enhance your viewing comfort.</li>
+                    <li><strong>Regular Updates:</strong> Our technical team continuously works to improve the platform, fix bugs, and enhance performance, ensuring a cutting-edge streaming service.</li>
+                </ul>
+
+                <h2>Safety and Accessibility: Your Peace of Mind</h2>
+                <p>Your safety and privacy are paramount at 123Movies UK. We strive to provide a secure environment for your entertainment:</p>
+                <ul>
+                    <li><strong>No Registration Required:</strong> Enjoy content without the need to create an account, protecting your personal information.</li>
+                    <li><strong>Minimal Ads:</strong> While we rely on ads to keep our service free, we aim to keep them as unobtrusive as possible, ensuring they don't significantly disrupt your viewing.</li>
+                    <li><strong>Mobile-Friendly Design:</strong> Our website is fully responsive, adapting perfectly to any screen size, from smartphones to large desktop monitors. This means you can enjoy your favorite movies and shows on the go, anytime, anywhere.</li>
+                </ul>
+
+                <h2>How to Get Started with 123Movies UK</h2>
+                <p>Getting started with 123Movies UK is incredibly simple. Follow these easy steps to begin your free streaming journey:</p>
+                <ol>
+                    <li><strong>Visit Our Website:</strong> Navigate to 123movies-uk.pages.dev in your web browser.</li>
+                    <li><strong>Browse or Search:</strong> Use our intuitive search bar to find specific titles or explore our categories and curated lists.</li>
+                    <li><strong>Select Your Content:</strong> Click on the movie or TV series you wish to watch.</li>
+                    <li><strong>Start Streaming:</strong> Choose a streaming server (Stream 1 or Stream 2) and enjoy your free entertainment!</li>
+                </ol>
+                <p>It's that easy! No complicated sign-ups, no credit card details, just pure, unadulterated entertainment.</p>
+
+                <h2>Beyond Streaming: The 123Movies UK Community</h2>
+                <p>While our primary focus is on providing high-quality free streaming, we also aim to foster a community of movie and TV enthusiasts. Stay tuned for potential future features that could include user reviews, ratings, and personalized recommendations, further enhancing your experience and connecting you with fellow viewers.</p>
+
+                <h2>Why Choose 123Movies UK Over Paid Services?</h2>
+                <p>In a market dominated by subscription-based streaming services, you might wonder why 123Movies UK is a compelling alternative. Here’s why:</p>
+                <ul>
+                    <li><strong>Cost Savings:</strong> Eliminate multiple monthly subscriptions and save a significant amount of money.</li>
+                    <li><strong>Extensive Library:</strong> Access a diverse range of content that might not be available on any single paid platform.</li>
+                    <li><strong>No Commitments:</strong> Enjoy flexibility without long-term contracts or cancellation hassles.</li>
+                    <li><strong>Discover New Content:</strong> Our constantly updated library means you’ll always find something new to watch, from hidden gems to popular hits.</li>
+                </ul>
+
+                <h2>Future of 123Movies UK</h2>
+                <p>We are continuously working to expand our content library, improve streaming quality, and enhance the user experience. Our commitment is to remain a leading free streaming platform, adapting to the evolving needs of our audience and the digital landscape. We value your feedback and are always looking for ways to make 123Movies UK even better.</p>
+
+                <h2>Conclusion: Your Gateway to Free Entertainment</h2>
+                <p>123Movies UK is more than just a streaming site; it's a gateway to a world of free, high-quality entertainment. With an ever-growing collection of movies and TV series, a user-friendly interface, and a commitment to seamless streaming, we invite you to explore our platform. Say goodbye to subscription fees and hello to unlimited entertainment. Start watching today and experience the best of online streaming, completely free!</p>
+            `;
+        }
     </script>
 </body>
 </html>
