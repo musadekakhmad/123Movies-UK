@@ -21,6 +21,9 @@
     <meta property="og:type" content="website">
     <meta property="fb:app_id" content="61577842845885">
 
+    <!-- Canonical Tag for SEO -->
+    <link rel="canonical" href="https://123movies-uk.pages.dev/">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Roboto -->
@@ -281,7 +284,7 @@
         <div class="flex flex-col sm:flex-row items-center justify-between w-full py-4">
             <div class="flex items-center mb-4 sm:mb-0">
                 <!-- Logo (simple text) - Now wrapped in an anchor tag to act as a Home button -->
-                <a href="https://watchnow-com.blogspot.com/" id="home-logo-link" class="inline-flex items-center text-indigo-500 hover:text-indigo-400 transition-colors duration-200">
+                <a href="https://123movies-uk.pages.dev/" id="home-logo-link" class="inline-flex items-center text-indigo-500 hover:text-indigo-400 transition-colors duration-200">
                 <span class="text-3xl font-bold mr-2">🎬</span>
                 <h1 class="text-5xl font-bold whitespace-nowrap rainbow-text">123Movies UK</h1>
                 </a>
@@ -367,148 +370,34 @@
                 <div class="spinner"></div>
             </div>
             <div id="movie-detail-content" class="hidden">
-                <div class="flex flex-col md:flex-row gap-8 mb-8">
-                    <img id="detail-poster" src="" alt="Media Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
-                    <div class="flex-1">
-                        <h2 id="detail-title" class="text-4xl font-bold text-gray-100 mb-2"></h2>
-                        <p id="detail-genre" class="text-gray-400 mb-2"></p>
-                        <p id="detail-rating" class="text-yellow-500 font-semibold text-lg mb-4">⭐ </p>
-                        <p id="detail-cast" class="text-gray-300 text-sm mb-4">Cast: </p>
-                        <p id="detail-plot" class="text-gray-200 leading-relaxed mb-6 text-justify"></p>
-                        
-                        <!-- New AI-Powered Feature: Why Watch This? -->
-                        <button id="why-watch-button" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-5 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-4 flex items-center justify-center">
-                            <!-- Inline SVG for sparkle icon to avoid external file issues -->
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.447l.823.412a1 1 0 00.974-.197l1.243-.932a1 1 0 011.532 1.29l-.622 1.556a1 1 0 00.322 1.13l1.109.916a1 1 0 01.002 1.618l-1.109.916a1 1 0 00-.322 1.13l.622 1.556a1 1 0 01-1.532 1.29l-1.243-.932a1 1 0 00-.974-.197L11 17.553V19a1 1 0 01-2 0v-1.447l-.823-.412a1 1 0 00-.974.197l-1.243.932a1 1 0 01-1.532-1.29l.622-1.556a1 1 0 00-.322-1.13l-1.109-.916a1 1 0 01-.002-1.618l1.109-.916a1 1 0 00.322-1.13l-.622-1.556a1 1 0 011.532-1.29l1.243.932a1 1 0 00.974.197L9 2.447V3a1 1 0 011-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Why Watch This?</span>
-                        </button>
-                        <div id="why-watch-output" class="bg-gray-700 p-4 rounded-md mt-4 text-gray-200 hidden">
-                            <p class="font-semibold text-lg mb-2">Insight from 123Movies UK:</p>
-                            <p id="why-watch-text" class="text-sm"></p>
-                            <div id="why-watch-spinner" class="spinner hidden mt-4 mx-auto"></div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Content will be dynamically loaded here by JS -->
+            </div>
 
-                <div class="video-container mb-8">
-                    <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+            <div class="video-container mb-8">
+                <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
-                <div class="flex flex-wrap justify-center gap-4">
-                    <!-- Stream 1 Button (vidsrc.me) -->
-                    <button id="stream-1-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500">
-                        Stream 1
-                    </button>
-                    <!-- Stream 2 Button (vidsrc.to) -->
-                    <button id="stream-2-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Stream 2
-                    </button>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- Stream 1 Button (vidsrc.me) -->
+                <button id="stream-1-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                    Stream 1
+                </button>
+                <!-- Stream 2 Button (vidsrc.to) -->
+                <button id="stream-2-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Stream 2
+                </button>
+            </div>
 
-                <!-- Static thumbnails added here (moved from Layer 3) -->
-                <div class="mt-8 text-center">
-                    <h3 class="text-xl font-bold text-gray-100 mb-4">You Might Also Like This:</h3>
-                    <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                        <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
-                        <div class="static-movie-card" data-media-id="0" data-media-type="site">
-                            <img src="https://live.staticflickr.com/65535/54677236696_f42fcd9c6c.jpg" alt="123Movies UK Site Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>123Movies UK</h3>
-                                <p>Site</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
-                        <div class="static-movie-card" data-media-id="67308" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="3-D Sex and Zen: Extreme Ecstasy (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>3-D Sex and Zen: Extreme Ecstasy</h3>
-                                <p>2011</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Fidelity (2019) -->
-                        <div class="static-movie-card" data-media-id="575299" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="Fidelity (2019) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Fidelity</h3>
-                                <p>2019</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Killing Me Softly (2002) -->
-                        <div class="static-movie-card" data-media-id="14365" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="Killing Me Softly (2002) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Killing Me Softly</h3>
-                                <p>2002</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: They Are Mine (2023) -->
-                        <div class="static-movie-card" data-media-id="1180449" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="They Are Mine (2023) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>They Are Mine</h3>
-                                <p>2023</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Hate Story 2 (2014) -->
-                        <div class="static-movie-card" data-media-id="282346" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="Hate Story 2 (2014) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Hate Story 2</h3>
-                                <p>2014</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Cashback (2006) -->
-                        <div class="static-movie-card" data-media-id="12225" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="Cashback (2006) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Cashback</h3>
-                                <p>2006</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Room in Rome (2010) -->
-                        <div class="static-movie-card" data-media-id="48650" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="Room in Rome (2010) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Room in Rome</h3>
-                                <p>2010</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Fifty Shades Freed (2018) -->
-                        <div class="static-movie-card" data-media-id="337167" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="Fifty Shades Freed (2018) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Fifty Shades Freed</h3>
-                                <p>2018</p>
-                            </div>
-                        </div>
-                        <!-- Static Movie Card: Jan Dara (2001) -->
-                        <div class="static-movie-card" data-media-id="68507" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="Jan Dara (2001) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Jan Dara</h3>
-                                <p>2001</p>
-                            </div>
-                        </div>
-                        <!-- New Static Movie Card: Hotel Desire (2011) - Re-added with new image and position -->
-                        <div class="static-movie-card" data-media-id="82023" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="Hotel Desire (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>Hotel Desire</h3>
-                                <p>2011</p>
-                            </div>
-                        </div>
-                        <!-- New Static Movie Card: When Night is Falling (1995) -->
-                        <div class="static-movie-card" data-media-id="8391" data-media-type="movie">
-                            <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="When Night is Falling (1995) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                            <div class="info">
-                                <h3>When Night is Falling</h3>
-                                <p>1995</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Similar Movie Recommendations -->
+            <div class="mt-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-100 mb-4">Similar Titles You Might Like:</h3>
+                <div id="similar-movies-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                    <!-- Similar movie thumbnails will be loaded here by JS -->
                 </div>
+                <div id="loading-spinner-similar" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-similar-results-message" class="hidden text-center text-gray-400 text-lg mt-8">No similar titles found.</p>
             </div>
         </section>
 
@@ -532,6 +421,109 @@
                 <button id="stream-4-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Stream 4
                 </button>
+            </div>
+
+            <!-- Static thumbnails added here (moved from Layer 2) -->
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-100 mb-4">You Might Also Like This:</h3>
+                <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                    <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
+                    <div class="static-movie-card" data-media-id="0" data-media-type="site">
+                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="123Movies UK Site Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>123Movies UK</h3>
+                            <p>Site</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
+                    <div class="static-movie-card" data-media-id="67308" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="3-D Sex and Zen: Extreme Ecstasy (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>3-D Sex and Zen: Extreme Ecstasy</h3>
+                            <p>2011</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Fidelity (2019) -->
+                    <div class="static-movie-card" data-media-id="575299" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="Fidelity (2019) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Fidelity</h3>
+                            <p>2019</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Killing Me Softly (2002) -->
+                    <div class="static-movie-card" data-media-id="14365" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="Killing Me Softly (2002) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Killing Me Softly</h3>
+                            <p>2002</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: They Are Mine (2023) -->
+                    <div class="static-movie-card" data-media-id="1180449" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="They Are Mine (2023) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>They Are Mine</h3>
+                            <p>2023</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Hate Story 2 (2014) -->
+                    <div class="static-movie-card" data-media-id="282346" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="Hate Story 2 (2014) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Hate Story 2</h3>
+                            <p>2014</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Cashback (2006) -->
+                    <div class="static-movie-card" data-media-id="12225" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="Cashback (2006) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Cashback</h3>
+                            <p>2006</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Room in Rome (2010) -->
+                    <div class="static-movie-card" data-media-id="48650" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="Room in Rome (2010) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Room in Rome</h3>
+                            <p>2010</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Fifty Shades Freed (2018) -->
+                    <div class="static-movie-card" data-media-id="337167" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="Fifty Shades Freed (2018) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Fifty Shades Freed</h3>
+                            <p>2018</p>
+                        </div>
+                    </div>
+                    <!-- Static Movie Card: Jan Dara (2001) -->
+                    <div class="static-movie-card" data-media-id="68507" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="Jan Dara (2001) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Jan Dara</h3>
+                            <p>2001</p>
+                        </div>
+                    </div>
+                    <!-- New Static Movie Card: Hotel Desire (2011) - Re-added with new image and position -->
+                    <div class="static-movie-card" data-media-id="82023" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="Hotel Desire (2011) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>Hotel Desire</h3>
+                            <p>2011</p>
+                        </div>
+                    </div>
+                    <!-- New Static Movie Card: When Night is Falling (1995) -->
+                    <div class="static-movie-card" data-media-id="8391" data-media-type="movie">
+                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="When Night is Falling (1995) Poster" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <div class="info">
+                            <h3>When Night is Falling</h3>
+                            <p>1995</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -606,18 +598,16 @@
         const stream3Button = document.getElementById('stream-3-button');
         const stream4Button = document.getElementById('stream-4-button');
         const staticMovieGrid = document.getElementById('static-movie-grid'); // Get the static movie grid container
+        const similarMoviesGrid = document.getElementById('similar-movies-grid'); // Get the similar movies grid container
+        const loadingSpinnerSimilar = document.getElementById('loading-spinner-similar');
+        const noSimilarResultsMessage = document.getElementById('no-similar-results-message');
+
 
         const searchInput = document.getElementById('search-input');
         const searchButton = document.getElementById('search-button');
-        // const genreButtonsContainer = document.querySelector('.genre-buttons-container'); // Removed as genre buttons are removed
 
         const loadingSpinnerLayer2 = document.getElementById('loading-spinner-layer2');
         const loadingSpinnerLayer3 = document.getElementById('loading-spinner-layer3');
-
-        const whyWatchButton = document.getElementById('why-watch-button');
-        const whyWatchOutput = document.getElementById('why-watch-output');
-        const whyWatchText = document.getElementById('why-watch-text');
-        const whyWatchSpinner = document.getElementById('why-watch-spinner');
 
         const navMoviesButton = document.getElementById('nav-movies-button');
         const navTvSeriesButton = document.getElementById('nav-tvseries-button');
@@ -645,8 +635,6 @@
             noPoster: "No Poster",
             castPrefix: "Cast: ",
             plotNotAvailable: "No plot available.",
-            whyWatchButtonText: "✨ Why Watch This? ✨",
-            insightTitle: "Insight from 123Movies UK:",
             stream1Button: "Stream 1",
             stream2Button: "Stream 2",
             stream3Button: "Stream 3",
@@ -662,26 +650,19 @@
             failedToLoadDetails: "Failed to load media details. Please try again.",
             noMediaSelected: "No media selected for streaming.",
             imdbIdNotAvailable: "IMDb ID not available for streaming. Please try Stream 1.",
-            noPlotForInsight: "Plot summary for this {mediaTypeName} is not available to generate insights.",
-            llmNoInsight: "Could not generate insight at this time. Please try again later.",
-            llmApiError: "An error occurred while contacting the AI service. Please try again.",
             invalidMediaHash: "Invalid media hash, loading popular movies.",
             notAvailable: "N/A",
-            // Removed genres object as genre buttons are removed
-            // genres: {
-            //     "Action": "Action",
-            //     "Adventure": "Adventure",
-            //     "Comedy": "Comedy",
-            //     "Crime": "Crime",
-            //     "Drama": "Drama",
-            //     "Fantasy": "Fantasy",
-            //     "Horror": "Horror",
-            //     "Mystery": "Mystery",
-            //     "Sci-Fi": "Sci-Fi",
-            //     "Thriller": "Thriller",
-            //     "All": "All",
-            //     "Romance": "Romance Movies"
-            // }
+            similarTitles: "Similar Titles You Might Like:",
+            noSimilarTitles: "No similar titles found.",
+            year: "Year",
+            releaseDate: "Release Date",
+            director: "Director",
+            duration: "Duration",
+            userScore: "User Score",
+            contentRating: "Content Rating",
+            votes: "votes",
+            seasons: "seasons",
+            episodes: "episodes"
         };
 
         // Maps genre names to TMDB IDs - Only 10 requested genres (for Movies)
@@ -710,7 +691,8 @@
                 detail: '/movie/',
                 videos: '/movie/',
                 credits: '/movie/',
-                genre: '/discover/movie' // For genre-specific fetches
+                genre: '/discover/movie', // For genre-specific fetches
+                similar: '/movie/' // For similar movies
             },
             tv: {
                 popular: '/tv/popular',
@@ -718,6 +700,7 @@
                 detail: '/tv/',
                 videos: '/tv/',
                 credits: '/tv/',
+                similar: '/tv/' // For similar TV series
             }
         };
 
@@ -803,6 +786,7 @@
 
             spinnerElement.classList.remove('hidden');
             if (page === 1) { // Only clear grid on first page load for a section
+                console.log(`[DEBUG] Clearing grid for section: ${sectionName}`); // Debug log
                 gridElement.innerHTML = '';
             }
             noResultsMsg.classList.add('hidden');
@@ -833,7 +817,8 @@
                 }
             }
 
-            sectionTitleElement.textContent = titleText; // Update specific section title
+            console.log(`[DEBUG] loadMediaSection called for section: ${sectionName}, requested page: ${page}`); // Debug log
+            console.log(`[DEBUG] API URL for ${sectionName} (page ${page}): ${url}`); // Debug log
 
             try {
                 const response = await fetch(url);
@@ -841,6 +826,7 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
+                console.log(`[DEBUG] Received ${data.results.length} items for ${sectionName} (page ${data.page}). First item: ${data.results[0] ? (data.results[0].title || data.results[0].name) : 'N/A'}`); // Debug log
 
                 if (data.results.length === 0 && page === 1) {
                     noResultsMsg.classList.remove('hidden');
@@ -866,16 +852,17 @@
                             </div>
                         `;
                         gridElement.appendChild(mediaCard);
+                        console.log(`[DEBUG] Added media ID: ${media.id}, Title: ${titleOrName} to section: ${sectionName}, page: ${data.page}`); // Debug log
 
                         mediaCard.addEventListener('click', () => {
-                            currentMediaId = media.id;
                             // Adsterra Direct Ad Logic: Open ad on first click for this mediaId
                             if (!adTriggeredMediaIds.has(media.id)) {
-                                window.open(getNextAdLink(), '_blank'); // Using rotating link for general clicks
+                                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Added noopener noreferrer
                                 adTriggeredMediaIds.add(media.id); // Mark as triggered
                                 return; 
                             }
-                            fetchAndDisplayMediaDetail(media.id, type, titleOrName); // Proceed to Layer 2
+                            // Update hash instead of direct call to prevent double loading
+                            window.location.hash = `#/media/${type}/${media.id}/${slugify(titleOrName)}`;
                         });
                     });
                 }
@@ -900,14 +887,9 @@
 
         // Function to fetch and display movie/TV details (Layer 2)
         async function fetchAndDisplayMediaDetail(mediaId, mediaType, mediaTitleForSlug = '') {
-            console.log('Fetching details for:', mediaId, mediaType); // Debug log
             showLayer(layer2);
             document.getElementById('movie-detail-content').classList.add('hidden');
             loadingSpinnerLayer2.classList.remove('hidden');
-            // Reset LLM output and hide it when loading new media details
-            whyWatchOutput.classList.add('hidden');
-            whyWatchText.textContent = '';
-            whyWatchSpinner.classList.add('hidden');
 
             try {
                 // Fetch media details
@@ -915,45 +897,112 @@
                 if (!detailResponse.ok) throw new Error(`HTTP error! status: ${detailResponse.status}`);
                 const media = await detailResponse.json();
 
-                // Update URL hash for uniqueness
+                // Update URL hash for uniqueness (only if not already set by handleHashChange)
                 const mediaSlug = slugify(media.title || media.name || TEXT_CONSTANTS.titleNotAvailable);
-                window.location.hash = `#/media/${mediaType}/${media.id}/${mediaSlug}`;
+                if (window.location.hash !== `#/media/${mediaType}/${media.id}/${mediaSlug}`) {
+                    window.location.hash = `#/media/${mediaType}/${media.id}/${mediaSlug}`;
+                }
 
                 // Fetch media videos (for trailer)
                 const videoResponse = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].videos}${mediaId}/videos?api_key=${TMDB_API_KEY}&language=en`);
                 if (!videoResponse.ok) throw new Error(`HTTP error! status: ${videoResponse.status}`);
                 const videosData = await videoResponse.json();
-                console.log('TMDB videos data:', videosData); // Log all video data
 
                 let trailer = videosData.results.find(vid => vid.type === 'Trailer' && vid.site === 'YouTube');
                 
                 // Fallback: if no specific 'Trailer' type is found, try any YouTube video
                 if (!trailer) {
                     trailer = videosData.results.find(vid => vid.site === 'YouTube');
-                    console.log('No "Trailer" found, falling back to any YouTube video:', trailer);
                 }
 
-                // Using Rickroll as fallback if no trailer is found
-                const trailerUrl = trailer ? `https://www.youtube.com/embed/${trailer.key}` : 'https://www.youtube.com/embed/dQw4w9WgXcQ';
-                console.log('Final trailer URL:', trailerUrl); // Log final trailer URL
+                // Using a relevant movie trailer compilation as fallback if no specific trailer is found
+                const trailerUrl = trailer ? `https://www.youtube.com/embed/${trailer.key}` : 'https://www.youtube.com/embed/DmwYqQki_Ic'; // Changed fallback URL
 
-                // Fetch media credits (for cast)
+                // Fetch media credits (for cast and director)
                 const creditsResponse = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].credits}${mediaId}/credits?api_key=${TMDB_API_KEY}&language=en`);
                 if (!creditsResponse.ok) throw new Error(`HTTP error! status: ${creditsResponse.status}`);
                 const creditsData = await creditsResponse.json();
+                
+                const director = creditsData.crew.find(person => person.job === 'Director');
+                const directorName = director ? director.name : TEXT_CONSTANTS.notAvailable;
                 const cast = creditsData.cast.slice(0, 5).map(person => person.name).join(', '); // Top 5 cast members
+
+                // Fetch content rating
+                let contentRating = TEXT_CONSTANTS.notAvailable;
+                if (mediaType === 'movie') {
+                    const releaseDatesResponse = await fetch(`${TMDB_BASE_URL}/movie/${mediaId}/release_dates?api_key=${TMDB_API_KEY}`);
+                    if (releaseDatesResponse.ok) {
+                        const releaseDatesData = await releaseDatesResponse.json();
+                        const usRelease = releaseDatesData.results.find(res => res.iso_3166_1 === 'US');
+                        if (usRelease && usRelease.release_dates.length > 0) {
+                            contentRating = usRelease.release_dates[0].certification || TEXT_CONSTANTS.notAvailable;
+                        }
+                    }
+                } else if (mediaType === 'tv') {
+                    const contentRatingsResponse = await fetch(`${TMDB_BASE_URL}/tv/${mediaId}/content_ratings?api_key=${TMDB_API_KEY}`);
+                    if (contentRatingsResponse.ok) {
+                        const contentRatingsData = await contentRatingsResponse.json();
+                        const usRating = contentRatingsData.results.find(res => res.iso_3166_1 === 'US');
+                        if (usRating) {
+                            contentRating = usRating.rating || TEXT_CONSTANTS.notAvailable;
+                        }
+                    }
+                }
+
+                // Prepare duration text
+                let durationText = TEXT_CONSTANTS.notAvailable;
+                if (mediaType === 'movie' && media.runtime) {
+                    const hours = Math.floor(media.runtime / 60);
+                    const minutes = media.runtime % 60;
+                    durationText = `${hours}h ${minutes}m`;
+                } else if (mediaType === 'tv') {
+                    if (media.number_of_seasons && media.number_of_episodes) {
+                        durationText = `${media.number_of_seasons} ${TEXT_CONSTANTS.seasons}, ${media.number_of_episodes} ${TEXT_CONSTANTS.episodes}`;
+                    } else if (media.number_of_seasons) {
+                        durationText = `${media.number_of_seasons} ${TEXT_CONSTANTS.seasons}`;
+                    } else if (media.number_of_episodes) {
+                        durationText = `${media.number_of_episodes} ${TEXT_CONSTANTS.episodes}`;
+                    }
+                }
 
                 // Update currentImdbId
                 currentImdbId = media.imdb_id; // IMDb ID is available for both movies and TV in TMDB details
 
-                // Populate Layer 2
-                document.getElementById('detail-poster').src = media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`;
-                document.getElementById('detail-title').textContent = media.title || media.name || TEXT_CONSTANTS.notAvailable;
-                document.getElementById('detail-genre').textContent = media.genres.map(g => g.name).join(', ') || TEXT_CONSTANTS.notAvailable;
-                document.getElementById('detail-rating').innerHTML = `⭐ ${media.vote_average ? media.vote_average.toFixed(1) : TEXT_CONSTANTS.notAvailable} / 10`;
-                document.getElementById('detail-cast').textContent = TEXT_CONSTANTS.castPrefix + (cast || TEXT_CONSTANTS.notAvailable);
-                document.getElementById('detail-plot').textContent = media.overview || TEXT_CONSTANTS.plotNotAvailable;
+                // Populate Layer 2 with enhanced details
+                const releaseYear = media.release_date ? media.release_date.substring(0, 4) : (media.first_air_date ? media.first_air_date.substring(0, 4) : TEXT_CONSTANTS.notAvailable);
+                const fullReleaseDate = media.release_date || media.first_air_date || TEXT_CONSTANTS.notAvailable;
+
+                const detailContentHtml = `
+                    <div class="flex flex-col md:flex-row gap-8 mb-8">
+                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="Media Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
+                        <div class="flex-1">
+                            <h2 id="detail-title" class="text-4xl font-bold text-gray-100 mb-2">${media.title || media.name || TEXT_CONSTANTS.notAvailable}</h2>
+                            <p class="text-gray-400 mb-2">${media.genres.map(g => g.name).join(', ') || TEXT_CONSTANTS.notAvailable}</p>
+                            
+                            <div class="flex items-center gap-4 mb-4">
+                                <p class="text-yellow-500 font-semibold text-lg">⭐ ${media.vote_average ? media.vote_average.toFixed(1) : TEXT_CONSTANTS.notAvailable} / 10</p>
+                                <p class="text-gray-300 text-sm">(${media.vote_count || 0} ${TEXT_CONSTANTS.votes})</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-300 text-sm mb-4">
+                                <p><span class="font-semibold">${TEXT_CONSTANTS.year}:</span> ${releaseYear}</p>
+                                <p><span class="font-semibold">${TEXT_CONSTANTS.releaseDate}:</span> ${fullReleaseDate}</p>
+                                <p><span class="font-semibold">${TEXT_CONSTANTS.director}:</span> ${directorName}</p>
+                                <p><span class="font-semibold">${TEXT_CONSTANTS.duration}:</span> ${durationText}</p>
+                                <p><span class="font-semibold">${TEXT_CONSTANTS.contentRating}:</span> ${contentRating}</p>
+                            </div>
+
+                            <p id="detail-cast" class="text-gray-300 text-sm mb-4">Cast: ${cast || TEXT_CONSTANTS.notAvailable}</p>
+                            <p id="detail-plot" class="text-gray-200 leading-relaxed mb-6 text-justify">${media.overview || TEXT_CONSTANTS.plotNotAvailable}</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('movie-detail-content').innerHTML = detailContentHtml; // Replace innerHTML
+
                 document.getElementById('detail-trailer').src = trailerUrl;
+
+                // Load similar movies/TV series
+                await loadSimilarMedia(mediaId, mediaType);
 
             } catch (error) {
                 console.error('Error fetching media details:', error);
@@ -967,6 +1016,70 @@
             }
         }
 
+        /**
+         * Fetches and displays similar media.
+         * @param {number} mediaId - The ID of the current media.
+         * @param {string} mediaType - 'movie' or 'tv'.
+         */
+        async function loadSimilarMedia(mediaId, mediaType) {
+            similarMoviesGrid.innerHTML = ''; // Clear previous similar movies
+            loadingSpinnerSimilar.classList.remove('hidden');
+            noSimilarResultsMessage.classList.add('hidden');
+
+            try {
+                const similarUrl = `${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].similar}${mediaId}/similar?api_key=${TMDB_API_KEY}&language=en&page=1`;
+                const response = await fetch(similarUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.results.length === 0) {
+                    noSimilarResultsMessage.classList.remove('hidden');
+                    noSimilarResultsMessage.textContent = TEXT_CONSTANTS.noSimilarTitles;
+                } else {
+                    // Ensure only 5 items are displayed for similar movies
+                    data.results.slice(0, 5).forEach(similarMedia => { 
+                        const mediaCard = document.createElement('div');
+                        mediaCard.className = 'bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer';
+                        mediaCard.dataset.mediaId = similarMedia.id;
+                        mediaCard.dataset.mediaType = mediaType; // Similar items are of the same type
+                        
+                        const posterPath = similarMedia.poster_path ? `${TMDB_IMAGE_BASE_URL}${similarMedia.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
+                        const titleOrName = similarMedia.title || similarMedia.name || TEXT_CONSTANTS.titleNotAvailable;
+                        const releaseDateOrFirstAirDate = similarMedia.release_date ? similarMedia.release_date.substring(0, 4) : (similarMedia.first_air_date ? similarMedia.first_air_date.substring(0, 4) : TEXT_CONSTANTS.yearNotAvailable);
+
+                        mediaCard.innerHTML = `
+                            <img src="${posterPath}" alt="${titleOrName} Poster" loading="lazy" class="w-full h-auto object-cover rounded-t-lg" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=${TEXT_CONSTANTS.imageError}';">
+                            <div class="p-4 text-center">
+                                <h3 class="text-lg font-semibold text-gray-100 truncate">${titleOrName}</h3>
+                                <p class="text-gray-400 text-sm">${releaseDateOrFirstAirDate}</p>
+                            </div>
+                        `;
+                        similarMoviesGrid.appendChild(mediaCard);
+
+                        mediaCard.addEventListener('click', () => {
+                            // Adsterra Direct Ad Logic for similar items
+                            if (!adTriggeredMediaIds.has(similarMedia.id)) {
+                                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                                adTriggeredMediaIds.add(similarMedia.id);
+                                return; 
+                            }
+                            // Update hash instead of direct call to prevent double loading
+                            window.location.hash = `#/media/${mediaType}/${similarMedia.id}/${slugify(titleOrName)}`;
+                        });
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching similar media:', error);
+                noSimilarResultsMessage.classList.remove('hidden');
+                noSimilarResultsMessage.textContent = TEXT_CONSTANTS.failedToLoadMedia;
+            } finally {
+                loadingSpinnerSimilar.classList.add('hidden');
+            }
+        }
+
+
         // Function to handle URL hash changes
         async function handleHashChange() {
             const hash = window.location.hash;
@@ -979,6 +1092,11 @@
                     // The slug (parts[4]) is optional for loading, but good for SEO.
 
                     if ((type === 'movie' || type === 'tv') && !isNaN(id)) {
+                        // Prevent redundant calls if already on the same detail page
+                        if (currentMediaId === id && currentMediaType === type && layer2.style.display === 'block') {
+                            console.log("[DEBUG] Already on this detail page, preventing redundant load.");
+                            return;
+                        }
                         currentMediaId = id;
                         currentMediaType = type;
                         // Hide all sections on Layer 1 when viewing details
@@ -988,25 +1106,46 @@
                         await fetchAndDisplayMediaDetail(id, type);
                     } else {
                         // Invalid hash, revert to home
-                        console.warn(TEXT_CONSTANTS.invalidMediaHash);
+                        console.log("[DEBUG] Invalid media hash, loading all sections."); // Debug log
                         loadAllSections(); // Reload all sections
                         showLayer(layer1);
                         window.location.hash = ''; // Clear hash
                     }
                 }
-            } else {
-                // If no specific hash, or unrecognized hash, show all sections
+            } else if (hash === '#/movies') {
+                console.log("[DEBUG] Handling #/movies hash."); // Debug log
+                currentMediaType = 'movie';
+                loadAllSections(); // This will reset page counters and load movie sections
+                showLayer(layer1);
+            } else if (hash === '#/tv') {
+                console.log("[DEBUG] Handling #/tv hash."); // Debug log
+                currentMediaType = 'tv';
+                // Hide all movie sections and genre buttons
+                document.getElementById('romance-movies-section').style.display = 'none';
+                document.getElementById('top-rated-section').style.display = 'none';
+                document.getElementById('now-playing-section').style.display = 'block'; // Use now-playing section for TV series
+                
+                // Reset page counter for now-playing when switching to TV
+                pageCounters['now-playing'] = 1; 
+                loadMediaSection('tv', 'now-playing', 1);
+                document.getElementById('section-title-now-playing').textContent = TEXT_CONSTANTS.popularTvSeries; // Update title
+                showLayer(layer1);
+            }
+            else {
+                // Default: empty hash or unrecognized hash, load movies home
+                console.log("[DEBUG] Handling empty or unrecognized hash, loading all sections (default)."); // Debug log
+                currentMediaType = 'movie'; // Default to movies
                 loadAllSections();
                 showLayer(layer1);
-                // No need to clear hash if it's already empty or handled
             }
         }
 
         // Function to load all sections on Layer 1
         function loadAllSections() {
+            console.log("[DEBUG] loadAllSections called."); // Debug log
             // Reset page counters for all sections
             for (const key in pageCounters) {
-                pageCounters[key] = 1;
+                pageCounters[key] = 1; // Ensure they are reset to 1
             }
             currentSearchQuery = ''; // Clear search query when returning to home view
             searchInput.value = ''; // Clear search input field
@@ -1017,30 +1156,35 @@
             document.getElementById('top-rated-section').style.display = 'block';
 
             // Load content for each section
-            loadMediaSection('movie', 'romance-movies', pageCounters['romance-movies'], '', fixedMovieGenres.Romance); // Pass Romance genre ID
-            loadMediaSection('movie', 'now-playing', pageCounters['now-playing']);
-            loadMediaSection('movie', 'top-rated', pageCounters['top-rated']);
+            loadMediaSection('movie', 'romance-movies', 1, '', fixedMovieGenres.Romance); // Pass Romance genre ID
+            loadMediaSection('movie', 'now-playing', 1);
+            loadMediaSection('movie', 'top-rated', 1);
         }
 
         // Event Listeners for Load More Buttons
         document.getElementById('load-more-romance-movies').addEventListener('click', () => {
+            console.log("[DEBUG] Load More Romance Movies clicked."); // Debug log
             loadMediaSection('movie', 'romance-movies', pageCounters['romance-movies'] + 1, '', fixedMovieGenres.Romance);
         });
         document.getElementById('load-more-now-playing').addEventListener('click', () => {
+            console.log("[DEBUG] Load More Now Playing clicked."); // Debug log
             loadMediaSection('movie', 'now-playing', pageCounters['now-playing'] + 1);
         });
         document.getElementById('load-more-top-rated').addEventListener('click', () => {
+            console.log("[DEBUG] Load More Top Rated clicked."); // Debug log
             loadMediaSection('movie', 'top-rated', pageCounters['top-rated'] + 1);
         });
 
 
         backToListButton.addEventListener('click', () => {
+            console.log("[DEBUG] Back to list button clicked."); // Debug log
             showLayer(layer1);
             window.location.hash = ''; // Clear hash when going back to list
-            loadAllSections(); // Reload all sections when returning to main list
+            // loadAllSections(); // This will be called by handleHashChange due to hash change
         });
 
         backToDetailButton.addEventListener('click', () => {
+            console.log("[DEBUG] Back to detail button clicked."); // Debug log
             showLayer(layer2);
             // Stop streaming when going back to details
             document.getElementById('streaming-player').src = '';
@@ -1062,10 +1206,8 @@
 
             // Check if the ad has already been triggered for this specific mediaId for the main stream buttons
             if (!adTriggeredMediaIds.has(currentMediaId)) {
-                window.open(getNextAdLink(), '_blank'); // Using rotating link for general clicks
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Added noopener noreferrer
                 adTriggeredMediaIds.add(currentMediaId); // Mark as triggered
-                console.log(`Adsterra ad triggered for main stream button for media ID: ${currentMediaId} from source: ${source}`);
-                // Prevent streaming player from loading on first click
                 return; 
             }
 
@@ -1096,7 +1238,6 @@
                 loadingSpinnerLayer3.classList.add('hidden');
                 document.getElementById('streaming-player-container').classList.remove('hidden');
             }, 3000); // 3-second delay
-            console.log(`Streaming player loaded for media ID: ${currentMediaId} from ${source}`);
         }
 
         stream1Button.addEventListener('click', () => handleStreamButtonClick('vidsrc.me'));
@@ -1104,7 +1245,7 @@
 
         stream3Button.addEventListener('click', () => {
             if (currentMediaId) {
-                window.open(getNextAdLink(), '_blank'); // Use rotating link for Adsterra
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Use rotating link for Adsterra
             } else {
                 showMessageBox('errorTitle', 'noMediaSelected');
             }
@@ -1112,60 +1253,11 @@
 
         stream4Button.addEventListener('click', () => {
             if (currentImdbId) {
-                window.open(getNextAdLink(), '_blank'); // Use rotating link for Adsterra
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Use rotating link for Adsterra
             } else {
                 showMessageBox('errorTitle', 'imdbIdNotAvailable');
             }
         });
-
-        whyWatchButton.addEventListener('click', async () => {
-            const mediaPlot = document.getElementById('detail-plot').textContent;
-            const mediaTitle = document.getElementById('detail-title').textContent;
-            const mediaTypeName = currentMediaType === 'movie' ? TEXT_CONSTANTS.moviesButton.toLowerCase() : TEXT_CONSTANTS.tvSeriesButton.toLowerCase(); // Using English for media type name
-
-            if (!mediaPlot || mediaPlot === TEXT_CONSTANTS.plotNotAvailable) {
-                showMessageBox('infoTitle', 'noPlotForInsight', { mediaTypeName: mediaTypeName });
-                return;
-            }
-
-            whyWatchOutput.classList.remove('hidden');
-            whyWatchText.textContent = ''; // Clear previous text
-            whyWatchSpinner.classList.remove('hidden'); // Show spinner
-
-            try {
-                let chatHistory = [];
-                // Prompt LLM in English
-                const llmPrompt = `Based on the following plot summary, write a compelling, 3-sentence reason why someone should watch this ${currentMediaType === 'movie' ? 'movie' : 'TV series'} titled "${mediaTitle}". Focus on intrigue, emotional depth, or unique elements. Plot: "${mediaPlot}"`;
-                chatHistory.push({ role: "user", parts: [{ text: llmPrompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const generatedText = result.candidates[0].content.parts[0].text;
-                    whyWatchText.textContent = generatedText; // Display raw text from LLM
-                } else {
-                    whyWatchText.textContent = TEXT_CONSTANTS.llmNoInsight;
-                    console.error('Unexpected LLM response structure:', result);
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                whyWatchText.textContent = TEXT_CONSTANTS.llmApiError;
-            } finally {
-                whyWatchSpinner.classList.add('hidden'); // Hide spinner
-            }
-        });
-
 
         searchButton.addEventListener('click', () => {
             const query = searchInput.value.trim();
@@ -1207,29 +1299,19 @@
 
         // Handle navigation buttons (Movies/TV Series)
         navMoviesButton.addEventListener('click', () => {
+            console.log("[DEBUG] Navigating to Movies home via hash change.");
             currentSearchQuery = ''; // Clear search
             searchInput.value = ''; // Clear search input
             currentGenreId = null; // Clear genre filter
-            currentMediaType = 'movie'; // Ensure media type is movie
-            loadAllSections(); // Load all movie sections
-            showLayer(layer1);
-            window.location.hash = ''; // Clear hash when going back to movies home
+            window.location.hash = '#/movies'; // Just set hash, handleHashChange will do the rest
         });
 
         navTvSeriesButton.addEventListener('click', () => {
+            console.log("[DEBUG] Navigating to TV Series home via hash change.");
             currentSearchQuery = ''; // Clear search
             searchInput.value = ''; // Clear search input
             currentGenreId = null; // Clear genre filter
-            currentMediaType = 'tv'; // Ensure media type is tv
-            // Hide all movie sections and genre buttons
-            document.getElementById('romance-movies-section').style.display = 'none';
-            document.getElementById('now-playing-section').style.display = 'block'; // Use now-playing section for TV series
-            document.getElementById('top-rated-section').style.display = 'none';
-            // Only load popular TV series into the now-playing grid
-            loadMediaSection('tv', 'now-playing', 1);
-            document.getElementById('section-title-now-playing').textContent = TEXT_CONSTANTS.popularTvSeries; // Update title
-            showLayer(layer1);
-            window.location.hash = ''; // Clear hash when going back to TV series home
+            window.location.hash = '#/tv'; // Just set hash, handleHashChange will do the rest
         });
 
         // Event listener for static movie cards in Layer 3 (UPDATED)
@@ -1238,19 +1320,27 @@
             if (clickedCard) {
                 const mediaId = clickedCard.dataset.mediaId;
                 const mediaType = clickedCard.dataset.mediaType;
-                const mediaTitle = clickedCard.querySelector('h3').textContent; // Get title for slug
+                const mediaTitle = clickedCard.querySelector('h3').textContent;
                 
                 if (mediaId && mediaType) {
+                    // Handle 'site' media type specifically
+                    if (mediaType === 'site') {
+                        // If it's the 123Movies UK card, just open the ad and prevent further action for this card type
+                        if (!staticAdTriggeredMediaIds.has(mediaId)) {
+                            window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                            staticAdTriggeredMediaIds.add(mediaId);
+                        }
+                        return; // Stop further processing for 'site' type
+                    }
+
                     if (!staticAdTriggeredMediaIds.has(mediaId)) {
-                        // First click: Open ad
-                        window.open(getNextAdLink(), '_blank'); // Using rotating link for Adsterra
-                        staticAdTriggeredMediaIds.add(mediaId); // Mark as triggered
-                        console.log(`Adsterra ad triggered for static card: ${mediaTitle}`);
+                        // First click for non-site media: Open ad
+                        window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                        staticAdTriggeredMediaIds.add(mediaId);
                     } else {
-                        // Subsequent click: Navigate to details
-                        currentMediaId = mediaId;
-                        fetchAndDisplayMediaDetail(mediaId, mediaType, mediaTitle);
-                        console.log(`Navigating to details for static card: ${mediaTitle}`);
+                        // Subsequent click for non-site media: Navigate to details
+                        // Update hash instead of direct call to prevent double loading
+                        window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
                     }
                 }
             }
