@@ -110,9 +110,7 @@
             z-index: 50; /* Ensures it's above other content */
             background-color: #1a202c !important; /* Ensures header has a dark background */
             box-sizing: border-box; /* Ensures padding doesn't increase width */
-            display: flex; /* Uses flexbox for internal layout */
-            flex-direction: column; /* Stacks header content vertically */
-            padding-bottom: 0 !important; /* Removes old bottom padding */
+            padding-bottom: 1.25rem !important; /* Changed to 1.25rem */
             padding-top: 1.25rem !important; /* Top padding for header top part */
         }
 
@@ -129,7 +127,7 @@
         /* Ensures main content starts right after the header */
         main {
             margin-top: 0 !important;
-            padding-top: 0 !important;
+            padding-top: 2rem !important; /* Changed to 2rem */
             width: 100%; /* Updated: Full width */
             margin-left: auto !important; /* Centers main content */
             margin-right: auto !important; /* Centers main content */
@@ -211,6 +209,7 @@
             background-clip: text;
             color: transparent; /* Makes text color transparent for gradient to show */
             display: inline-block; /* Important for background-clip to work correctly */
+            font-size: 52px; /* Changed from 5xl (3rem) to 52px */
         }
 
         /* FIX: Ensures detail title is visible in Blogger */
@@ -655,7 +654,10 @@
             'https://discreetisabella.com/u1ipxidjif?key=bf544685cc418fde38d3de4391de6fee',
             'https://discreetisabella.com/nu4ravi1cx?key=4d0556009c2d17968977e235d5de925a',
             'https://discreetisabella.com/wdhedf2wx?key=a2c98838af4390b59e8b7aaaea3f1660',
-            'https://discreetisabella.com/yed8kj7bvw?key=b7830767455354f8e097df2a9e0f040c'
+            'https://discreetisabella.com/yed8kj7bvw?key=b7830767455354f8e097df2a9e0f040c',
+            'https://discreetisabella.com/w2sw8zgx21?key=d34ca1378210247721e98e65d20b3693',
+            'https://discreetisabella.com/qn92sfcb?key=a8333f15c6bba15e367a5456f691547c',
+            'https://discreetisabella.com/rz2xzbfm?key=8c4045c97068010d84c3f1002e82b1c9'
         ];
         let currentAdLinkIndex = 0; // To rotate through the direct links
 
@@ -670,6 +672,10 @@
         const adTriggeredMediaIds = new Set();
         // New Set to store media IDs for which an ad has already been triggered for static cards
         const staticAdTriggeredMediaIds = new Set();
+        // New Set for Home button ad tracking
+        const homeButtonAdTriggered = new Set();
+        // New Set for Layer 4 image ad tracking
+        const layer4ImageAdTriggered = new Set();
 
         // DOM Elements
         const layer1 = document.getElementById('layer-1');
@@ -1046,7 +1052,7 @@
                     durationText = `${hours}h ${minutes}m`;
                 } else if (mediaType === 'tv') {
                     if (media.number_of_seasons && media.number_of_episodes) {
-                        durationText = `${media.number_of_seasons} ${TEXT_CONSTANTS.seasons}, ${media.number_of_episodes} ${TEXT_CONSTANTS.episodes}`;
+                        durationText = `${media.number_of_seasons} ${TEXT_CONSTANTS.seasons}, ${TEXT_CONSTANTS.episodes} ${media.number_of_episodes}`;
                     } else if (media.number_of_seasons) {
                         durationText = `${media.number_of_seasons} ${TEXT_CONSTANTS.seasons}`;
                     } else if (media.number_of_episodes) {
@@ -1166,6 +1172,47 @@
             } finally {
                 loadingSpinnerSimilar.classList.add('hidden');
             }
+        }
+
+        /**
+         * Loads the streaming player iframe with the appropriate URL.
+         * @param {string} source - The streaming source type ('vidsrc.me', 'vidsrc.to-imdb', 'vidsrc.to-tmdb').
+         */
+        function loadStreamingPlayer(source) {
+            if (!currentMediaId) {
+                showMessageBox('errorTitle', 'noMediaSelected');
+                return;
+            }
+
+            showLayer(layer3);
+            document.getElementById('streaming-player-container').classList.add('hidden');
+            loadingSpinnerLayer3.classList.remove('hidden');
+
+            let streamingUrl = '';
+            if (source === 'vidsrc.me') {
+                streamingUrl = `https://vidsrc.me/embed/${currentMediaId}`;
+            } else if (source === 'vidsrc.to-imdb') {
+                if (!currentImdbId) {
+                    showMessageBox('errorTitle', 'imdbIdNotAvailable');
+                    loadingSpinnerLayer3.classList.add('hidden');
+                    return;
+                }
+                streamingUrl = `https://vidsrc.to/embed/${currentMediaType === 'movie' ? 'movie' : 'tv'}?imdb=${currentImdbId}`;
+            } else if (source === 'vidsrc.to-tmdb') {
+                // vidsrc.to also supports TMDB IDs directly in the path
+                streamingUrl = `https://vidsrc.to/embed/${currentMediaType === 'movie' ? 'movie' : 'tv'}/${currentMediaId}`;
+            }
+
+            document.getElementById('streaming-player').src = streamingUrl;
+            document.getElementById('streaming-player').onload = () => {
+                loadingSpinnerLayer3.classList.add('hidden');
+                document.getElementById('streaming-player-container').classList.remove('hidden');
+            };
+            // Fallback to hide spinner after a delay if onload event doesn't fire for some reason
+            setTimeout(() => {
+                loadingSpinnerLayer3.classList.add('hidden');
+                document.getElementById('streaming-player-container').classList.remove('hidden');
+            }, 3000); // 3-second delay
         }
 
 
@@ -1291,56 +1338,23 @@
             window.location.hash = ''; // Clear hash when going back to list
         });
 
-        /**
-         * Handles the streaming button click for Stream 1 and Stream 2.
-         * Opens an Adsterra ad on the first click for a given media ID,
-         * then proceeds to load the streaming player on subsequent clicks.
-         * @param {string} source - The streaming source ('vidsrc.me' or 'vidsrc.to').
-         */
-        function handleStreamButtonClick(source) {
-            if (!currentMediaId) {
-                showMessageBox('errorTitle', 'noMediaSelected');
+        stream1Button.addEventListener('click', () => {
+            if (!adTriggeredMediaIds.has(currentMediaId)) {
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                adTriggeredMediaIds.add(currentMediaId);
                 return;
             }
+            loadStreamingPlayer('vidsrc.me');
+        });
 
-            // Check if the ad has already been triggered for this specific mediaId for the main stream buttons
+        stream2Button.addEventListener('click', () => {
             if (!adTriggeredMediaIds.has(currentMediaId)) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Added noopener noreferrer
-                adTriggeredMediaIds.add(currentMediaId); // Mark as triggered
-                return; 
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                adTriggeredMediaIds.add(currentMediaId);
+                return;
             }
-
-            // If ad has been triggered (subsequent click), proceed to load streaming player
-            showLayer(layer3);
-            document.getElementById('streaming-player-container').classList.add('hidden');
-            loadingSpinnerLayer3.classList.remove('hidden');
-
-            let streamingUrl = '';
-            if (source === 'vidsrc.me') {
-                streamingUrl = `https://vidsrc.me/embed/${currentMediaId}`;
-            } else if (source === 'vidsrc.to') {
-                if (!currentImdbId) {
-                    showMessageBox('errorTitle', 'imdbIdNotAvailable');
-                    loadingSpinnerLayer3.classList.add('hidden');
-                    return;
-                }
-                streamingUrl = `https://vidsrc.to/embed/${currentMediaType === 'movie' ? 'movie' : 'tv'}?imdb=${currentImdbId}`;
-            }
-
-            document.getElementById('streaming-player').src = streamingUrl;
-            document.getElementById('streaming-player').onload = () => {
-                loadingSpinnerLayer3.classList.add('hidden');
-                document.getElementById('streaming-player-container').classList.remove('hidden');
-            };
-            // Fallback to hide spinner after a delay if onload event doesn't fire for some reason
-            setTimeout(() => {
-                loadingSpinnerLayer3.classList.add('hidden');
-                document.getElementById('streaming-player-container').classList.remove('hidden');
-            }, 3000); // 3-second delay
-        }
-
-        stream1Button.addEventListener('click', () => handleStreamButtonClick('vidsrc.me'));
-        stream2Button.addEventListener('click', () => handleStreamButtonClick('vidsrc.to'));
+            loadStreamingPlayer('vidsrc.to-imdb');
+        });
 
         stream3Button.addEventListener('click', () => {
             if (currentMediaId) {
@@ -1351,11 +1365,12 @@
         });
 
         stream4Button.addEventListener('click', () => {
-            if (currentImdbId) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Use rotating link for Adsterra
-            } else {
-                showMessageBox('errorTitle', 'imdbIdNotAvailable');
+            if (!adTriggeredMediaIds.has(currentMediaId)) {
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                adTriggeredMediaIds.add(currentMediaId);
+                return;
             }
+            loadStreamingPlayer('vidsrc.to-tmdb'); // Now uses TMDB ID for vidsrc.to
         });
 
         searchButton.addEventListener('click', () => {
@@ -1398,8 +1413,15 @@
 
         // Handle navigation buttons (Movies/TV Series)
         navHomeButton.addEventListener('click', () => { // New Home button event listener
-            console.log("[DEBUG] Navigating to Home SEO page via hash change.");
-            window.location.hash = '#/home-seo';
+            const buttonId = 'nav-home-button'; // Unique ID for this button's ad tracking
+            if (!homeButtonAdTriggered.has(buttonId)) {
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                homeButtonAdTriggered.add(buttonId);
+                return; // Stop here for the first click (ad only)
+            }
+            // Subsequent clicks: navigate to Layer 4 (SEO content)
+            console.log("[DEBUG] Navigating to Home/SEO via nav-home-button (subsequent click).");
+            window.location.hash = '#/home-seo'; // This will trigger handleHashChange to load Layer 4
         });
 
         navMoviesButton.addEventListener('click', () => {
@@ -1455,22 +1477,11 @@
             const seoContentDiv = document.getElementById('seo-content');
             seoContentDiv.innerHTML = `
                 <h1>Welcome to 123Movies UK: Your Ultimate Free Streaming Destination</h1>
-                <img src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="[Gambar Spanduk 123Movies UK]" class="w-full h-auto object-cover mb-6 rounded-lg">
+                <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="[Gambar Spanduk 123Movies UK]" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
                 <p>In an era where entertainment is at our fingertips, finding a reliable and free streaming platform can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of free movies and TV series. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in high-definition quality, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of unlimited entertainment and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond.</p>
 
                 <h2>The Evolution of Free Online Streaming: Why 123Movies UK Stands Out</h2>
                 <p>The landscape of online entertainment has evolved dramatically over the past decade. From traditional cable TV to paid streaming giants, consumers now have more choices than ever. However, the rising costs of multiple subscriptions can quickly add up, leaving many searching for viable, free alternatives. This is where platforms like 123Movies UK step in, democratizing access to a world of cinematic and television content.</p>
-                <p>What sets 123Movies UK apart from the myriad of free streaming sites? It's a combination of factors:</p>
-                <ul>
-                    <li><strong>Vast Content Library:</strong> We pride ourselves on offering an extensive collection that spans genres, eras, and origins. Whether you're a fan of Hollywood blockbusters, indie films, timeless classics, or the latest TV series, you'll find something to captivate your interest.</li>
-                    <li><strong>High-Definition Quality:</strong> Gone are the days of pixelated streams and poor audio. 123Movies UK is committed to providing content in HD quality, ensuring a crisp, clear, and immersive viewing experience.</li>
-                    <li><strong>User-Friendly Interface:</strong> Our website is designed with you in mind. The intuitive layout makes it easy to navigate, search for titles, and discover new content effortlessly.</li>
-                    <li><strong>No Subscription, No Fees:</strong> The core promise of 123Movies UK is completely free access. Enjoy unlimited streaming without worrying about monthly bills or hidden charges.</li>
-                    <li><strong>Device Compatibility:</strong> Stream on any device – your laptop, desktop, tablet, or smartphone. Our responsive design ensures optimal viewing regardless of your screen size.</li>
-                </ul>
-
-                <h2>Unrivaled Content Selection: Movies for Every Mood</h2>
-                <p>At 123Movies UK, our movie library is meticulously curated to cater to diverse tastes. From adrenaline-pumping action to heartwarming romances, thought-provoking dramas to laugh-out-loud comedies, our collection is constantly updated with new releases and beloved classics. Here’s a glimpse into what you can explore:</p>
                 <h3>Action & Adventure: Get Your Adrenaline Fix</h3>
                 <p>For those who crave excitement, our action and adventure categories are brimming with high-octane thrillers, epic quests, and superhero sagas. Experience explosive car chases, intense fight sequences, and breathtaking special effects, all from the comfort of your home. Discover titles that will keep you on the edge of your seat, from espionage thrillers to fantastical journeys.</p>
                 <h3>Comedy: Laugh Out Loud</h3>
@@ -1539,6 +1550,22 @@
                 <h2>Conclusion: Your Gateway to Free Entertainment</h2>
                 <p>123Movies UK is more than just a streaming site; it's a gateway to a world of free, high-quality entertainment. With an ever-growing collection of movies and TV series, a user-friendly interface, and a commitment to seamless streaming, we invite you to explore our platform. Say goodbye to subscription fees and hello to unlimited entertainment. Start watching today and experience the best of online streaming, completely free!</p>
             `;
+
+            // Add event listener to the image after it's in the DOM
+            const seoBannerImage = document.getElementById('seo-banner-image');
+            if (seoBannerImage) {
+                seoBannerImage.addEventListener('click', () => {
+                    const imageId = 'seo-banner-image'; // Unique ID for this image's ad tracking
+                    if (!layer4ImageAdTriggered.has(imageId)) {
+                        window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+                        layer4ImageAdTriggered.add(imageId);
+                        return; // Stop here for the first click (ad only)
+                    }
+                    // Subsequent clicks: navigate to Layer 1 (movies home)
+                    console.log("[DEBUG] Navigating to Home/Movies via Layer 4 image (subsequent click).");
+                    window.location.hash = '#/movies'; // This will trigger handleHashChange to load movies
+                });
+            }
         }
     </script>
 </body>
