@@ -30,269 +30,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* CSS to ensure the custom header is fixed */
-        html, body {
-            height: 100%; /* Important for fixed positioning */
-            min-height: 100vh; /* Fallback and ensures full viewport height */
-            overflow-x: hidden; /* Prevents horizontal scrolling */
-            margin: 0; /* Removes default margin */
-            padding: 0; /* Removes default padding */
-            background-color: #1a202c; /* Ensures background color matches custom theme */
-            display: flex; /* Uses flexbox for the body */
-            flex-direction: column; /* Arranges flex items in a column */
-            align-items: center; /* Centers items horizontally */
-            font-family: 'Roboto', sans-serif; /* Uses Roboto font */
-        }
-        
-        /* Ensures the custom header remains fixed and sets its internal layout */
-        header {
-            position: sticky; /* Sticky is generally better than fixed for headers */
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%; /* Updated: Full width */
-            z-index: 50; /* Ensures it's above other content */
-            background-color: #1a202c; /* Ensures header has a dark background */
-            box-sizing: border-box; /* Ensures padding doesn't increase width */
-            padding-bottom: 0.5rem; /* Reduced from 1.25rem to 0.5rem */
-            padding-top: 1.25rem;
-        }
-
-        /* Styles for the top part of the header container (logo, navigation, search) */
-        /* Removed custom CSS for .header-top-row to rely on Tailwind classes */
-
-        /* Styles for the genre buttons container (now part of the header) */
-        .genre-buttons-container { /* Uses existing class, not fixed/top */
-            width: 100%;
-            background-color: #1a202c; /* Matches main header background color */
-            /* Removed padding: 1rem; to rely on Tailwind classes */
-            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Visual separation line */
-        }
-        /* Ensures main content starts right after the header */
-        main {
-            margin-top: 0;
-            padding-top: 0.5rem; /* Reduced from 1rem to 0.5rem for tighter spacing */
-            width: 100%; /* Updated: Full width */
-            margin-left: auto; /* Centers main content */
-            margin-right: auto; /* Centers main content */
-        }
-
-        /* Adjust font size and padding for nav button to match genre button */
-        .nav-button {
-            font-size: 0.875rem; /* text-sm */
-            padding-left: 1rem; /* px-4 */
-            padding-right: 1rem; /* px-4 */
-            padding-top: 0.5rem; /* py-2 */
-            padding-bottom: 0.5rem; /* py-2 */
-        }
-        /* Adjust font size for medium and up screens to remain large like genre button */
-        @media (min-width: 768px) {
-            .nav-button {
-                font-size: 1rem; /* md:text-base */
-            }
-        }
-
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #2d3748; /* bg-gray-800 */
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4a5568; /* bg-gray-600 */
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280; /* bg-gray-500 */
-        }
-
-        /* Hide elements by default for layers */
-        .layer-2, .layer-3, .layer-4 { /* Added .layer-4 */
-            display: none;
-        }
-
-        /* Ensures iframe fills its container responsively */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.5rem; /* rounded-lg */
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Basic spinner for loading */
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #f97316; /* Orange-500 */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Rainbow text style */
-        .rainbow-text {
-            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent; /* Makes text color transparent for gradient to show */
-            display: inline-block; /* Important for background-clip to work correctly */
-            font-size: 56px; /* Changed from 52px to 56px */
-        }
-
-        /* FIX: Ensures detail title is visible */
-        #detail-title {
-            display: block;
-            visibility: visible;
-            height: auto;
-            font-size: 3rem; /* Increased from 2.25rem (text-4xl) to 3rem (text-5xl) */
-            line-height: normal;
-            margin: 0 0 0.5rem 0; /* Adjust margin as needed */
-        }
-
-        /* Style for static movie cards in Layer 3 */
-        .static-movie-card {
-            background-color: #1f2937; /* bg-gray-800 */
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-            overflow: hidden;
-            transform: scale(1);
-            transition: all 0.3s ease-in-out; /* transition-all duration-300 */
-            cursor: pointer;
-        }
-
-        .static-movie-card:hover {
-            transform: scale(1.05); /* hover:scale-105 */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
-        }
-
-        .static-movie-card img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-
-        .static-movie-card .info {
-            padding: 1rem; /* p-4 */
-            text-align: center; /* Changed to center */
-        }
-
-        .static-movie-card h3 {
-            font-size: 1.125rem; /* text-lg */
-            font-weight: 600; /* font-semibold */
-            color: #f9fafb; /* text-gray-100 */
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 0.25rem;
-        }
-
-        .static-movie-card p {
-            font-size: 0.875rem; /* text-sm */
-            color: #9ca3af; /* text-gray-400 */
-        }
-
-        /* CSS to remove underline from home logo link */
-        #home-logo-link {
-            text-decoration: none; /* Removes default underline */
-        }
-        #home-logo-link:hover {
-            text-decoration: none; /* Ensures no underline on hover */
-        }
-
-        /* Styling for Layer 4 SEO content */
-        .layer-4 { /* Target the section, not the inner content div */
-            background-color: #1f2937; /* bg-gray-800 */
-            padding: 2rem; /* p-8, or adjust as needed */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            color: #e2e8f0; /* text-gray-200 */
-            line-height: 1.6;
-            position: relative; /* Ensure absolute positioning of back button works */
-            width: 100%; /* Ensure it takes full width of its parent (main) */
-        }
-
-        .layer-4-content { /* This is the inner div for the text */
-            /* Removed max-width and margin: auto to allow it to expand within the section's padding */
-        }
-
-        .layer-4-content h1, .layer-4-content h2, .layer-4-content h3 {
-            color: #f9fafb; /* text-gray-100 */
-            font-weight: 700; /* font-bold */
-            margin-bottom: 1rem;
-        }
-
-        .layer-4-content h1 {
-            font-size: 2.5rem; /* text-4xl */
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .layer-4-content h2 {
-            font-size: 2rem; /* text-3xl */
-            margin-top: 2rem;
-        }
-
-        .layer-4-content h3 {
-            font-size: 1.5rem; /* text-2xl */
-            margin-top: 1.5rem;
-        }
-
-        .layer-4-content p {
-            margin-bottom: 1rem;
-            text-align: justify; /* Added for justified text */
-        }
-
-        .layer-4-content ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .layer-4-content ol {
-            list-style-type: decimal;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .layer-4-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .layer-4-content strong {
-            color: #cbd5e1; /* text-gray-300 */
-        }
-
-        .layer-4-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin: 1.5rem auto;
-            display: block;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
+    <!-- NoScript message for users with JavaScript disabled -->
+    <noscript>
+        <div class="fixed inset-0 bg-gray-900 text-white flex items-center justify-center p-4 z-50">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold mb-4">JavaScript Disabled</h1>
+                <p class="text-lg">This site requires JavaScript to function fully. Please enable JavaScript in your browser for the best experience.</p>
+                <p class="mt-4 text-sm text-gray-400">If you are seeing this message, your browser might not support JavaScript or you have disabled it.</p>
+            </div>
+        </div>
+    </noscript>
 
     <!-- Header (Fixed) - Now integrated with genre buttons -->
     <header class="sticky top-0 z-50 bg-gray-900 shadow-lg px-4 md:px-8 flex flex-col items-center rounded-b-lg">
@@ -564,12 +315,27 @@
     </footer>
 
     <script type="module">
-        // Mengubah TMDB_BASE_URL agar menunjuk ke URL Cloudflare Worker Anda.
-        const TMDB_BASE_URL = 'https://tmdb-api-proxy.musadekakhmad.workers.dev'; // Ganti dengan URL Worker Anda yang sebenarnya
-        const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
-        const TMDB_PROFILE_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w185';
+        // Application configuration
+        const AppConfig = {
+            TMDB_BASE_URL: 'https://tmdb-api-proxy.musadekakhmad.workers.dev', // Your Cloudflare Worker URL
+            TMDB_IMAGE_BASE_URL: 'https://image.tmdb.org/t/p/w500',
+            TMDB_PROFILE_IMAGE_BASE_URL: 'https://image.tmdb.org/t/p/w185',
+            ADSTERRA_DIRECT_LINKS: [
+                'https://discreetisabella.com/x818nj48?key=db0a9d9fa9d81626b459383a7bdc33ee',
+                'https://discreetisabella.com/gd8bwkyj?key=d2d35cf16f521bf5e9accfdd865dae8f',
+                'https://discreetisabella.com/paij3re0by?key=fa60f72b73c05d987bd978f83a6deaa8',
+                'https://discreetisabella.com/gh4tkda15?key=080742d09d4b5234a4fdaa773e48ebd4',
+                'https://discreetisabella.com/u1ipxidjif?key=bf544685cc418fde38d3de4391de6fee',
+                'https://discreetisabella.com/nu4ravi1cx?key=4d0556009c2d17968977e235d5de925a',
+                'https://discreetisabella.com/wdhedf2wx?key=a2c98838af4390b59e8b7aaaea3f1660',
+                'https://discreetisabella.com/yed8kj7bvw?key=b7830767455354f8e097df2a9e0f040c',
+                'https://discreetisabella.com/w2sw8zgx21?key=d34ca1378210247721e98e65d20b3693',
+                'https://discreetisabella.com/qn92sfcb?key=a8333f15c6bba15e367a5456f691547c',
+                'https://discreetisabella.com/rz2xzbfm?key=8c4045c97068010d84c3f1002e82b1c9'
+            ]
+        };
 
-        // Objek state aplikasi terpusat
+        // Centralized application state object
         const appState = {
             pageCounters: {
                 'upcoming-movies': 1,
@@ -591,34 +357,20 @@
             genres: [] // To store dynamically fetched genres
         };
 
-        // Adsterra Direct Ad URLs - Using 8 example direct links
-        const ADSTERRA_DIRECT_LINKS = [
-            'https://discreetisabella.com/x818nj48?key=db0a9d9fa9d81626b459383a7bdc33ee',
-            'https://discreetisabella.com/gd8bwkyj?key=d2d35cf16f521bf5e9accfdd865dae8f',
-            'https://discreetisabella.com/paij3re0by?key=fa60f72b73c05d987bd978f83a6deaa8',
-            'https://discreetisabella.com/gh4tkda15?key=080742d09d4b5234a4fdaa773e48ebd4',
-            'https://discreetisabella.com/u1ipxidjif?key=bf544685cc418fde38d3de4391de6fee',
-            'https://discreetisabella.com/nu4ravi1cx?key=4d0556009c2d17968977e235d5de925a',
-            'https://discreetisabella.com/wdhedf2wx?key=a2c98838af4390b59e8b7aaaea3f1660',
-            'https://discreetisabella.com/yed8kj7bvw?key=b7830767455354f8e097df2a9e0f040c',
-            'https://discreetisabella.com/w2sw8zgx21?key=d34ca1378210247721e98e65d20b3693',
-            'https://discreetisabella.com/qn92sfcb?key=a8333f15c6bba15e367a5456f691547c',
-            'https://discreetisabella.com/rz2xzbfm?key=8c4045c97068010d84c3f1002e82b1c9'
-        ];
         let currentAdLinkIndex = 0; // To rotate through the direct links
 
         // Function to get the next Adsterra direct link in rotation
         function getNextAdLink() {
-            const link = ADSTERRA_DIRECT_LINKS[currentAdLinkIndex];
-            currentAdLinkIndex = (currentAdLinkIndex + 1) % ADSTERRA_DIRECT_LINKS.length; // Cycle through links
+            const link = AppConfig.ADSTERRA_DIRECT_LINKS[currentAdLinkIndex];
+            currentAdLinkIndex = (currentAdLinkIndex + 1) % AppConfig.ADSTERRA_DIRECT_LINKS.length; // Cycle through links
             return link;
         }
 
         // New function to handle ad display logic based on click counter
         function triggerAd() {
             appState.clickCounter++; // Increment click counter on every call
-            // Trigger ad on 1st, 4th, 7th clicks (i.e., (clickCount - 1) % 3 === 0)
-            if ((appState.clickCounter - 1) % 3 === 0) {
+            // Trigger ad on 1st, 5th, 10th clicks (i.e., (clickCount - 1) % 5 === 0)
+            if ((appState.clickCounter - 1) % 5 === 0) {
                 window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
             }
         }
@@ -871,10 +623,10 @@
             let titleText = '';
 
             if (query) {
-                url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].search}?query=${encodeURIComponent(query)}&page=${page}&language=en`;
+                url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].search}?query=${encodeURIComponent(query)}&page=${page}&language=en`;
                 titleText = `Search Results for "${query}"`; // Specific title for search
             } else if (genreId) {
-                url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genreId}&page=${page}&language=en`;
+                url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genreId}&page=${page}&language=en`;
                 const genreName = appState.genres.find(g => g.id === genreId)?.name || 'Movies'; // Get genre name from state
                 titleText = `${genreName} ${type === 'movie' ? 'Movies' : 'TV Series'}`; // Dynamic title for genre
             } else {
@@ -883,19 +635,19 @@
                     if (config.genreName) { // Special case for genre-based sections like Romance Movies
                         const genre = appState.genres.find(g => g.name === config.genreName);
                         if (genre) {
-                            url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genre.id}&page=${page}&language=en`;
+                            url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genre.id}&page=${page}&language=en`;
                         } else {
                             console.warn(`${config.genreName} genre not found for ${type}, falling back to popular.`);
-                            url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
+                            url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
                             titleText = type === 'movie' ? TEXT_CONSTANTS.popularMovies : TEXT_CONSTANTS.popularTv;
                         }
                     } else { // Standard endpoint sections
-                        url = `${TMDB_BASE_URL}/${type}/${config.endpoint}?page=${page}&language=en`;
+                        url = `${AppConfig.TMDB_BASE_URL}/${type}/${config.endpoint}?page=${page}&language=en`;
                     }
                     titleText = config.title;
                 } else {
                     console.error(`Unknown sectionName: ${sectionName} for type: ${type}. Falling back to popular.`);
-                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
+                    url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
                     titleText = type === 'movie' ? TEXT_CONSTANTS.popularMovies : TEXT_CONSTANTS.popularTv;
                 }
             }
@@ -923,7 +675,7 @@
                         mediaCard.dataset.mediaType = type; // Store media type in dataset
                         mediaCard.setAttribute('aria-label', `Watch ${media.title || media.name}`); // Added ARIA label
 
-                        const posterPath = media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
+                        const posterPath = media.poster_path ? `${AppConfig.TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = media.title || media.name || TEXT_CONSTANTS.titleNotAvailable;
                         const releaseDateOrFirstAirDate = media.release_date ? media.release_date.substring(0, 4) : (media.first_air_date ? media.first_air_date.substring(0, 4) : TEXT_CONSTANTS.yearNotAvailable);
 
@@ -971,7 +723,7 @@
             noResultsMessageStaticGrid.classList.add('hidden');
 
             const romanceGenreId = sectionConfigs.movie['romance-movies-dynamic'].genreId;
-            const url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${romanceGenreId}&page=1&language=en`;
+            const url = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${romanceGenreId}&page=1&language=en`;
 
             try {
                 const response = await fetch(url);
@@ -993,7 +745,7 @@
                         mediaCard.dataset.mediaType = 'movie'; // Always 'movie' for this section
                         mediaCard.setAttribute('aria-label', `Watch ${media.title || media.name}`);
 
-                        const posterPath = media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
+                        const posterPath = media.poster_path ? `${AppConfig.TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = media.title || media.name || TEXT_CONSTANTS.titleNotAvailable;
                         const releaseDateOrFirstAirDate = media.release_date ? media.release_date.substring(0, 4) : (media.first_air_date ? media.first_air_date.substring(0, 4) : TEXT_CONSTANTS.yearNotAvailable);
 
@@ -1029,7 +781,7 @@
             loadingSpinnerLayer2.classList.remove('hidden');
 
             try {
-                const detailResponse = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].detail}${mediaId}?language=en`);
+                const detailResponse = await fetch(`${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].detail}${mediaId}?language=en`);
                 if (!detailResponse.ok) throw new Error(`HTTP error! status: ${detailResponse.status}`);
                 const media = await detailResponse.json();
 
@@ -1039,7 +791,7 @@
                     window.location.hash = `#/media/${mediaType}/${media.id}/${mediaSlug}`;
                 }
 
-                const videoResponse = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].videos}${mediaId}/videos?language=en`);
+                const videoResponse = await fetch(`${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].videos}${mediaId}/videos?language=en`);
                 if (!videoResponse.ok) throw new Error(`HTTP error! status: ${videoResponse.status}`);
                 const videosData = await videoResponse.json();
 
@@ -1053,7 +805,7 @@
                 // Using a relevant movie trailer compilation as fallback if no specific trailer is found
                 const trailerUrl = trailer ? `https://www.youtube.com/embed/${trailer.key}` : 'https://www.youtube.com/embed/DmwYqQki_Ic'; // Changed fallback URL
 
-                const creditsResponse = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].credits}${mediaId}/credits?language=en`);
+                const creditsResponse = await fetch(`${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].credits}${mediaId}/credits?language=en`);
                 if (!creditsResponse.ok) throw new Error(`HTTP error! status: ${creditsResponse.status}`);
                 const creditsData = await creditsResponse.json();
                 
@@ -1064,7 +816,7 @@
                 // Fetch content rating
                 let contentRating = TEXT_CONSTANTS.notAvailable;
                 if (mediaType === 'movie') {
-                    const releaseDatesResponse = await fetch(`${TMDB_BASE_URL}/movie/${mediaId}/release_dates`);
+                    const releaseDatesResponse = await fetch(`${AppConfig.TMDB_BASE_URL}/movie/${mediaId}/release_dates`);
                     if (releaseDatesResponse.ok) {
                         const releaseDatesData = await releaseDatesResponse.json();
                         const usRelease = releaseDatesData.results.find(res => res.iso_3166_1 === 'US');
@@ -1073,7 +825,7 @@
                         }
                     }
                 } else if (mediaType === 'tv') {
-                    const contentRatingsResponse = await fetch(`${TMDB_BASE_URL}/tv/${mediaId}/content_ratings`);
+                    const contentRatingsResponse = await fetch(`${AppConfig.TMDB_BASE_URL}/tv/${mediaId}/content_ratings`);
                     if (contentRatingsResponse.ok) {
                         const contentRatingsData = await contentRatingsResponse.json();
                         const usRating = contentRatingsData.results.find(res => res.iso_3166_1 === 'US');
@@ -1108,7 +860,7 @@
 
                 const detailContentHtml = `
                     <div class="flex flex-col md:flex-row gap-8 mb-8">
-                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="${media.title || media.name || 'Media'} Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
+                        <img id="detail-poster" src="${media.poster_path ? `${AppConfig.TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="${media.title || media.name || 'Media'} Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
                         <div class="flex-1">
                             <h2 id="detail-title" class="text-4xl font-bold text-gray-100 mb-2">${media.title || media.name || TEXT_CONSTANTS.notAvailable}</h2>
                             <p class="text-gray-400 mb-2">${media.genres.map(g => g.name).join(', ') || TEXT_CONSTANTS.notAvailable}</p>
@@ -1161,7 +913,7 @@
             noSimilarResultsMessage.classList.add('hidden');
 
             try {
-                const similarUrl = `${TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].similar}${mediaId}/similar?language=en&page=1`;
+                const similarUrl = `${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[mediaType].similar}${mediaId}/similar?language=en&page=1`;
                 const response = await fetch(similarUrl);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -1210,7 +962,7 @@
                         mediaCard.dataset.mediaType = mediaType; // Similar items are of the same type
                         mediaCard.setAttribute('aria-label', `Watch ${similarMedia.title || similarMedia.name}`); // Added ARIA label
                         
-                        const posterPath = similarMedia.poster_path ? `${TMDB_IMAGE_BASE_URL}${similarMedia.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
+                        const posterPath = similarMedia.poster_path ? `${AppConfig.TMDB_IMAGE_BASE_URL}${similarMedia.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = similarMedia.title || similarMedia.name || TEXT_CONSTANTS.titleNotAvailable;
                         const releaseDateOrFirstAirDate = similarMedia.release_date ? similarMedia.release_date.substring(0, 4) : (similarMedia.first_air_date ? similarMedia.first_air_date.substring(0, 4) : TEXT_CONSTANTS.yearNotAvailable);
 
@@ -1445,7 +1197,7 @@
         // Function to load movie or TV genres dynamically and create buttons
         async function loadGenreButtons(type) {
             try {
-                const response = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[type].genres_list}?language=en`);
+                const response = await fetch(`${AppConfig.TMDB_BASE_URL}${mediaTypeEndpoints[type].genres_list}?language=en`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
                 appState.genres = data.genres; // Store genres in appState
@@ -1684,30 +1436,6 @@
             appState.currentGenreId = null; // Clear genre filter
             window.location.hash = '#/tv'; // Just set hash, handleHashChange will do the rest
         });
-
-        // Event listener for static movie cards in Layer 3 (UPDATED)
-        // This event listener is no longer needed as the content is dynamic and handled by loadRomanceMoviesIntoStaticGrid
-        // staticMovieGrid.addEventListener('click', (event) => {
-        //     const clickedCard = event.target.closest('.static-movie-card');
-        //     if (clickedCard) {
-        //         const mediaId = clickedCard.dataset.mediaId;
-        //         const mediaType = clickedCard.dataset.mediaType;
-        //         const mediaTitle = clickedCard.querySelector('h3').textContent;
-                
-        //         if (mediaId && mediaType) {
-        //             triggerAd(); // Trigger ad on static card click
-        //             // Handle 'home' media type specifically
-        //             if (mediaType === 'home') {
-        //                 // If it's the 123Movies UK card, navigate to the home URL
-        //                 window.location.href = 'https://123movies-uk.pages.dev/';
-        //                 return; // Stop further processing for 'home' type
-        //             }
-
-        //             // Navigate to details for non-home media
-        //             window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
-        //         }
-        //     }
-        // });
 
         // Function to load the SEO content into Layer 4
         function loadSeoContent() {
