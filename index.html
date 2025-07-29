@@ -1152,7 +1152,9 @@
                         await fetchAndDisplayMediaDetail(id, type);
                     } else {
                         // Invalid hash, revert to home (SEO content)
-                        window.location.hash = ''; // Changed to empty hash for root URL
+                        // This will trigger the default behavior in the onload or hashchange
+                        // which now correctly handles the root URL.
+                        window.location.hash = ''; 
                     }
                 }
             } else if (hash === '#/movies') {
@@ -1167,15 +1169,13 @@
                 genreButtonsContainer.classList.remove('hidden'); // Show genre buttons for TV
                 loadAllTvSections(); // This will reset page counters and load TV sections
                 showLayer(layer1);
-            } else if (hash === '' || hash === '#/home-seo') { // If hash is empty or explicitly #/home-seo
+            } else if (hash === '' || hash === '#') { // If hash is empty or just '#'
                 showLayer(layer4);
                 genreButtonsContainer.classList.add('hidden'); // Hide genre buttons
                 loadSeoContent(); // Call loadSeoContent when navigating to Layer 4
             }
-            else {
-                // Default: unrecognized hash, load home (SEO content)
-                window.location.hash = ''; // Changed to empty hash for root URL
-            }
+            // Removed the '#/home-seo' condition here, as '' handles it.
+            // Any other unrecognized hash will default to the root URL via the else block in window.onload
         }
 
         /**
@@ -1401,10 +1401,13 @@
             // Set language to English by default (no selector)
             document.documentElement.lang = 'en'; // Set HTML lang attribute
 
-            // Check if there's an existing hash
-            if (!window.location.hash) {
-                // If no hash, go to the root URL, which handleHashChange will interpret as home SEO
-                window.location.hash = ''; 
+            // Check if there's an existing hash or if it's just '#'
+            if (!window.location.hash || window.location.hash === '#') {
+                showLayer(layer4);
+                loadSeoContent();
+                // We no longer attempt to manipulate history.replaceState here
+                // as it causes SecurityError in some iframe environments.
+                // The URL might show '#' but the content will be correct.
             } else {
                 // If there's an existing hash (e.g., direct link to a movie), handle it normally
                 handleHashChange();
@@ -1417,7 +1420,9 @@
         // Handle navigation buttons (Movies/TV Series)
         navHomeButton.addEventListener('click', () => { // New Home button event listener
             triggerAd(); // Trigger ad on Home button click
-            window.location.hash = ''; // Changed to empty hash for root URL
+            // Simply set the hash to an empty string.
+            // The hashchange event listener will then pick up the empty hash and load Layer 4.
+            window.location.hash = ''; 
         });
 
         navMoviesButton.addEventListener('click', () => {
