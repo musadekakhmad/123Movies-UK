@@ -36,9 +36,9 @@
             height: 100%; /* Important for fixed positioning */
             min-height: 100vh; /* Fallback and ensures full viewport height */
             overflow-x: hidden; /* Prevents horizontal scrolling */
-            margin: 0 !important; /* Removes default Blogger margin */
-            padding: 0 !important; /* Removes default Blogger padding */
-            background-color: #1a202c !important; /* Ensures background color matches custom theme */
+            margin: 0; /* Removes default Blogger margin */
+            padding: 0; /* Removes default Blogger padding */
+            background-color: #1a202c; /* Ensures background color matches custom theme */
             display: flex; /* Uses flexbox for the body */
             flex-direction: column; /* Arranges flex items in a column */
             align-items: center; /* Centers items horizontally */
@@ -78,7 +78,7 @@
         #BlogArchive1_bottom, /* Example ID for archive widget in footer */
         #Attribution1 /* Example ID for attribution widget in footer */
         {
-            display: none !important;
+            display: none !important; /* Kept !important to override Blogger's default styles */
             height: 0 !important;
             visibility: hidden !important;
             line-height: 0 !important;
@@ -95,23 +95,23 @@
         .main-outer,
         .main-inner,
         .region-inner {
-            background-color: #1a202c !important;
-            margin: 0 !important; /* Ensures no margin creating gaps */
-            padding: 0 !important; /* Ensures no padding creating gaps */
+            background-color: #1a202c; /* No !important needed here, body background will cover */
+            margin: 0; /* Ensures no margin creating gaps */
+            padding: 0; /* Ensures no padding creating gaps */
         }
 
         /* Ensures the custom header remains fixed and sets its internal layout */
         header {
-            position: sticky !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            width: 100% !important; /* Updated: Full width */
+            position: sticky; /* Sticky is generally better than fixed for headers */
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%; /* Updated: Full width */
             z-index: 50; /* Ensures it's above other content */
-            background-color: #1a202c !important; /* Ensures header has a dark background */
+            background-color: #1a202c; /* Ensures header has a dark background */
             box-sizing: border-box; /* Ensures padding doesn't increase width */
-            padding-bottom: 1.25rem !important; /* Changed to 1.25rem */
-            padding-top: 1.25rem !important; /* Top padding for header top part */
+            padding-bottom: 0.5rem; /* Reduced from 1.25rem to 0.5rem */
+            padding-top: 1.25rem;
         }
 
         /* Styles for the top part of the header container (logo, navigation, search) */
@@ -120,17 +120,17 @@
         /* Styles for the genre buttons container (now part of the header) */
         .genre-buttons-container { /* Uses existing class, not fixed/top */
             width: 100%;
-            background-color: #1a202c !important; /* Matches main header background color */
-            padding: 1rem; /* p-4 */
+            background-color: #1a202c; /* Matches main header background color */
+            /* Removed padding: 1rem; to rely on Tailwind classes */
             border-top: 1px solid rgba(255, 255, 255, 0.1); /* Visual separation line */
         }
         /* Ensures main content starts right after the header */
         main {
-            margin-top: 0 !important;
-            padding-top: 2rem !important; /* Changed to 2rem */
+            margin-top: 0;
+            padding-top: 0.5rem; /* Reduced from 1rem to 0.5rem for tighter spacing */
             width: 100%; /* Updated: Full width */
-            margin-left: auto !important; /* Centers main content */
-            margin-right: auto !important; /* Centers main content */
+            margin-left: auto; /* Centers main content */
+            margin-right: auto; /* Centers main content */
         }
 
         /* Adjust font size and padding for nav button to match genre button */
@@ -214,12 +214,12 @@
 
         /* FIX: Ensures detail title is visible in Blogger */
         #detail-title {
-            display: block !important;
-            visibility: visible !important;
-            height: auto !important;
-            font-size: 3rem !important; /* Increased from 2.25rem (text-4xl) to 3rem (text-5xl) */
-            line-height: normal !important;
-            margin: 0 0 0.5rem 0 !important; /* Adjust margin as needed */
+            display: block; /* Removed !important as it might not be needed */
+            visibility: visible; /* Removed !important */
+            height: auto; /* Removed !important */
+            font-size: 3rem; /* Increased from 2.25rem (text-4xl) to 3rem (text-5xl) */
+            line-height: normal; /* Removed !important */
+            margin: 0 0 0.5rem 0; /* Adjust margin as needed */
         }
 
         /* Style for static movie cards in Layer 3 */
@@ -375,14 +375,17 @@
                 </div>
             </nav>
         </div>
-        <!-- Removed Genre Filter Buttons -->
+        <!-- Genre Filter Buttons - Dynamically loaded -->
+        <div id="genre-buttons-container" class="genre-buttons-container hidden flex justify-center gap-0 py-2 overflow-x-auto whitespace-nowrap">
+            <!-- Genre buttons will be loaded here by JS -->
+        </div>
     </header>
 
-    <main class="flex-grow px-4 py-12 max-w-screen-xl mx-auto">
+    <main class="flex-grow px-4 pt-4 pb-12 max-w-[1344px] mx-auto">
         <!-- Layer 1: Movie/TV Thumbnails -->
         <section id="layer-1" class="layer-1">
             <!-- Romance Movies Section - Now at the top -->
-            <div id="romance-movies-section" class="mb-12">
+            <div id="romance-movies-section" class="mb-6">
                 <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-romance-movies">Romance Movies</span></h2>
                 <div id="movie-grid-romance-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
                     <!-- Romance Movie thumbnails will be loaded here by JS -->
@@ -502,7 +505,7 @@
                 <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
                     <div class="static-movie-card" data-media-id="0" data-media-type="home">
-                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="[Gambar Poster Situs 123Movies UK]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>123Movies UK</h3>
                             <p>Home</p>
@@ -510,7 +513,7 @@
                     </div>
                     <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
                     <div class="static-movie-card" data-media-id="67308" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="[Gambar Poster 3-D Sex and Zen: Extreme Ecstasy (2011)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>3-D Sex and Zen: Extreme Ecstasy</h3>
                             <p>2011</p>
@@ -518,7 +521,7 @@
                     </div>
                     <!-- Static Movie Card: Fidelity (2019) -->
                     <div class="static-movie-card" data-media-id="575299" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="[Gambar Poster Fidelity (2019)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Fidelity</h3>
                             <p>2019</p>
@@ -526,7 +529,7 @@
                     </div>
                     <!-- Static Movie Card: Killing Me Softly (2002) -->
                     <div class="static-movie-card" data-media-id="14365" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="[Gambar Poster Killing Me Softly (2002)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Killing Me Softly</h3>
                             <p>2002</p>
@@ -534,7 +537,7 @@
                     </div>
                     <!-- Static Movie Card: They Are Mine (2023) -->
                     <div class="static-movie-card" data-media-id="1180449" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="[Gambar Poster They Are Mine (2023)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>They Are Mine</h3>
                             <p>2023</p>
@@ -542,7 +545,7 @@
                     </div>
                     <!-- Static Movie Card: Hate Story 2 (2014) -->
                     <div class="static-movie-card" data-media-id="282346" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="[Gambar Poster Hate Story 2 (2014)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Hate Story 2</h3>
                             <p>2014</p>
@@ -550,7 +553,7 @@
                     </div>
                     <!-- Static Movie Card: Cashback (2006) -->
                     <div class="static-movie-card" data-media-id="12225" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="[Gambar Poster Cashback (2006)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Cashback</h3>
                             <p>2006</p>
@@ -558,7 +561,7 @@
                     </div>
                     <!-- Static Movie Card: Room in Rome (2010) -->
                     <div class="static-movie-card" data-media-id="48650" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="[Gambar Poster Room in Rome (2010)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Room in Rome</h3>
                             <p>2010</p>
@@ -566,7 +569,7 @@
                     </div>
                     <!-- Static Movie Card: Fifty Shades Freed (2018) -->
                     <div class="static-movie-card" data-media-id="337167" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="[Gambar Poster Fifty Shades Freed (2018)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Fifty Shades Freed</h3>
                             <p>2018</p>
@@ -574,7 +577,7 @@
                     </div>
                     <!-- Static Movie Card: Jan Dara (2001) -->
                     <div class="static-movie-card" data-media-id="68507" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="[Gambar Poster Jan Dara (2001)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Jan Dara</h3>
                             <p>2001</p>
@@ -582,7 +585,7 @@
                     </div>
                     <!-- New Static Movie Card: Hotel Desire (2011) - Re-added with new image and position -->
                     <div class="static-movie-card" data-media-id="82023" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="[Gambar Poster Hotel Desire (2011)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>Hotel Desire</h3>
                             <p>2011</p>
@@ -590,7 +593,7 @@
                     </div>
                     <!-- New Static Movie Card: When Night is Falling (1995) -->
                     <div class="static-movie-card" data-media-id="8391" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="[Gambar Poster When Night is Falling (1995)]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
+                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>When Night is Falling</h3>
                             <p>1995</p>
@@ -640,7 +643,8 @@
             currentMediaId: null,
             currentImdbId: null,
             currentMediaType: 'movie', // Default: 'movie'
-            clickCounter: 0 // New: Counter for tracking thumbnail clicks for ad logic
+            clickCounter: 0, // New: Counter for tracking thumbnail clicks for ad logic
+            genres: [] // To store dynamically fetched genres
         };
 
         // Adsterra Direct Ad URLs - Using 8 example direct links
@@ -711,6 +715,7 @@
         const navHomeButton = document.getElementById('nav-home-button'); // New Home button
         const navMoviesButton = document.getElementById('nav-movies-button');
         const navTvSeriesButton = document.getElementById('nav-tvseries-button');
+        const genreButtonsContainer = document.getElementById('genre-buttons-container'); // Container for dynamic genre buttons
 
         // Hardcoded strings for English
         const TEXT_CONSTANTS = {
@@ -748,7 +753,6 @@
             errorTitle: "Error",
             infoTitle: "Info",
             failedToLoadMedia: "Failed to load media. Please try again later.",
-            failedToLoadDetails: "Failed to load media details. Please try again.",
             noMediaSelected: "No media selected for streaming.",
             imdbIdNotAvailable: "IMDb ID not available for streaming. Please try Stream 1.",
             invalidMediaHash: "Invalid media hash, loading popular movies.",
@@ -766,22 +770,6 @@
             episodes: "episodes"
         };
 
-        // Maps genre names to TMDB IDs - Only 10 requested genres (for Movies)
-        const fixedMovieGenres = {
-            "Action": 28,
-            "Adventure": 12,
-            "Comedy": 35,
-            "Crime": 80,
-            "Drama": 18,
-            "Fantasy": 14,
-            "Horror": 27,
-            "Mystery": 9648,
-            "Sci-Fi": 878,
-            "Thriller": 53,
-            "Romance": 10749 // Still needed for the dedicated Romance Movies section
-        };
-
-
         // Dynamic TMDB endpoints based on media type
         const mediaTypeEndpoints = {
             movie: {
@@ -793,6 +781,7 @@
                 videos: '/movie/',
                 credits: '/movie/',
                 genre: '/discover/movie', // For genre-specific fetches
+                genres_list: '/genre/movie/list', // New: For fetching movie genres
                 similar: '/movie/' // For similar movies
             },
             tv: {
@@ -801,6 +790,7 @@
                 detail: '/tv/',
                 videos: '/tv/',
                 credits: '/tv/',
+                genres_list: '/genre/tv/list', // New: For fetching TV genres
                 similar: '/tv/' // For similar TV series
             }
         };
@@ -912,7 +902,8 @@
                 titleText = `Search Results for "${query}"`; // Specific title for search
             } else if (genreId) {
                 url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${genreId}&page=${page}&language=en`;
-                titleText = TEXT_CONSTANTS.romanceMovies; // Specific for Romance section
+                const genreName = appState.genres.find(g => g.id === genreId)?.name || 'Movies'; // Get genre name from state
+                titleText = `${genreName} Movies`; // Dynamic title for genre
             } else {
                 if (sectionName === 'now-playing' && type === 'movie') {
                     url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.now_playing}?page=${page}&language=en`;
@@ -921,8 +912,16 @@
                     url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.top_rated}?page=${page}&language=en`;
                     titleText = TEXT_CONSTANTS.topRatedMovies;
                 } else if (sectionName === 'romance-movies' && type === 'movie') {
-                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${fixedMovieGenres.Romance}&page=${page}&language=en`;
-                    titleText = TEXT_CONSTANTS.romanceMovies;
+                    // Find Romance genre ID from dynamically loaded genres
+                    const romanceGenre = appState.genres.find(g => g.name === 'Romance');
+                    if (romanceGenre) {
+                        url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${romanceGenre.id}&page=${page}&language=en`;
+                        titleText = TEXT_CONSTANTS.romanceMovies;
+                    } else {
+                        console.warn("Romance genre not found, falling back to popular movies.");
+                        url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.popular}?page=${page}&language=en`; // Fallback
+                        titleText = TEXT_CONSTANTS.nowPlayingMovies;
+                    }
                 } else if (type === 'tv' && sectionName === 'now-playing') { // Using now-playing section for TV series
                     url = `${TMDB_BASE_URL}${mediaTypeEndpoints.tv.popular}?page=${page}&language=en`;
                     titleText = TEXT_CONSTANTS.popularTvSeries;
@@ -944,11 +943,13 @@
                     loadMoreBtn.classList.add('hidden');
                 } else if (data.results.length > 0) {
                     noResultsMsg.classList.add('hidden');
-                    data.results.forEach(media => {
+                    // Limit the number of displayed items to 12
+                    data.results.slice(0, 12).forEach(media => {
                         const mediaCard = document.createElement('div');
                         mediaCard.className = 'bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer';
                         mediaCard.dataset.mediaId = media.id;
                         mediaCard.dataset.mediaType = type; // Store media type in dataset
+                        mediaCard.setAttribute('aria-label', `Watch ${media.title || media.name}`); // Added ARIA label
 
                         const posterPath = media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = media.title || media.name || TEXT_CONSTANTS.titleNotAvailable;
@@ -1146,6 +1147,7 @@
                         mediaCard.className = 'bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer';
                         mediaCard.dataset.mediaId = recMedia.id;
                         mediaCard.dataset.mediaType = 'movie'; // Assuming fallback are all movies
+                        mediaCard.setAttribute('aria-label', `Watch ${recMedia.title || recMedia.name}`); // Added ARIA label
                         
                         const posterPath = recMedia.poster_path ? `${recMedia.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = recMedia.title || recMedia.name || TEXT_CONSTANTS.titleNotAvailable;
@@ -1174,6 +1176,7 @@
                         mediaCard.className = 'bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer';
                         mediaCard.dataset.mediaId = similarMedia.id;
                         mediaCard.dataset.mediaType = mediaType; // Similar items are of the same type
+                        mediaCard.setAttribute('aria-label', `Watch ${similarMedia.title || similarMedia.name}`); // Added ARIA label
                         
                         const posterPath = similarMedia.poster_path ? `${TMDB_IMAGE_BASE_URL}${similarMedia.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
                         const titleOrName = similarMedia.title || similarMedia.name || TEXT_CONSTANTS.titleNotAvailable;
@@ -1267,17 +1270,17 @@
                         document.getElementById('romance-movies-section').style.display = 'none';
                         document.getElementById('now-playing-section').style.display = 'none';
                         document.getElementById('top-rated-section').style.display = 'none';
+                        genreButtonsContainer.classList.add('hidden'); // Hide genre buttons
                         await fetchAndDisplayMediaDetail(id, type);
                     } else {
-                        // Invalid hash, revert to home
-                        loadAllSections(); // Reload all sections
-                        showLayer(layer1);
-                        window.location.hash = ''; // Clear hash
+                        // Invalid hash, revert to home (SEO content)
+                        window.location.hash = '#/home-seo';
                     }
                 }
             } else if (hash === '#/movies') {
                 appState.currentMediaType = 'movie';
                 loadAllSections(); // This will reset page counters and load movie sections
+                genreButtonsContainer.classList.remove('hidden'); // Show genre buttons for movies
                 showLayer(layer1);
             } else if (hash === '#/tv') {
                 appState.currentMediaType = 'tv';
@@ -1285,6 +1288,7 @@
                 document.getElementById('romance-movies-section').style.display = 'none';
                 document.getElementById('top-rated-section').style.display = 'none';
                 document.getElementById('now-playing-section').style.display = 'block'; // Use now-playing section for TV series
+                genreButtonsContainer.classList.add('hidden'); // Hide genre buttons for TV (since we don't load them for TV yet)
                 
                 // Reset page counter for now-playing when switching to TV
                 appState.pageCounters['now-playing'] = 1; 
@@ -1293,18 +1297,17 @@
                 showLayer(layer1);
             } else if (hash === '#/home-seo') { // New hash for Layer 4
                 showLayer(layer4);
+                genreButtonsContainer.classList.add('hidden'); // Hide genre buttons
                 loadSeoContent(); // Call loadSeoContent when navigating to Layer 4
             }
             else {
-                // Default: empty hash or unrecognized hash, load movies home
-                appState.currentMediaType = 'movie'; // Default to movies
-                loadAllSections();
-                showLayer(layer1);
+                // Default: empty hash or unrecognized hash, load home (SEO content)
+                window.location.hash = '#/home-seo';
             }
         }
 
         // Function to load all sections on Layer 1
-        function loadAllSections() {
+        async function loadAllSections() {
             // Reset page counters for all sections
             for (const key in appState.pageCounters) {
                 appState.pageCounters[key] = 1; // Ensure they are reset to 1
@@ -1317,20 +1320,91 @@
             document.getElementById('now-playing-section').style.display = 'block';
             document.getElementById('top-rated-section').style.display = 'block';
 
-            // Load content for each section
-            loadMediaSection('movie', 'romance-movies', 1, '', fixedMovieGenres.Romance); // Pass Romance genre ID
-            loadMediaSection('movie', 'now-playing', 1);
-            loadMediaSection('movie', 'top-rated', 1);
+            // Load content for each section concurrently using Promise.all
+            try {
+                const romanceGenre = appState.genres.find(g => g.name === 'Romance');
+                const romanceLoadPromise = romanceGenre ? loadMediaSection('movie', 'romance-movies', 1, '', romanceGenre.id) : Promise.resolve(); // Load Romance if genre found
+                
+                await Promise.all([
+                    romanceLoadPromise,
+                    loadMediaSection('movie', 'now-playing', 1),
+                    loadMediaSection('movie', 'top-rated', 1)
+                ]);
+            } catch (error) {
+                console.error("Error loading all sections:", error);
+                showMessageBox('errorTitle', 'failedToLoadMedia');
+            }
+        }
+
+        /**
+         * Debounce function to limit how often a function can be called.
+         * @param {Function} func - The function to debounce.
+         * @param {number} delay - The delay in milliseconds.
+         * @returns {Function} - The debounced function.
+         */
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), delay);
+            };
+        }
+
+        // Function to load movie genres dynamically and create buttons
+        async function loadGenreButtons() {
+            try {
+                const response = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genres_list}?language=en`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                appState.genres = data.genres; // Store genres in appState
+
+                genreButtonsContainer.innerHTML = ''; // Clear existing buttons
+                appState.genres.forEach(genre => {
+                    const button = document.createElement('button');
+                    // Reduced font size to 'xs' (0.75rem) and padding to 'py-1 px-2' (reduced px from 3 to 2)
+                    button.className = 'bg-gray-700 hover:bg-purple-600 text-gray-100 font-medium py-1 px-2 rounded-md transition-all duration-200 text-sm md:text-base';
+                    button.textContent = genre.name;
+                    button.dataset.genreId = genre.id;
+                    button.setAttribute('aria-label', `Filter by ${genre.name} genre`); // Added ARIA label
+                    button.addEventListener('click', () => {
+                        triggerAd(); // Trigger ad on genre button click
+                        appState.currentGenreId = genre.id;
+                        appState.currentSearchQuery = ''; // Clear search query
+                        searchInput.value = ''; // Clear search input
+                        // Hide other sections and show only now-playing section for genre results
+                        document.getElementById('romance-movies-section').style.display = 'none';
+                        document.getElementById('top-rated-section').style.display = 'none';
+                        document.getElementById('now-playing-section').style.display = 'block';
+                        appState.pageCounters['now-playing'] = 1; // Reset page counter for now-playing when filtering by genre
+                        loadMediaSection('movie', 'now-playing', 1, '', genre.id);
+                    });
+                    genreButtonsContainer.appendChild(button);
+                });
+            } catch (error) {
+                console.error("Error fetching genres:", error);
+                // Optionally show a message to the user
+            }
         }
 
         // Event Listeners for Load More Buttons
         document.getElementById('load-more-romance-movies').addEventListener('click', () => {
             triggerAd(); // Trigger ad on load more
-            loadMediaSection('movie', 'romance-movies', appState.pageCounters['romance-movies'] + 1, '', fixedMovieGenres.Romance);
+            const romanceGenre = appState.genres.find(g => g.name === 'Romance');
+            if (romanceGenre) {
+                loadMediaSection('movie', 'romance-movies', appState.pageCounters['romance-movies'] + 1, '', romanceGenre.id);
+            }
         });
         document.getElementById('load-more-now-playing').addEventListener('click', () => {
             triggerAd(); // Trigger ad on load more
-            loadMediaSection('movie', 'now-playing', appState.pageCounters['now-playing'] + 1);
+            // Check if currently displaying search results or genre results
+            if (appState.currentSearchQuery) {
+                loadMediaSection(appState.currentMediaType, 'now-playing', appState.pageCounters['now-playing'] + 1, appState.currentSearchQuery);
+            } else if (appState.currentGenreId) {
+                loadMediaSection('movie', 'now-playing', appState.pageCounters['now-playing'] + 1, '', appState.currentGenreId);
+            } else {
+                loadMediaSection(appState.currentMediaType, 'now-playing', appState.pageCounters['now-playing'] + 1);
+            }
         });
         document.getElementById('load-more-top-rated').addEventListener('click', () => {
             triggerAd(); // Trigger ad on load more
@@ -1352,8 +1426,8 @@
         });
 
         backFromSeoButton.addEventListener('click', () => { // New event listener for Layer 4 back button
-            showLayer(layer1);
-            window.location.hash = ''; // Clear hash when going back to list
+            // If coming from the main URL, clicking back should lead to Layer 1 (Movies)
+            window.location.hash = '#/movies';
         });
 
         stream1Button.addEventListener('click', () => {
@@ -1384,7 +1458,8 @@
             loadStreamingPlayer('vidsrc.to-tmdb'); // Now uses TMDB ID for vidsrc.to
         });
 
-        searchButton.addEventListener('click', () => {
+        // Debounced search function
+        const debouncedSearch = debounce(() => {
             const query = searchInput.value.trim();
             if (query) {
                 appState.currentGenreId = null; // Clear genre filter
@@ -1393,29 +1468,44 @@
                 document.getElementById('romance-movies-section').style.display = 'none';
                 document.getElementById('top-rated-section').style.display = 'none';
                 document.getElementById('now-playing-section').style.display = 'block'; // Ensure now-playing is visible
+                genreButtonsContainer.classList.add('hidden'); // Hide genre buttons during search
                 loadMediaSection(appState.currentMediaType, 'now-playing', 1, query); // Load search results into now-playing grid
             } else {
                 appState.currentSearchQuery = '';
                 // If search input is empty, revert to showing all sections
                 loadAllSections();
+                genreButtonsContainer.classList.remove('hidden'); // Show genre buttons again
             }
-        });
+        }, 300); // 300ms debounce delay
 
+        searchButton.addEventListener('click', debouncedSearch);
         searchInput.addEventListener('keyup', (event) => {
             if (event.key === 'Enter') {
-                searchButton.click();
+                debouncedSearch();
+            } else {
+                // Trigger debounce on any keyup, not just Enter
+                debouncedSearch();
             }
         });
 
         // Initial load when window loads
-        window.onload = () => {
+        window.onload = async () => {
             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
             // Set language to English by default (no selector)
             document.documentElement.lang = 'en'; // Set HTML lang attribute
 
-            handleHashChange(); // Call on load to handle deep linking
+            await loadGenreButtons(); // Load genres first
+
+            // Check if there's an existing hash
+            if (!window.location.hash) {
+                // If no hash, go to Layer 4 (Home SEO) by default
+                window.location.hash = '#/home-seo';
+            } else {
+                // If there's an existing hash (e.g., direct link to a movie), handle it normally
+                handleHashChange();
+            }
         };
 
         // Add event listener for hash changes
@@ -1470,28 +1560,28 @@
         function loadSeoContent() {
             const seoContentDiv = document.getElementById('seo-content');
             seoContentDiv.innerHTML = `
-                <h1>Welcome to 123Movies UK: Your Ultimate Free Streaming Destination</h1>
-                <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="[Gambar Spanduk 123Movies UK]" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
-                <p>In an era where entertainment is at our fingertips, finding a reliable and free streaming platform can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of free movies and TV series. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in high-definition quality, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of unlimited entertainment and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond.</p>
+                <h1 class="text-indigo-400">Welcome to 123Movies UK: Your Ultimate Free Streaming Destination 🎬</h1>
+                <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
+                <p>In an era where entertainment is at our fingertips, finding a reliable and <strong class="text-green-400">free streaming platform</strong> can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of <strong class="text-green-400">free movies and TV series</strong>. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in <strong class="text-blue-400">high-definition quality</strong>, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of <strong class="text-purple-400">unlimited entertainment</strong> and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond. Start <strong class="text-yellow-400">watching today</strong>!</p>
 
-                <h2>The Evolution of Free Online Streaming: Why 123Movies UK Stands Out</h2>
-                <p>The landscape of online entertainment has evolved dramatically over the past decade. From traditional cable TV to paid streaming giants, consumers now have more choices than ever. However, the rising costs of multiple subscriptions can quickly add up, leaving many searching for viable, free alternatives. This is where platforms like 123Movies UK step in, democratizing access to a world of cinematic and television content.</p>
-                <h3>Action & Adventure: Get Your Adrenaline Fix</h3>
-                <p>For those who crave excitement, our action and adventure categories are brimming with high-octane thrillers, epic quests, and superhero sagas. Experience explosive car chases, intense fight sequences, and breathtaking special effects, all from the comfort of your home. Discover titles that will keep you on the edge of your seat, from espionage thrillers to fantastical journeys.</p>
-                <h3>Comedy: Laugh Out Loud</h3>
-                <p>Need a good laugh? Our comedy section offers a wide array of films designed to lighten your mood. From witty romantic comedies to slapstick farces and dark satires, you'll find endless opportunities for amusement. Gather your friends and family for a night of shared laughter with our diverse comedic offerings.</p>
-                <h3>Drama: Explore Human Emotions</h3>
-                <p>Delve into the complexities of the human experience with our extensive drama collection. These films offer compelling narratives, powerful performances, and often explore profound themes. Whether you prefer historical dramas, legal thrillers, or poignant character studies, our drama category provides rich storytelling that resonates deeply.</p>
-                <h3>Horror & Thriller: A Frighteningly Good Time</h3>
-                <p>If you enjoy a good scare or a suspenseful plot, our horror and thriller genres are perfect for you. From psychological thrillers that mess with your mind to supernatural horrors that make you jump, prepare for an unforgettable viewing experience. Our collection includes both modern masterpieces and cult classics that will keep you awake at night.</p>
-                <h3>Sci-Fi & Fantasy: Journey Beyond Imagination</h3>
-                <p>Escape to other worlds and explore futuristic possibilities with our science fiction and fantasy films. Witness groundbreaking visual effects, innovative concepts, and imaginative storytelling. From dystopian futures to magical realms, these genres push the boundaries of creativity and offer truly immersive experiences.</p>
-                <h3>Romance: For the Heart</h3>
-                <p>Indulge in heartwarming tales of love, passion, and relationships with our romance movie selection. Whether you prefer classic love stories, contemporary romantic comedies, or intense romantic dramas, our collection is designed to stir your emotions and leave you feeling uplifted.</p>
+                <h2 class="text-blue-400">The Evolution of Free Online Streaming: Why 123Movies UK Stands Out ⭐</h2>
+                <p>The landscape of online entertainment has evolved dramatically over the past decade. From traditional cable TV to paid streaming giants, consumers now have more choices than ever. However, the rising costs of multiple subscriptions can quickly add up, leaving many searching for viable, <strong class="text-green-400">free alternatives</strong>. This is where platforms like 123Movies UK step in, democratizing access to a world of cinematic and television content.</p>
+                <h3 class="text-rose-400">Action & Adventure: Get Your Adrenaline Fix 💥</h3>
+                <p>For those who crave excitement, our <strong class="text-rose-400">action and adventure</strong> categories are brimming with high-octane thrillers, epic quests, and superhero sagas. Experience explosive car chases, intense fight sequences, and breathtaking special effects, all from the comfort of your home. Discover titles that will keep you on the edge of your seat, from espionage thrillers to fantastical journeys.</p>
+                <h3 class="text-yellow-400">Comedy: Laugh Out Loud 😂</h3>
+                <p>Need a good laugh? Our <strong class="text-yellow-400">comedy</strong> section offers a wide array of films designed to lighten your mood. From witty romantic comedies to slapstick farces and dark satires, you'll find endless opportunities for amusement. Gather your friends and family for a night of shared laughter with our diverse comedic offerings.</p>
+                <h3 class="text-indigo-400">Drama: Explore Human Emotions 🎭</h3>
+                <p>Delve into the complexities of the human experience with our extensive <strong class="text-indigo-400">drama</strong> collection. These films offer compelling narratives, powerful performances, and often explore profound themes. Whether you prefer historical dramas, legal thrillers, or poignant character studies, our drama category provides rich storytelling that resonates deeply.</p>
+                <h3 class="text-purple-400">Horror & Thriller: A Frighteningly Good Time 👻</h3>
+                <p>If you enjoy a good scare or a suspenseful plot, our <strong class="text-purple-400">horror and thriller</strong> genres are perfect for you. From psychological thrillers that mess with your mind to supernatural horrors that make you jump, prepare for an unforgettable viewing experience. Our collection includes both modern masterpieces and cult classics that will keep you awake at night.</p>
+                <h3 class="text-teal-400">Sci-Fi & Fantasy: Journey Beyond Imagination 🚀</h3>
+                <p>Escape to other worlds and explore futuristic possibilities with our <strong class="text-teal-400">science fiction and fantasy</strong> films. Witness groundbreaking visual effects, innovative concepts, and imaginative storytelling. From dystopian futures to magical realms, these genres push the boundaries of creativity and offer truly immersive experiences.</p>
+                <h3 class="text-pink-400">Romance: For the Heart ❤️</h3>
+                <p>Indulge in heartwarming tales of love, passion, and relationships with our <strong class="text-pink-400">romance movie</strong> selection. Whether you prefer classic love stories, contemporary romantic comedies, or intense romantic dramas, our collection is designed to stir your emotions and leave you feeling uplifted.</p>
 
-                <h2>Binge-Worthy TV Series: Endless Entertainment</h2>
-                <p>Beyond movies, 123Movies UK also boasts an impressive collection of TV series, allowing you to binge-watch your favorite shows or discover new obsessions. Our TV series library includes:</p>
-                <ul>
+                <h2 class="text-green-400">Binge-Worthy TV Series: Endless Entertainment 📺</h2>
+                <p>Beyond movies, 123Movies UK also boasts an impressive collection of <strong class="text-green-400">TV series</strong>, allowing you to binge-watch your favorite shows or discover new obsessions. Our TV series library includes:</p>
+                <ul class="list-disc list-inside text-gray-300">
                     <li><strong>Popular Series:</strong> Catch up on the latest seasons of critically acclaimed shows and fan favorites.</li>
                     <li><strong>Classic TV:</strong> Revisit timeless sitcoms, dramas, and sci-fi series that have shaped television history.</li>
                     <li><strong>International Hits:</strong> Explore captivating series from around the globe, expanding your viewing horizons.</li>
@@ -1499,50 +1589,38 @@
                 </ul>
                 <p>With new episodes and series added regularly, you'll never run out of engaging content to watch. Our platform makes it easy to track your progress and pick up exactly where you left off.</p>
 
-                <h2>Seamless Streaming Experience: Technology at Your Service</h2>
-                <p>We understand that a great streaming experience goes beyond just content. That's why 123Movies UK is built on robust technology designed for seamless, uninterrupted viewing:</p>
-                <ul>
+                <h2 class="text-orange-400">Seamless Streaming Experience: Technology at Your Service ⚡</h2>
+                <p>We understand that a great streaming experience goes beyond just content. That's why 123Movies UK is built on robust technology designed for <strong class="text-orange-400">seamless, uninterrupted viewing</strong>:</p>
+                <ul class="list-disc list-inside text-gray-300">
                     <li><strong>Fast Loading Times:</strong> Minimize buffering and start watching your chosen title almost instantly.</li>
                     <li><strong>Adaptive Streaming:</strong> Our player adjusts video quality based on your internet connection, ensuring smooth playback even with varying bandwidth.</li>
                     <li><strong>Intuitive Player Controls:</strong> Easy-to-use controls for play, pause, volume, and full-screen mode enhance your viewing comfort.</li>
                     <li><strong>Regular Updates:</strong> Our technical team continuously works to improve the platform, fix bugs, and enhance performance, ensuring a cutting-edge streaming service.</li>
                 </ul>
 
-                <h2>Safety and Accessibility: Your Peace of Mind</h2>
-                <p>Your safety and privacy are paramount at 123Movies UK. We strive to provide a secure environment for your entertainment:</p>
-                <ul>
+                <h2 class="text-cyan-400">Safety and Accessibility: Your Peace of Mind 🔒</h2>
+                <p>Your safety and privacy are paramount at 123Movies UK. We strive to provide a <strong class="text-cyan-400">secure environment</strong> for your entertainment:</p>
+                <ul class="list-disc list-inside text-gray-300">
                     <li><strong>No Registration Required:</strong> Enjoy content without the need to create an account, protecting your personal information.</li>
                     <li><strong>Minimal Ads:</strong> While we rely on ads to keep our service free, we aim to keep them as unobtrusive as possible, ensuring they don't significantly disrupt your viewing.</li>
                     <li><strong>Mobile-Friendly Design:</strong> Our website is fully responsive, adapting perfectly to any screen size, from smartphones to large desktop monitors. This means you can enjoy your favorite movies and shows on the go, anytime, anywhere.</li>
                 </ul>
 
-                <h2>How to Get Started with 123Movies UK</h2>
-                <p>Getting started with 123Movies UK is incredibly simple. Follow these easy steps to begin your free streaming journey:</p>
-                <ol>
-                    <li><strong>Visit Our Website:</strong> Navigate to 123movies-uk.pages.dev in your web browser.</li>
-                    <li><strong>Browse or Search:</b> Use our intuitive search bar to find specific titles or explore our categories and curated lists.</li>
+                <h2 class="text-lime-400">How to Get Started with 123Movies UK 🚀</h2>
+                <p>Getting started with 123Movies UK is incredibly simple. Follow these easy steps to begin your <strong class="text-lime-400">free streaming journey</strong>:</p>
+                <ol class="list-decimal list-inside text-gray-300">
+                    <li><strong>Visit Our Website:</strong> Navigate to <a href="https://123movies-uk.pages.dev/" class="text-blue-400 hover:underline">123movies-uk.pages.dev</a> in your web browser.</li>
+                    <li><strong>Browse or Search:</strong> Use our intuitive search bar to find specific titles or explore our categories and curated lists.</li>
                     <li><strong>Select Your Content:</strong> Click on the movie or TV series you wish to watch.</li>
-                    <li><strong>Start Streaming:</strong> Choose a streaming server (Stream 1 or Stream 2) and enjoy your free entertainment!</li>
+                    <li><strong>Start Streaming:</strong> Choose a streaming server (Stream 1 or Stream 2) and enjoy your <strong class="text-lime-400">free entertainment</strong>!</li>
                 </ol>
                 <p>It's that easy! No complicated sign-ups, no credit card details, just pure, unadulterated entertainment.</p>
 
-                <h2>Beyond Streaming: The 123Movies UK Community</h2>
-                <p>While our primary focus is on providing high-quality free streaming, we also aim to foster a community of movie and TV enthusiasts. Stay tuned for potential future features that could include user reviews, ratings, and personalized recommendations, further enhancing your experience and connecting you with fellow viewers.</p>
+                <h2 class="text-fuchsia-400">Future of 123Movies UK 🌟</h2>
+                <p>We are continuously working to expand our content library, improve streaming quality, and enhance the user experience. Our commitment is to remain a leading <strong class="text-fuchsia-400">free streaming platform</strong>, adapting to the evolving needs of our audience and the digital landscape. We value your feedback and are always looking for ways to make 123Movies UK even better.</p>
 
-                <h2>Why Choose 123Movies UK Over Paid Services?</h2>
-                <p>In a market dominated by subscription-based streaming services, you might wonder why 123Movies UK is a compelling alternative. Here’s why:</p>
-                <ul>
-                    <li><strong>Cost Savings:</b> Eliminate multiple monthly subscriptions and save a significant amount of money.</li>
-                    <li><strong>Extensive Library:</strong> Access a diverse range of content that might not be available on any single paid platform.</li>
-                    <li><strong>No Commitments:</strong> Enjoy flexibility without long-term contracts or cancellation hassles.</li>
-                    <li><strong>Discover New Content:</strong> Our constantly updated library means you’ll always find something new to watch, from hidden gems to popular hits.</li>
-                </ul>
-
-                <h2>Future of 123Movies UK</h2>
-                <p>We are continuously working to expand our content library, improve streaming quality, and enhance the user experience. Our commitment is to remain a leading free streaming platform, adapting to the evolving needs of our audience and the digital landscape. We value your feedback and are always looking for ways to make 123Movies UK even better.</p>
-
-                <h2>Conclusion: Your Gateway to Free Entertainment</h2>
-                <p>123Movies UK is more than just a streaming site; it's a gateway to a world of free, high-quality entertainment. With an ever-growing collection of movies and TV series, a user-friendly interface, and a commitment to seamless streaming, we invite you to explore our platform. Say goodbye to subscription fees and hello to unlimited entertainment. Start watching today and experience the best of online streaming, completely free!</p>
+                <h2 class="text-red-400">Conclusion: Your Gateway to Free Entertainment 🍿</h2>
+                <p>123Movies UK is more than just a streaming site; it's a gateway to a world of <strong class="text-red-400">free, high-quality entertainment</strong>. With an ever-growing collection of <strong class="text-red-400">movies and TV series</strong>, a user-friendly interface, and a commitment to seamless streaming, we invite you to explore our platform. Say goodbye to subscription fees and hello to <strong class="text-red-400">unlimited entertainment</strong>. Start watching today and experience the best of online streaming, completely free!</p>
             `;
 
             // Add event listener to the image after it's in the DOM
