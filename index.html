@@ -31,13 +31,13 @@
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* CSS to ensure the default Blogger header is hidden and the custom header is fixed */
+        /* CSS to ensure the custom header is fixed */
         html, body {
             height: 100%; /* Important for fixed positioning */
             min-height: 100vh; /* Fallback and ensures full viewport height */
             overflow-x: hidden; /* Prevents horizontal scrolling */
-            margin: 0; /* Removes default Blogger margin */
-            padding: 0; /* Removes default Blogger padding */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
             background-color: #1a202c; /* Ensures background color matches custom theme */
             display: flex; /* Uses flexbox for the body */
             flex-direction: column; /* Arranges flex items in a column */
@@ -45,61 +45,6 @@
             font-family: 'Roboto', sans-serif; /* Uses Roboto font */
         }
         
-        /* Targets and hides default Blogger elements that might appear */
-        #navbar-iframe, /* Blogger navbar iframe */
-        .navbar,
-        .blogger-navbar,
-        #b-navbar,
-        .admin-bar-menu,
-        .blog-admin-bar,
-        .header-outer, /* Blogger header element from your provided CSS */
-        .Header, /* Main header class from your provided CSS */
-        /* Targets elements that might show duplicate "MovieHub USA" outside the main header */
-        .name,
-        .title,
-        .blog-name-title,
-        #Header1_header_text, /* Common ID for blog title widget in Blogger */
-        .blog-title-container,
-        h1.title,
-        .blog-name,
-        .titlewrapper, /* Title wrapper in Blogger template */
-        .descriptionwrapper, /* Description wrapper in Blogger template */
-        /* Adds common Blogger footer elements */
-        #footer-outer,
-        .footer-outer,
-        #footer,
-        .footer-section,
-        .feed-links,
-        .blog-pager,
-        .attribution, /* Usually contains "Powered by Blogger" */
-        .post-footer, /* Might have a footer in each post */
-        .Blog .feed-links,
-        .widget.Footer,
-        #BlogArchive1_bottom, /* Example ID for archive widget in footer */
-        #Attribution1 /* Example ID for attribution widget in footer */
-        {
-            display: none !important; /* Kept !important to override Blogger's default styles */
-            height: 0 !important;
-            visibility: hidden !important;
-            line-height: 0 !important;
-            font-size: 0 !important;
-            width: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important; /* Removes any border that might form lines */
-        }
-
-        /* Adds rules for common Blogger elements that might have a background */
-        #outer-wrapper,
-        .content-outer,
-        .main-outer,
-        .main-inner,
-        .region-inner {
-            background-color: #1a202c; /* No !important needed here, body background will cover */
-            margin: 0; /* Ensures no margin creating gaps */
-            padding: 0; /* Ensures no padding creating gaps */
-        }
-
         /* Ensures the custom header remains fixed and sets its internal layout */
         header {
             position: sticky; /* Sticky is generally better than fixed for headers */
@@ -212,13 +157,13 @@
             font-size: 56px; /* Changed from 52px to 56px */
         }
 
-        /* FIX: Ensures detail title is visible in Blogger */
+        /* FIX: Ensures detail title is visible */
         #detail-title {
-            display: block; /* Removed !important as it might not be needed */
-            visibility: visible; /* Removed !important */
-            height: auto; /* Removed !important */
+            display: block;
+            visibility: visible;
+            height: auto;
             font-size: 3rem; /* Increased from 2.25rem (text-4xl) to 3rem (text-5xl) */
-            line-height: normal; /* Removed !important */
+            line-height: normal;
             margin: 0 0 0.5rem 0; /* Adjust margin as needed */
         }
 
@@ -384,55 +329,140 @@
     <main class="flex-grow px-4 pt-4 pb-12 max-w-[1344px] mx-auto">
         <!-- Layer 1: Movie/TV Thumbnails -->
         <section id="layer-1" class="layer-1">
-            <!-- Romance Movies Section - Now at the top -->
-            <div id="romance-movies-section" class="mb-6">
-                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-romance-movies">Romance Movies</span></h2>
-                <div id="movie-grid-romance-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
-                    <!-- Romance Movie thumbnails will be loaded here by JS -->
+            <!-- Upcoming Movies Section -->
+            <div id="upcoming-movies-section" class="mb-6">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-upcoming-movies">Upcoming Movies</span></h2>
+                <div id="movie-grid-upcoming-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- Upcoming Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-romance-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Romance Movies">
+                    <button id="load-more-upcoming-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Upcoming Movies">
                         Load More
                     </button>
                 </div>
-                <div id="loading-spinner-romance-movies" class="hidden flex justify-center items-center py-8">
+                <div id="loading-spinner-upcoming-movies" class="hidden flex justify-center items-center py-8">
                     <div class="spinner"></div>
                 </div>
-                <p id="no-results-message-romance-movies" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+                <p id="no-results-message-upcoming-movies" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
             </div>
 
-            <!-- Now Playing Movies Section (will also serve as search results and TV series default) -->
-            <div id="now-playing-section" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-now-playing">Now Playing Movies</span></h2>
-                <div id="movie-grid-now-playing" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+            <!-- Now Playing Movies Section -->
+            <div id="now-playing-movies-section" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-now-playing-movies">Now Playing Movies</span></h2>
+                <div id="movie-grid-now-playing-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
                     <!-- Now Playing Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-now-playing" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Now Playing Movies">
+                    <button id="load-more-now-playing-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Now Playing Movies">
                         Load More
                     </button>
                 </div>
-                <div id="loading-spinner-now-playing" class="hidden flex justify-center items-center py-8">
+                <div id="loading-spinner-now-playing-movies" class="hidden flex justify-center items-center py-8">
                     <div class="spinner"></div>
                 </div>
-                <p id="no-results-message-now-playing" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+                <p id="no-results-message-now-playing-movies" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
             </div>
 
-            <!-- Top Rated Movies Section -->
-            <div id="top-rated-section" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-top-rated">Top Rated Movies</span></h2>
-                <div id="movie-grid-top-rated" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+            <!-- Popular Movies Section -->
+            <div id="popular-movies-section" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-popular-movies">Popular Movies</span></h2>
+                <div id="movie-grid-popular-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- Popular Movie thumbnails will be loaded here by JS -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="load-more-popular-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Popular Movies">
+                        Load More
+                    </button>
+                </div>
+                <div id="loading-spinner-popular-movies" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-popular-movies" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+            </div>
+
+            <!-- Top Rated Movies Section (already exists, will be renamed in JS) -->
+            <div id="top-rated-movies-section" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-top-rated-movies">Top Rated Movies</span></h2>
+                <div id="movie-grid-top-rated-movies" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
                     <!-- Top Rated Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-top-rated" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Top Rated Movies">
+                    <button id="load-more-top-rated-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Top Rated Movies">
                         Load More
                     </button>
                 </div>
-                <div id="loading-spinner-top-rated" class="hidden flex justify-center items-center py-8">
+                <div id="loading-spinner-top-rated-movies" class="hidden flex justify-center items-center py-8">
                     <div class="spinner"></div>
                 </div>
-                <p id="no-results-message-top-rated" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+                <p id="no-results-message-top-rated-movies" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+            </div>
+
+            <!-- TV Series Airing Today Section -->
+            <div id="airing-today-tv-section" class="mb-6 hidden">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-airing-today-tv">TV Series Airing Today</span></h2>
+                <div id="movie-grid-airing-today-tv" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- TV Series Airing Today thumbnails will be loaded here by JS -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="load-more-airing-today-tv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more TV Series Airing Today">
+                        Load More
+                    </button>
+                </div>
+                <div id="loading-spinner-airing-today-tv" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-airing-today-tv" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+            </div>
+
+            <!-- On The Air TV Series Section -->
+            <div id="on-tv-section" class="mb-6 hidden">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-on-tv">On The Air TV Series</span></h2>
+                <div id="movie-grid-on-tv" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- On The Air TV Series thumbnails will be loaded here by JS -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="load-more-on-tv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more On The Air TV Series">
+                        Load More
+                    </button>
+                </div>
+                <div id="loading-spinner-on-tv" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-on-tv" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+            </div>
+
+            <!-- Popular TV Series Section -->
+            <div id="popular-tv-section" class="mb-12 hidden">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-popular-tv">Popular TV Series</span></h2>
+                <div id="movie-grid-popular-tv" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- Popular TV Series thumbnails will be loaded here by JS -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="load-more-popular-tv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Popular TV Series">
+                        Load More
+                    </button>
+                </div>
+                <div id="loading-spinner-popular-tv" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-popular-tv" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
+            </div>
+
+            <!-- Top Rated TV Series Section -->
+            <div id="top-rated-tv-section" class="mb-12 hidden">
+                <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center"><span id="section-title-top-rated-tv">Top Rated TV Series</span></h2>
+                <div id="movie-grid-top-rated-tv" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 min-h-[500px]">
+                    <!-- Top Rated TV Series thumbnails will be loaded here by JS -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="load-more-top-rated-tv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Top Rated TV Series">
+                        Load More
+                    </button>
+                </div>
+                <div id="loading-spinner-top-rated-tv" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-top-rated-tv" class="hidden text-center text-gray-400 text-lg mt-8">No results found for your search.</p>
             </div>
         </section>
 
@@ -450,7 +480,7 @@
             </div>
 
             <div class="video-container mb-8">
-                <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen aria-label="Movie Trailer"></iframe>
+                <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-forms" aria-label="Movie Trailer"></iframe>
             </div>
 
             <div class="flex flex-wrap justify-center gap-4">
@@ -487,7 +517,7 @@
                 <div class="spinner"></div>
             </div>
             <div class="flex-grow video-container" id="streaming-player-container">
-                <iframe id="streaming-player" src="" frameborder="0" allowfullscreen class="rounded-lg" aria-label="Movie Streaming Player"></iframe>
+                <iframe id="streaming-player" src="" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-forms" class="rounded-lg" aria-label="Movie Streaming Player"></iframe>
             </div>
             <!-- Direct streaming buttons added -->
             <div class="flex flex-wrap justify-center gap-4 mt-6">
@@ -499,107 +529,16 @@
                 </button>
             </div>
 
-            <!-- Static thumbnails added here (moved from Layer 2) -->
+            <!-- Dynamic thumbnails will be loaded here by JS -->
             <div class="mt-8 text-center">
                 <h3 class="text-xl font-bold text-gray-100 mb-4">You Might Also Like This:</h3>
                 <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                    <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
-                    <div class="static-movie-card" data-media-id="0" data-media-type="home">
-                        <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>123Movies UK</h3>
-                            <p>Home</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
-                    <div class="static-movie-card" data-media-id="67308" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/jjADiLOmCoXoVldQYrNR9bdAWA0.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>3-D Sex and Zen: Extreme Ecstasy</h3>
-                            <p>2011</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Fidelity (2019) -->
-                    <div class="static-movie-card" data-media-id="575299" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/kDaRVADrrbwNSGzCvU4AroEa6h1.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Fidelity</h3>
-                            <p>2019</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Killing Me Softly (2002) -->
-                    <div class="static-movie-card" data-media-id="14365" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/pgfFJw7mqAmJdZizrJ6oOK0ejOZ.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Killing Me Softly</h3>
-                            <p>2002</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: They Are Mine (2023) -->
-                    <div class="static-movie-card" data-media-id="1180449" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/66kzlgGMp9lKUiBjjPPYG0r8Z03.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>They Are Mine</h3>
-                            <p>2023</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Hate Story 2 (2014) -->
-                    <div class="static-movie-card" data-media-id="282346" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/y5fg6O5ttxvh2wkMY1fUchLfZSL.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Hate Story 2</h3>
-                            <p>2014</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Cashback (2006) -->
-                    <div class="static-movie-card" data-media-id="12225" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/juTJZCgNwcEeKtrxC6EygC2mKfJ.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Cashback</h3>
-                            <p>2006</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Room in Rome (2010) -->
-                    <div class="static-movie-card" data-media-id="48650" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/qQ8ithmufWYz0OzJbE2YuAn3Qaj.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Room in Rome</h3>
-                            <p>2010</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Fifty Shades Freed (2018) -->
-                    <div class="static-movie-card" data-media-id="337167" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/9ZedQHPQVveaIYmDSTazhT3y273.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Fifty Shades Freed</h3>
-                            <p>2018</p>
-                        </div>
-                    </div>
-                    <!-- Static Movie Card: Jan Dara (2001) -->
-                    <div class="static-movie-card" data-media-id="68507" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/vE9h8C2FiOLXwli7NsTcn2MyWm6.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Jan Dara</h3>
-                            <p>2001</p>
-                        </div>
-                    </div>
-                    <!-- New Static Movie Card: Hotel Desire (2011) - Re-added with new image and position -->
-                    <div class="static-movie-card" data-media-id="82023" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/myzQj8Rk178DrWsiZjVKjz7Kj9P.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>Hotel Desire</h3>
-                            <p>2011</p>
-                        </div>
-                    </div>
-                    <!-- New Static Movie Card: When Night is Falling (1995) -->
-                    <div class="static-movie-card" data-media-id="8391" data-media-type="movie">
-                        <img src="https://image.tmdb.org/t/p/w300/6Ac5GLwJ01uli5mCXqXwquR36Y1.jpg" alt="" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
-                        <div class="info">
-                            <h3>When Night is Falling</h3>
-                            <p>1995</p>
-                        </div>
-                    </div>
+                    <!-- Dynamic Romance Movies will be loaded here by JS -->
                 </div>
+                <div id="loading-spinner-static-grid" class="hidden flex justify-center items-center py-8">
+                    <div class="spinner"></div>
+                </div>
+                <p id="no-results-message-static-grid" class="hidden text-center text-gray-400 text-lg mt-8">No results found.</p>
             </div>
         </section>
 
@@ -633,9 +572,14 @@
         // Objek state aplikasi terpusat
         const appState = {
             pageCounters: {
-                'now-playing': 1,
-                'top-rated': 1,
-                'romance-movies': 1,
+                'upcoming-movies': 1,
+                'now-playing-movies': 1,
+                'popular-movies': 1,
+                'top-rated-movies': 1,
+                'airing-today-tv': 1,
+                'on-tv': 1,
+                'popular-tv': 1,
+                'top-rated-tv': 1,
                 'search': 1 // For search results
             },
             currentSearchQuery: '',
@@ -703,6 +647,9 @@
         const stream4Button = document.getElementById('stream-4-button');
 
         const staticMovieGrid = document.getElementById('static-movie-grid'); // Get the static movie grid container
+        const loadingSpinnerStaticGrid = document.getElementById('loading-spinner-static-grid'); // Spinner for the static grid
+        const noResultsMessageStaticGrid = document.getElementById('no-results-message-static-grid'); // No results message for static grid
+
         const similarMoviesGrid = document.getElementById('similar-movies-grid'); // Get the similar movies grid container
         const loadingSpinnerSimilar = document.getElementById('loading-spinner-similar');
         const noSimilarResultsMessage = document.getElementById('no-similar-results-message');
@@ -728,10 +675,15 @@
             tvSeriesButton: "TV Series",
             searchMoviesPlaceholder: "Search movies...",
             searchTvSeriesPlaceholder: "Search TV series...",
-            nowPlayingMovies: "Now Playing Movies", // New
-            topRatedMovies: "Top Rated Movies",     // New
-            romanceMovies: "Romance Movies",       // New
-            popularTvSeries: "Popular TV Series",
+            upcomingMovies: "Upcoming Movies", // New
+            nowPlayingMovies: "Now Playing Movies", // Updated
+            popularMovies: "Popular Movies", // New
+            topRatedMovies: "Top Rated Movies", // Updated
+            // romanceMovies: "Romance Movies", // Removed
+            airingTodayTv: "TV Series Airing Today", // New
+            onTv: "On The Air TV Series", // New
+            popularTv: "Popular TV Series", // Updated
+            topRatedTv: "Top Rated TV Series", // New
             loadMoreButton: "Load More",
             noResultsFound: "No results found for your search.",
             posterNotAvailable: "POSTER NOT AVAILABLE",
@@ -773,9 +725,10 @@
         // Dynamic TMDB endpoints based on media type
         const mediaTypeEndpoints = {
             movie: {
-                popular: '/movie/popular', // Kept for TV series fallback
-                now_playing: '/movie/now_playing', // New
-                top_rated: '/movie/top_rated',     // New
+                popular: '/movie/popular',
+                now_playing: '/movie/now_playing',
+                top_rated: '/movie/top_rated',
+                upcoming: '/movie/upcoming', // New
                 search: '/search/movie',
                 detail: '/movie/',
                 videos: '/movie/',
@@ -786,12 +739,32 @@
             },
             tv: {
                 popular: '/tv/popular',
+                airing_today: '/tv/airing_today', // New
+                on_the_air: '/tv/on_the_air',     // New
+                top_rated: '/tv/top_rated',       // New
                 search: '/search/tv',
                 detail: '/tv/',
                 videos: '/tv/',
                 credits: '/tv/',
                 genres_list: '/genre/tv/list', // New: For fetching TV genres
                 similar: '/tv/' // For similar TV series
+            }
+        };
+
+        // Configuration for each section, mapping sectionName to TMDB endpoint and title
+        const sectionConfigs = {
+            'movie': {
+                'upcoming-movies': { endpoint: 'upcoming', title: TEXT_CONSTANTS.upcomingMovies },
+                'now-playing-movies': { endpoint: 'now_playing', title: TEXT_CONSTANTS.nowPlayingMovies },
+                'popular-movies': { endpoint: 'popular', title: TEXT_CONSTANTS.popularMovies },
+                'top-rated-movies': { endpoint: 'top_rated', title: TEXT_CONSTANTS.topRatedMovies },
+                'romance-movies-dynamic': { endpoint: 'genre', title: 'Romance Movies (Dynamic)', genreId: 10749 } // Added for dynamic romance
+            },
+            'tv': {
+                'airing-today-tv': { endpoint: 'airing_today', title: TEXT_CONSTANTS.airingTodayTv },
+                'on-tv': { endpoint: 'on_the_air', title: TEXT_CONSTANTS.onTv },
+                'popular-tv': { endpoint: 'popular', title: TEXT_CONSTANTS.popularTv },
+                'top-rated-tv': { endpoint: 'top_rated', title: TEXT_CONSTANTS.topRatedTv }
             }
         };
 
@@ -875,7 +848,7 @@
         /**
          * Fetches and displays media for a specific section on Layer 1.
          * @param {string} type - 'movie' or 'tv'.
-         * @param {string} sectionName - Identifier for the section (e.g., 'now-playing', 'top-rated', 'romance-movies').
+         * @param {string} sectionName - Identifier for the section (e.g., 'upcoming-movies', 'airing-today-tv').
          * @param {number} page - The page number to fetch.
          * @param {string} [query=''] - Search query, if any.
          * @param {number} [genreId=null] - Genre ID, if filtering by genre.
@@ -901,30 +874,29 @@
                 url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].search}?query=${encodeURIComponent(query)}&page=${page}&language=en`;
                 titleText = `Search Results for "${query}"`; // Specific title for search
             } else if (genreId) {
-                url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${genreId}&page=${page}&language=en`;
+                url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genreId}&page=${page}&language=en`;
                 const genreName = appState.genres.find(g => g.id === genreId)?.name || 'Movies'; // Get genre name from state
-                titleText = `${genreName} Movies`; // Dynamic title for genre
+                titleText = `${genreName} ${type === 'movie' ? 'Movies' : 'TV Series'}`; // Dynamic title for genre
             } else {
-                if (sectionName === 'now-playing' && type === 'movie') {
-                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.now_playing}?page=${page}&language=en`;
-                    titleText = TEXT_CONSTANTS.nowPlayingMovies;
-                } else if (sectionName === 'top-rated' && type === 'movie') {
-                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.top_rated}?page=${page}&language=en`;
-                    titleText = TEXT_CONSTANTS.topRatedMovies;
-                } else if (sectionName === 'romance-movies' && type === 'movie') {
-                    // Find Romance genre ID from dynamically loaded genres
-                    const romanceGenre = appState.genres.find(g => g.name === 'Romance');
-                    if (romanceGenre) {
-                        url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${romanceGenre.id}&page=${page}&language=en`;
-                        titleText = TEXT_CONSTANTS.romanceMovies;
-                    } else {
-                        console.warn("Romance genre not found, falling back to popular movies.");
-                        url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.popular}?page=${page}&language=en`; // Fallback
-                        titleText = TEXT_CONSTANTS.nowPlayingMovies;
+                const config = sectionConfigs[type][sectionName];
+                if (config) {
+                    if (config.genreName) { // Special case for genre-based sections like Romance Movies
+                        const genre = appState.genres.find(g => g.name === config.genreName);
+                        if (genre) {
+                            url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].genre}?with_genres=${genre.id}&page=${page}&language=en`;
+                        } else {
+                            console.warn(`${config.genreName} genre not found for ${type}, falling back to popular.`);
+                            url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
+                            titleText = type === 'movie' ? TEXT_CONSTANTS.popularMovies : TEXT_CONSTANTS.popularTv;
+                        }
+                    } else { // Standard endpoint sections
+                        url = `${TMDB_BASE_URL}/${type}/${config.endpoint}?page=${page}&language=en`;
                     }
-                } else if (type === 'tv' && sectionName === 'now-playing') { // Using now-playing section for TV series
-                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints.tv.popular}?page=${page}&language=en`;
-                    titleText = TEXT_CONSTANTS.popularTvSeries;
+                    titleText = config.title;
+                } else {
+                    console.error(`Unknown sectionName: ${sectionName} for type: ${type}. Falling back to popular.`);
+                    url = `${TMDB_BASE_URL}${mediaTypeEndpoints[type].popular}?page=${page}&language=en`;
+                    titleText = type === 'movie' ? TEXT_CONSTANTS.popularMovies : TEXT_CONSTANTS.popularTv;
                 }
             }
 
@@ -989,6 +961,66 @@
                 spinnerElement.classList.add('hidden');
             }
         }
+
+        /**
+         * Fetches and displays media for the static movie grid (now dynamic Romance Movies).
+         */
+        async function loadRomanceMoviesIntoStaticGrid() {
+            staticMovieGrid.innerHTML = ''; // Clear previous content
+            loadingSpinnerStaticGrid.classList.remove('hidden');
+            noResultsMessageStaticGrid.classList.add('hidden');
+
+            const romanceGenreId = sectionConfigs.movie['romance-movies-dynamic'].genreId;
+            const url = `${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genre}?with_genres=${romanceGenreId}&page=1&language=en`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.results.length === 0) {
+                    noResultsMessageStaticGrid.classList.remove('hidden');
+                    noResultsMessageStaticGrid.textContent = TEXT_CONSTANTS.noResultsFound;
+                } else {
+                    noResultsMessageStaticGrid.classList.add('hidden');
+                    // Limit to 12 items for the "You Might Also Like This" section
+                    data.results.slice(0, 12).forEach(media => {
+                        const mediaCard = document.createElement('div');
+                        mediaCard.className = 'bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer';
+                        mediaCard.dataset.mediaId = media.id;
+                        mediaCard.dataset.mediaType = 'movie'; // Always 'movie' for this section
+                        mediaCard.setAttribute('aria-label', `Watch ${media.title || media.name}`);
+
+                        const posterPath = media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/FF0000/FFFFFF?text=${TEXT_CONSTANTS.posterNotAvailable}`;
+                        const titleOrName = media.title || media.name || TEXT_CONSTANTS.titleNotAvailable;
+                        const releaseDateOrFirstAirDate = media.release_date ? media.release_date.substring(0, 4) : (media.first_air_date ? media.first_air_date.substring(0, 4) : TEXT_CONSTANTS.yearNotAvailable);
+
+                        mediaCard.innerHTML = `
+                            <img src="${posterPath}" alt="${titleOrName} Poster" loading="lazy" class="w-full h-auto object-cover rounded-t-lg" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=${TEXT_CONSTANTS.imageError}';">
+                            <div class="p-4 text-center">
+                                <h3 class="text-lg font-semibold text-gray-100 truncate">${titleOrName}</h3>
+                                <p class="text-gray-400 text-sm">${releaseDateOrFirstAirDate}</p>
+                            </div>
+                        `;
+                        staticMovieGrid.appendChild(mediaCard);
+
+                        mediaCard.addEventListener('click', () => {
+                            triggerAd();
+                            window.location.hash = `#/media/movie/${media.id}/${slugify(titleOrName)}`;
+                        });
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching romance movies for static grid:', error);
+                noResultsMessageStaticGrid.classList.remove('hidden');
+                noResultsMessageStaticGrid.textContent = TEXT_CONSTANTS.failedToLoadMedia;
+            } finally {
+                loadingSpinnerStaticGrid.classList.add('hidden');
+            }
+        }
+
 
         // Function to fetch and display movie/TV details (Layer 2)
         async function fetchAndDisplayMediaDetail(mediaId, mediaType, mediaTitleForSlug = '') {
@@ -1076,13 +1108,13 @@
 
                 const detailContentHtml = `
                     <div class="flex flex-col md:flex-row gap-8 mb-8">
-                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="[Gambar Poster Media]" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
+                        <img id="detail-poster" src="${media.poster_path ? `${TMDB_IMAGE_BASE_URL}${media.poster_path}` : `https://placehold.co/500x750/374151/d1d5db?text=${TEXT_CONSTANTS.noPoster}`}" alt="${media.title || media.name || 'Media'} Poster" class="w-full md:w-1/3 lg:w-1/4 rounded-lg shadow-md object-cover">
                         <div class="flex-1">
                             <h2 id="detail-title" class="text-4xl font-bold text-gray-100 mb-2">${media.title || media.name || TEXT_CONSTANTS.notAvailable}</h2>
                             <p class="text-gray-400 mb-2">${media.genres.map(g => g.name).join(', ') || TEXT_CONSTANTS.notAvailable}</p>
                             
                             <div class="flex items-center gap-4 mb-4">
-                                <p class="text-yellow-500 font-semibold text-lg">⭐ ${media.vote_average ? media.vote_average.toFixed(1) : TEXT_CONSTANTS.notAvailable} / 10</p>
+                                <p class="text-yellow-500 font-semibold text-lg" aria-label="User score: ${media.vote_average ? media.vote_average.toFixed(1) : 'N/A'} out of 10">⭐ ${media.vote_average ? media.vote_average.toFixed(1) : TEXT_CONSTANTS.notAvailable} / 10</p>
                                 <p class="text-gray-300 text-sm">(${media.vote_count || 0} ${TEXT_CONSTANTS.votes})</p>
                             </div>
 
@@ -1245,8 +1277,92 @@
                 loadingSpinnerLayer3.classList.add('hidden');
                 document.getElementById('streaming-player-container').classList.remove('hidden');
             }, 3000); // 3-second delay
+
+            // Load dynamic romance movies into the static grid section
+            loadRomanceMoviesIntoStaticGrid();
         }
 
+
+        // Function to show all movie sections and hide TV sections
+        async function loadAllMovieSections() {
+            // Reset page counters for all movie sections
+            appState.pageCounters['upcoming-movies'] = 1;
+            appState.pageCounters['now-playing-movies'] = 1;
+            appState.pageCounters['popular-movies'] = 1;
+            appState.pageCounters['top-rated-movies'] = 1;
+
+            appState.currentSearchQuery = '';
+            searchInput.value = '';
+            appState.currentGenreId = null;
+
+            // Hide all TV sections
+            document.getElementById('airing-today-tv-section').style.display = 'none';
+            document.getElementById('on-tv-section').style.display = 'none';
+            document.getElementById('popular-tv-section').style.display = 'none';
+            document.getElementById('top-rated-tv-section').style.display = 'none';
+
+            // Show all movie sections
+            document.getElementById('upcoming-movies-section').style.display = 'block';
+            document.getElementById('now-playing-movies-section').style.display = 'block';
+            document.getElementById('popular-movies-section').style.display = 'block';
+            document.getElementById('top-rated-movies-section').style.display = 'block';
+
+
+            try {
+                await Promise.all([
+                    loadMediaSection('movie', 'upcoming-movies', 1),
+                    loadMediaSection('movie', 'now-playing-movies', 1),
+                    loadMediaSection('movie', 'popular-movies', 1),
+                    loadMediaSection('movie', 'top-rated-movies', 1)
+                ]);
+            } catch (error) {
+                console.error("Error loading all movie sections:", error);
+                showMessageBox('errorTitle', 'failedToLoadMedia');
+            }
+        }
+
+        // Function to show all TV sections and hide movie sections
+        async function loadAllTvSections() {
+            // Reset page counters for all TV sections
+            appState.pageCounters['airing-today-tv'] = 1;
+            appState.pageCounters['on-tv'] = 1;
+            appState.pageCounters['popular-tv'] = 1;
+            appState.pageCounters['top-rated-tv'] = 1;
+
+            appState.currentSearchQuery = '';
+            searchInput.value = '';
+            appState.currentGenreId = null;
+
+            // Hide all movie sections
+            document.getElementById('upcoming-movies-section').style.display = 'none';
+            document.getElementById('now-playing-movies-section').style.display = 'none';
+            document.getElementById('popular-movies-section').style.display = 'none';
+            document.getElementById('top-rated-movies-section').style.display = 'none';
+            // Ensure these elements are checked for existence before attempting to access their style property
+            const romanceMoviesSection = document.getElementById('romance-movies-section');
+            if (romanceMoviesSection) {
+                romanceMoviesSection.style.display = 'none';
+            }
+
+
+            // Show all TV sections
+            document.getElementById('airing-today-tv-section').style.display = 'block';
+            document.getElementById('on-tv-section').style.display = 'block';
+            document.getElementById('popular-tv-section').style.display = 'block';
+            document.getElementById('top-rated-tv-section').style.display = 'block';
+
+            try {
+                await Promise.all([
+                    loadMediaSection('tv', 'airing-today-tv', 1),
+                    loadMediaSection('tv', 'on-tv', 1),
+                    loadMediaSection('tv', 'popular-tv', 1),
+                    loadMediaSection('tv', 'top-rated-tv', 1)
+                ]);
+            } catch (error) {
+                console.error("Error loading all TV sections:", error);
+                showMessageBox('errorTitle', 'failedToLoadMedia');
+            }
+        }
 
         // Function to handle URL hash changes
         async function handleHashChange() {
@@ -1267,9 +1383,20 @@
                         appState.currentMediaId = id;
                         appState.currentMediaType = type;
                         // Hide all sections on Layer 1 when viewing details
-                        document.getElementById('romance-movies-section').style.display = 'none';
-                        document.getElementById('now-playing-section').style.display = 'none';
-                        document.getElementById('top-rated-section').style.display = 'none';
+                        document.getElementById('upcoming-movies-section').style.display = 'none';
+                        document.getElementById('now-playing-movies-section').style.display = 'none';
+                        document.getElementById('popular-movies-section').style.display = 'none';
+                        document.getElementById('top-rated-movies-section').style.display = 'none';
+                        // Removed: document.getElementById('romance-movies-section').style.display = 'none'; // This line was causing the error
+                        // Ensure these elements are checked for existence before attempting to access their style property
+                        const romanceMoviesSection = document.getElementById('romance-movies-section');
+                        if (romanceMoviesSection) {
+                            romanceMoviesSection.style.display = 'none';
+                        }
+                        document.getElementById('airing-today-tv-section').style.display = 'none';
+                        document.getElementById('on-tv-section').style.display = 'none';
+                        document.getElementById('popular-tv-section').style.display = 'none';
+                        document.getElementById('top-rated-tv-section').style.display = 'none';
                         genreButtonsContainer.classList.add('hidden'); // Hide genre buttons
                         await fetchAndDisplayMediaDetail(id, type);
                     } else {
@@ -1279,21 +1406,15 @@
                 }
             } else if (hash === '#/movies') {
                 appState.currentMediaType = 'movie';
-                loadAllSections(); // This will reset page counters and load movie sections
+                await loadGenreButtons('movie'); // Load movie genres
                 genreButtonsContainer.classList.remove('hidden'); // Show genre buttons for movies
+                loadAllMovieSections(); // This will reset page counters and load movie sections
                 showLayer(layer1);
             } else if (hash === '#/tv') {
                 appState.currentMediaType = 'tv';
-                // Hide all movie sections and genre buttons
-                document.getElementById('romance-movies-section').style.display = 'none';
-                document.getElementById('top-rated-section').style.display = 'none';
-                document.getElementById('now-playing-section').style.display = 'block'; // Use now-playing section for TV series
-                genreButtonsContainer.classList.add('hidden'); // Hide genre buttons for TV (since we don't load them for TV yet)
-                
-                // Reset page counter for now-playing when switching to TV
-                appState.pageCounters['now-playing'] = 1; 
-                loadMediaSection('tv', 'now-playing', 1);
-                document.getElementById('section-title-now-playing').textContent = TEXT_CONSTANTS.popularTvSeries; // Update title
+                await loadGenreButtons('tv'); // Load TV genres
+                genreButtonsContainer.classList.remove('hidden'); // Show genre buttons for TV
+                loadAllTvSections(); // This will reset page counters and load TV sections
                 showLayer(layer1);
             } else if (hash === '#/home-seo') { // New hash for Layer 4
                 showLayer(layer4);
@@ -1303,36 +1424,6 @@
             else {
                 // Default: empty hash or unrecognized hash, load home (SEO content)
                 window.location.hash = '#/home-seo';
-            }
-        }
-
-        // Function to load all sections on Layer 1
-        async function loadAllSections() {
-            // Reset page counters for all sections
-            for (const key in appState.pageCounters) {
-                appState.pageCounters[key] = 1; // Ensure they are reset to 1
-            }
-            appState.currentSearchQuery = ''; // Clear search query when returning to home view
-            searchInput.value = ''; // Clear search input field
-
-            // Show all movie sections
-            document.getElementById('romance-movies-section').style.display = 'block';
-            document.getElementById('now-playing-section').style.display = 'block';
-            document.getElementById('top-rated-section').style.display = 'block';
-
-            // Load content for each section concurrently using Promise.all
-            try {
-                const romanceGenre = appState.genres.find(g => g.name === 'Romance');
-                const romanceLoadPromise = romanceGenre ? loadMediaSection('movie', 'romance-movies', 1, '', romanceGenre.id) : Promise.resolve(); // Load Romance if genre found
-                
-                await Promise.all([
-                    romanceLoadPromise,
-                    loadMediaSection('movie', 'now-playing', 1),
-                    loadMediaSection('movie', 'top-rated', 1)
-                ]);
-            } catch (error) {
-                console.error("Error loading all sections:", error);
-                showMessageBox('errorTitle', 'failedToLoadMedia');
             }
         }
 
@@ -1351,70 +1442,111 @@
             };
         }
 
-        // Function to load movie genres dynamically and create buttons
-        async function loadGenreButtons() {
+        // Function to load movie or TV genres dynamically and create buttons
+        async function loadGenreButtons(type) {
             try {
-                const response = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints.movie.genres_list}?language=en`);
+                const response = await fetch(`${TMDB_BASE_URL}${mediaTypeEndpoints[type].genres_list}?language=en`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
                 appState.genres = data.genres; // Store genres in appState
 
                 genreButtonsContainer.innerHTML = ''; // Clear existing buttons
-                appState.genres.forEach(genre => {
-                    const button = document.createElement('button');
-                    // Reduced font size to 'xs' (0.75rem) and padding to 'py-1 px-2' (reduced px from 3 to 2)
-                    button.className = 'bg-gray-700 hover:bg-purple-600 text-gray-100 font-medium py-1 px-2 rounded-md transition-all duration-200 text-sm md:text-base';
-                    button.textContent = genre.name;
-                    button.dataset.genreId = genre.id;
-                    button.setAttribute('aria-label', `Filter by ${genre.name} genre`); // Added ARIA label
-                    button.addEventListener('click', () => {
-                        triggerAd(); // Trigger ad on genre button click
-                        appState.currentGenreId = genre.id;
-                        appState.currentSearchQuery = ''; // Clear search query
-                        searchInput.value = ''; // Clear search input
-                        // Hide other sections and show only now-playing section for genre results
-                        document.getElementById('romance-movies-section').style.display = 'none';
-                        document.getElementById('top-rated-section').style.display = 'none';
-                        document.getElementById('now-playing-section').style.display = 'block';
-                        appState.pageCounters['now-playing'] = 1; // Reset page counter for now-playing when filtering by genre
-                        loadMediaSection('movie', 'now-playing', 1, '', genre.id);
+                if (data.genres.length > 0) {
+                    data.genres.forEach(genre => {
+                        const button = document.createElement('button');
+                        // Reduced font size to 'xs' (0.75rem) and padding to 'py-1 px-2' (reduced px from 3 to 2)
+                        button.className = 'bg-gray-700 hover:bg-purple-600 text-gray-100 font-medium py-1 px-2 rounded-md transition-all duration-200 text-sm md:text-base';
+                        button.textContent = genre.name;
+                        button.dataset.genreId = genre.id;
+                        button.dataset.mediaType = type; // Store media type for genre button
+                        button.setAttribute('aria-label', `Filter by ${genre.name} genre`); // Added ARIA label
+                        button.addEventListener('click', () => {
+                            triggerAd(); // Trigger ad on genre button click
+                            appState.currentGenreId = genre.id;
+                            appState.currentSearchQuery = ''; // Clear search query
+                            searchInput.value = ''; // Clear search input
+
+                            // Hide all sections first
+                            document.getElementById('upcoming-movies-section').style.display = 'none';
+                            document.getElementById('now-playing-movies-section').style.display = 'none';
+                            document.getElementById('popular-movies-section').style.display = 'none';
+                            document.getElementById('top-rated-movies-section').style.display = 'none';
+                            // Ensure this is also hidden
+                            const romanceMoviesSection = document.getElementById('romance-movies-section');
+                            if (romanceMoviesSection) {
+                                romanceMoviesSection.style.display = 'none';
+                            }
+                            document.getElementById('airing-today-tv-section').style.display = 'none';
+                            document.getElementById('on-tv-section').style.display = 'none';
+                            document.getElementById('popular-tv-section').style.display = 'none';
+                            document.getElementById('top-rated-tv-section').style.display = 'none';
+
+                            // Show only the "popular-movies-section" grid for movie genre results,
+                            // or "popular-tv-section" for TV genre results.
+                            const targetSectionId = type === 'movie' ? 'popular-movies-section' : 'popular-tv-section';
+                            document.getElementById(targetSectionId).style.display = 'block';
+
+                            // Reset page counter for the target section when filtering by genre
+                            appState.pageCounters[targetSectionId.replace('-section', '')] = 1;
+                            loadMediaSection(type, targetSectionId.replace('-section', ''), 1, '', genre.id);
+                        });
+                        genreButtonsContainer.appendChild(button);
                     });
-                    genreButtonsContainer.appendChild(button);
-                });
+                    genreButtonsContainer.classList.remove('hidden'); // Show genre buttons if there are genres
+                } else {
+                    genreButtonsContainer.classList.add('hidden'); // Hide if no genres
+                }
             } catch (error) {
                 console.error("Error fetching genres:", error);
+                genreButtonsContainer.classList.add('hidden'); // Ensure hidden on error
                 // Optionally show a message to the user
             }
         }
 
         // Event Listeners for Load More Buttons
-        document.getElementById('load-more-romance-movies').addEventListener('click', () => {
-            triggerAd(); // Trigger ad on load more
-            const romanceGenre = appState.genres.find(g => g.name === 'Romance');
-            if (romanceGenre) {
-                loadMediaSection('movie', 'romance-movies', appState.pageCounters['romance-movies'] + 1, '', romanceGenre.id);
-            }
+        document.getElementById('load-more-upcoming-movies').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('movie', 'upcoming-movies', appState.pageCounters['upcoming-movies'] + 1);
         });
-        document.getElementById('load-more-now-playing').addEventListener('click', () => {
-            triggerAd(); // Trigger ad on load more
-            // Check if currently displaying search results or genre results
-            if (appState.currentSearchQuery) {
-                loadMediaSection(appState.currentMediaType, 'now-playing', appState.pageCounters['now-playing'] + 1, appState.currentSearchQuery);
-            } else if (appState.currentGenreId) {
-                loadMediaSection('movie', 'now-playing', appState.pageCounters['now-playing'] + 1, '', appState.currentGenreId);
-            } else {
-                loadMediaSection(appState.currentMediaType, 'now-playing', appState.pageCounters['now-playing'] + 1);
-            }
+        document.getElementById('load-more-now-playing-movies').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('movie', 'now-playing-movies', appState.pageCounters['now-playing-movies'] + 1);
         });
-        document.getElementById('load-more-top-rated').addEventListener('click', () => {
-            triggerAd(); // Trigger ad on load more
-            loadMediaSection('movie', 'top-rated', appState.pageCounters['top-rated'] + 1);
+        document.getElementById('load-more-popular-movies').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('movie', 'popular-movies', appState.pageCounters['popular-movies'] + 1);
+        });
+        document.getElementById('load-more-top-rated-movies').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('movie', 'top-rated-movies', appState.pageCounters['top-rated-movies'] + 1);
+        });
+
+        // New TV Load More buttons
+        document.getElementById('load-more-airing-today-tv').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('tv', 'airing-today-tv', appState.pageCounters['airing-today-tv'] + 1);
+        });
+        document.getElementById('load-more-on-tv').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('tv', 'on-tv', appState.pageCounters['on-tv'] + 1);
+        });
+        document.getElementById('load-more-popular-tv').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('tv', 'popular-tv', appState.pageCounters['popular-tv'] + 1);
+        });
+        document.getElementById('load-more-top-rated-tv').addEventListener('click', () => {
+            triggerAd();
+            loadMediaSection('tv', 'top-rated-tv', appState.pageCounters['top-rated-tv'] + 1);
         });
 
 
         backToListButton.addEventListener('click', () => {
-            showLayer(layer1);
-            window.location.hash = ''; // Clear hash when going back to list
+            // Determine which "home" view to return to based on currentMediaType
+            if (appState.currentMediaType === 'movie') {
+                window.location.hash = '#/movies';
+            } else { // 'tv'
+                window.location.hash = '#/tv';
+            }
         });
 
         backToDetailButton.addEventListener('click', () => {
@@ -1464,17 +1596,39 @@
             if (query) {
                 appState.currentGenreId = null; // Clear genre filter
                 appState.currentSearchQuery = query;
-                // Load search results into the now-playing section, clearing others
-                document.getElementById('romance-movies-section').style.display = 'none';
-                document.getElementById('top-rated-section').style.display = 'none';
-                document.getElementById('now-playing-section').style.display = 'block'; // Ensure now-playing is visible
+                
+                // Hide all sections
+                document.getElementById('upcoming-movies-section').style.display = 'none';
+                document.getElementById('now-playing-movies-section').style.display = 'none';
+                document.getElementById('popular-movies-section').style.display = 'none';
+                document.getElementById('top-rated-movies-section').style.display = 'none';
+                // Ensure this is also hidden
+                const romanceMoviesSection = document.getElementById('romance-movies-section');
+                if (romanceMoviesSection) {
+                    romanceMoviesSection.style.display = 'none';
+                }
+                document.getElementById('airing-today-tv-section').style.display = 'none';
+                document.getElementById('on-tv-section').style.display = 'none';
+                document.getElementById('popular-tv-section').style.display = 'none';
+                document.getElementById('top-rated-tv-section').style.display = 'none';
+
+                // Load search results into the popular-movies-section (or popular-tv-section)
+                const targetSectionId = appState.currentMediaType === 'movie' ? 'popular-movies-section' : 'popular-tv-section';
+                document.getElementById(targetSectionId).style.display = 'block';
                 genreButtonsContainer.classList.add('hidden'); // Hide genre buttons during search
-                loadMediaSection(appState.currentMediaType, 'now-playing', 1, query); // Load search results into now-playing grid
+                
+                appState.pageCounters[targetSectionId.replace('-section', '')] = 1; // Reset page counter for the target search section
+                loadMediaSection(appState.currentMediaType, targetSectionId.replace('-section', ''), 1, query); // Load search results into the appropriate grid
             } else {
                 appState.currentSearchQuery = '';
-                // If search input is empty, revert to showing all sections
-                loadAllSections();
-                genreButtonsContainer.classList.remove('hidden'); // Show genre buttons again
+                // If search input is empty, revert to showing all sections based on current media type
+                if (appState.currentMediaType === 'movie') {
+                    loadAllMovieSections();
+                    genreButtonsContainer.classList.remove('hidden'); // Show genre buttons again for movies
+                } else { // 'tv'
+                    loadAllTvSections();
+                    genreButtonsContainer.classList.remove('hidden'); // Show genre buttons again for TV
+                }
             }
         }, 300); // 300ms debounce delay
 
@@ -1495,8 +1649,6 @@
             
             // Set language to English by default (no selector)
             document.documentElement.lang = 'en'; // Set HTML lang attribute
-
-            await loadGenreButtons(); // Load genres first
 
             // Check if there's an existing hash
             if (!window.location.hash) {
@@ -1534,34 +1686,35 @@
         });
 
         // Event listener for static movie cards in Layer 3 (UPDATED)
-        staticMovieGrid.addEventListener('click', (event) => {
-            const clickedCard = event.target.closest('.static-movie-card');
-            if (clickedCard) {
-                const mediaId = clickedCard.dataset.mediaId;
-                const mediaType = clickedCard.dataset.mediaType;
-                const mediaTitle = clickedCard.querySelector('h3').textContent;
+        // This event listener is no longer needed as the content is dynamic and handled by loadRomanceMoviesIntoStaticGrid
+        // staticMovieGrid.addEventListener('click', (event) => {
+        //     const clickedCard = event.target.closest('.static-movie-card');
+        //     if (clickedCard) {
+        //         const mediaId = clickedCard.dataset.mediaId;
+        //         const mediaType = clickedCard.dataset.mediaType;
+        //         const mediaTitle = clickedCard.querySelector('h3').textContent;
                 
-                if (mediaId && mediaType) {
-                    triggerAd(); // Trigger ad on static card click
-                    // Handle 'home' media type specifically
-                    if (mediaType === 'home') {
-                        // If it's the 123Movies UK card, navigate to the home URL
-                        window.location.href = 'https://123movies-uk.pages.dev/';
-                        return; // Stop further processing for 'home' type
-                    }
+        //         if (mediaId && mediaType) {
+        //             triggerAd(); // Trigger ad on static card click
+        //             // Handle 'home' media type specifically
+        //             if (mediaType === 'home') {
+        //                 // If it's the 123Movies UK card, navigate to the home URL
+        //                 window.location.href = 'https://123movies-uk.pages.dev/';
+        //                 return; // Stop further processing for 'home' type
+        //             }
 
-                    // Navigate to details for non-home media
-                    window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
-                }
-            }
-        });
+        //             // Navigate to details for non-home media
+        //             window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
+        //         }
+        //     }
+        // });
 
         // Function to load the SEO content into Layer 4
         function loadSeoContent() {
             const seoContentDiv = document.getElementById('seo-content');
             seoContentDiv.innerHTML = `
                 <h1 class="text-indigo-400">Welcome to 123Movies UK: Your Ultimate Free Streaming Destination 🎬</h1>
-                <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
+                <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="123Movies UK Banner" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
                 <p>In an era where entertainment is at our fingertips, finding a reliable and <strong class="text-green-400">free streaming platform</strong> can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of <strong class="text-green-400">free movies and TV series</strong>. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in <strong class="text-blue-400">high-definition quality</strong>, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of <strong class="text-purple-400">unlimited entertainment</strong> and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond. Start <strong class="text-yellow-400">watching today</strong>!</p>
 
                 <h2 class="text-blue-400">The Evolution of Free Online Streaming: Why 123Movies UK Stands Out ⭐</h2>
