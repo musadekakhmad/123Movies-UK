@@ -355,7 +355,7 @@
         <div class="flex flex-col sm:flex-row items-center justify-between w-full py-4">
             <div class="flex items-center mb-4 sm:mb-0">
                 <!-- Logo (simple text) - Now wrapped in an anchor tag to act as a Home button -->
-                <a href="https://123movies-uk.pages.dev/" id="home-logo-link" class="inline-flex items-center text-indigo-500 hover:text-indigo-400 transition-colors duration-200">
+                <a href="https://123movies-uk.pages.dev/" id="home-logo-link" class="inline-flex items-center text-indigo-500 hover:text-indigo-400 transition-colors duration-200" aria-label="Go to Home Page">
                 <span class="text-3xl font-bold mr-2">🎬</span>
                 <h1 class="text-5xl font-bold whitespace-nowrap rainbow-text">123Movies UK</h1>
                 </a>
@@ -363,13 +363,13 @@
             <nav class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
                 <div class="flex w-full sm:w-auto sm:space-x-6">
                     <!-- New Home Button -->
-                    <button id="nav-home-button" class="nav-button bg-gray-800 hover:bg-green-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">Home</button>
-                    <button id="nav-movies-button" class="nav-button bg-gray-800 hover:bg-blue-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">Movies</button>
-                    <button id="nav-tvseries-button" class="nav-button bg-gray-800 hover:bg-rose-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200">TV Series</button>
+                    <button id="nav-home-button" class="nav-button bg-gray-800 hover:bg-green-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200" aria-label="Navigate to Home">Home</button>
+                    <button id="nav-movies-button" class="nav-button bg-gray-800 hover:bg-blue-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200" aria-label="Show Movies">Movies</button>
+                    <button id="nav-tvseries-button" class="nav-button bg-gray-800 hover:bg-rose-600 rounded-md text-gray-100 font-medium w-full sm:w-auto text-sm md:text-base transition-all duration-200" aria-label="Show TV Series">TV Series</button>
                 </div>
                 <div class="relative w-full sm:w-64">
-                    <input type="text" id="search-input" placeholder="Search movies..." class="w-full bg-gray-700 text-gray-200 placeholder-gray-400 py-2 pl-4 pr-10 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
-                    <button id="search-button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                    <input type="text" id="search-input" placeholder="Search movies..." class="w-full bg-gray-700 text-gray-200 placeholder-gray-400 py-2 pl-4 pr-10 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200" aria-label="Search movies or TV series">
+                    <button id="search-button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 transition-colors duration-200" aria-label="Perform search">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </button>
                 </div>
@@ -388,7 +388,7 @@
                     <!-- Romance Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-romance-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="load-more-romance-movies" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Romance Movies">
                         Load More
                     </button>
                 </div>
@@ -405,7 +405,7 @@
                     <!-- Now Playing Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-now-playing" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="load-more-now-playing" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Now Playing Movies">
                         Load More
                     </button>
                 </div>
@@ -422,7 +422,7 @@
                     <!-- Top Rated Movie thumbnails will be loaded here by JS -->
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button id="load-more-top-rated" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="load-more-top-rated" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Load more Top Rated Movies">
                         Load More
                     </button>
                 </div>
@@ -435,7 +435,7 @@
 
         <!-- Layer 2: Movie/TV Detail -->
         <section id="layer-2" class="layer-2 bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl relative">
-            <button id="back-to-list-button" class="absolute top-4 left-4 bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md transition-colors duration-200">
+            <button id="back-to-list-button" class="absolute top-4 left-4 bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md transition-colors duration-200" aria-label="Back to movie list">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </button>
             <!-- Loading spinner for Layer 2 -->
@@ -447,16 +447,16 @@
             </div>
 
             <div class="video-container mb-8">
-                <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="detail-trailer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen aria-label="Movie Trailer"></iframe>
             </div>
 
             <div class="flex flex-wrap justify-center gap-4">
                 <!-- Stream 1 Button (vidsrc.me) -->
-                <button id="stream-1-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                <button id="stream-1-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500" aria-label="Stream from Source 1">
                     Stream 1
                 </button>
-                <!-- Stream 2 Button (vidsrc.to) -->
-                <button id="stream-2-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <!-- Stream 2 Button (Ad Trigger) -->
+                <button id="stream-2-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Open Ad Link">
                     Stream 2
                 </button>
             </div>
@@ -476,7 +476,7 @@
 
         <!-- Layer 3: Streaming Player -->
         <section id="layer-3" class="layer-3 bg-gray-900 p-4 md:p-8 rounded-lg shadow-xl flex flex-col">
-            <button id="back-to-detail-button" class="bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md mb-4 self-start transition-colors duration-200">
+            <button id="back-to-detail-button" class="bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md mb-4 self-start transition-colors duration-200" aria-label="Back to movie details">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </button>
             <!-- Loading spinner for Layer 3 -->
@@ -484,14 +484,14 @@
                 <div class="spinner"></div>
             </div>
             <div class="flex-grow video-container" id="streaming-player-container">
-                <iframe id="streaming-player" src="" frameborder="0" allowfullscreen class="rounded-lg"></iframe>
+                <iframe id="streaming-player" src="" frameborder="0" allowfullscreen class="rounded-lg" aria-label="Movie Streaming Player"></iframe>
             </div>
             <!-- Direct streaming buttons added -->
             <div class="flex flex-wrap justify-center gap-4 mt-6">
-                <button id="stream-3-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                <button id="stream-3-button" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-500" aria-label="Stream from Source 3">
                     Stream 3
                 </button>
-                <button id="stream-4-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button id="stream-4-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Stream from Source 4">
                     Stream 4
                 </button>
             </div>
@@ -501,11 +501,11 @@
                 <h3 class="text-xl font-bold text-gray-100 mb-4">You Might Also Like This:</h3>
                 <div id="static-movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     <!-- Static Movie Card: 123Movies UK (Placeholder for consistent size) -->
-                    <div class="static-movie-card" data-media-id="0" data-media-type="site">
+                    <div class="static-movie-card" data-media-id="0" data-media-type="home">
                         <img src="https://live.staticflickr.com/65535/54680941347_0b79a32fb7.jpg" alt="[Gambar Poster Situs 123Movies UK]" loading="lazy" onerror="this.src='https://placehold.co/300x450/FF0000/FFFFFF?text=IMAGE+ERROR';">
                         <div class="info">
                             <h3>123Movies UK</h3>
-                            <p>Site</p>
+                            <p>Home</p>
                         </div>
                     </div>
                     <!-- Static Movie Card: 3-D Sex and Zen: Extreme Ecstasy (2011) -->
@@ -602,7 +602,7 @@
 
         <!-- Layer 4: SEO Content -->
         <section id="layer-4" class="layer-4 px-4 py-12">
-            <button id="back-from-seo-button" class="absolute top-4 left-4 bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md transition-colors duration-200">
+            <button id="back-from-seo-button" class="absolute top-4 left-4 bg-gray-700 hover:bg-gray-600 text-gray-200 p-2 rounded-full shadow-md transition-colors duration-200" aria-label="Back from SEO content">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </button>
             <div id="seo-content" class="layer-4-content">
@@ -622,27 +622,26 @@
     </footer>
 
     <script type="module">
-        // Perubahan: Baris definisi TMDB_API_KEY yang sebelumnya dikomentari, kini telah dihapus sepenuhnya.
-        // Kunci API ini sekarang diamankan di Cloudflare Worker dan tidak diperlukan di sini.
-        
         // Mengubah TMDB_BASE_URL agar menunjuk ke URL Cloudflare Worker Anda.
         const TMDB_BASE_URL = 'https://tmdb-api-proxy.musadekakhmad.workers.dev'; // Ganti dengan URL Worker Anda yang sebenarnya
         const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
         const TMDB_PROFILE_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w185';
 
-        // Page counters for each section
-        const pageCounters = {
-            'now-playing': 1,
-            'top-rated': 1,
-            'romance-movies': 1,
-            'search': 1 // For search results
+        // Objek state aplikasi terpusat
+        const appState = {
+            pageCounters: {
+                'now-playing': 1,
+                'top-rated': 1,
+                'romance-movies': 1,
+                'search': 1 // For search results
+            },
+            currentSearchQuery: '',
+            currentGenreId: null,
+            currentMediaId: null,
+            currentImdbId: null,
+            currentMediaType: 'movie', // Default: 'movie'
+            clickCounter: 0 // New: Counter for tracking thumbnail clicks for ad logic
         };
-
-        let currentSearchQuery = '';
-        let currentGenreId = null;
-        let currentMediaId = null;
-        let currentImdbId = null;
-        let currentMediaType = 'movie'; // Default: 'movie'
 
         // Adsterra Direct Ad URLs - Using 8 example direct links
         const ADSTERRA_DIRECT_LINKS = [
@@ -667,14 +666,21 @@
             return link;
         }
 
-        // Set to store media IDs for which an ad has already been triggered for the main grid
-        const adTriggeredMediaIds = new Set();
-        // New Set to store media IDs for which an ad has already been triggered for static cards
-        const staticAdTriggeredMediaIds = new Set();
-        // New Set for Home button ad tracking
-        const homeButtonAdTriggered = new Set();
-        // New Set for Layer 4 image ad tracking
-        const layer4ImageAdTriggered = new Set();
+        // New function to handle ad display logic based on click counter
+        function triggerAd() {
+            appState.clickCounter++; // Increment click counter on every call
+            // Trigger ad on 1st, 4th, 7th clicks (i.e., (clickCount - 1) % 3 === 0)
+            if ((appState.clickCounter - 1) % 3 === 0) {
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
+            }
+        }
+
+        // Streaming service URLs (abstracted)
+        const STREAMING_URLS = {
+            'vidsrc.me': (mediaId) => `https://vidsrc.me/embed/${mediaId}`,
+            'vidsrc.to-imdb': (imdbId, mediaType) => `https://vidsrc.to/embed/${mediaType === 'movie' ? 'movie' : 'tv'}?imdb=${imdbId}`,
+            'vidsrc.to-tmdb': (mediaId, mediaType) => `https://vidsrc.to/embed/${mediaType === 'movie' ? 'movie' : 'tv'}/${mediaId}`
+        };
 
 
         // DOM Elements
@@ -923,6 +929,8 @@
                 }
             }
 
+            sectionTitleElement.textContent = titleText; // Update section title
+
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -956,12 +964,7 @@
                         gridElement.appendChild(mediaCard);
 
                         mediaCard.addEventListener('click', () => {
-                            // Adsterra Direct Ad Logic: Open ad on first click for this mediaId
-                            if (!adTriggeredMediaIds.has(media.id)) {
-                                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Added noopener noreferrer
-                                adTriggeredMediaIds.add(media.id); // Mark as triggered
-                                return; 
-                            }
+                            triggerAd(); // Trigger ad on any media card click
                             // Update hash instead of direct call to prevent double loading
                             window.location.hash = `#/media/${type}/${media.id}/${slugify(titleOrName)}`;
                         });
@@ -974,7 +977,7 @@
                     loadMoreBtn.classList.remove('hidden');
                 }
 
-                pageCounters[sectionName] = data.page; // Update specific page counter
+                appState.pageCounters[sectionName] = data.page; // Update specific page counter
             } catch (error) {
                 console.error(`Error fetching media for ${sectionName} section:`, error);
                 showMessageBox('errorTitle', 'failedToLoadMedia');
@@ -1063,8 +1066,8 @@
                     }
                 }
 
-                // Update currentImdbId
-                currentImdbId = media.imdb_id; // IMDb ID is available for both movies and TV in TMDB details
+                // Update currentImdbId in appState
+                appState.currentImdbId = media.imdb_id; // IMDb ID is available for both movies and TV in TMDB details
 
                 // Populate Layer 2 with enhanced details
                 const releaseYear = media.release_date ? media.release_date.substring(0, 4) : (media.first_air_date ? media.first_air_date.substring(0, 4) : TEXT_CONSTANTS.notAvailable);
@@ -1158,12 +1161,7 @@
                         similarMoviesGrid.appendChild(mediaCard);
 
                         mediaCard.addEventListener('click', () => {
-                            // Adsterra Direct Ad Logic for similar items
-                            if (!adTriggeredMediaIds.has(recMedia.id)) {
-                                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                                adTriggeredMediaIds.add(recMedia.id);
-                                return; 
-                            }
+                            triggerAd(); // Trigger ad on any media card click
                             // Update hash instead of direct call to prevent double loading
                             window.location.hash = `#/media/movie/${recMedia.id}/${slugify(titleOrName)}`;
                         });
@@ -1191,12 +1189,7 @@
                         similarMoviesGrid.appendChild(mediaCard);
 
                         mediaCard.addEventListener('click', () => {
-                            // Adsterra Direct Ad Logic for similar items
-                            if (!adTriggeredMediaIds.has(similarMedia.id)) {
-                                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                                adTriggeredMediaIds.add(similarMedia.id);
-                                return; 
-                            }
+                            triggerAd(); // Trigger ad on any media card click
                             // Update hash instead of direct call to prevent double loading
                             window.location.hash = `#/media/${mediaType}/${similarMedia.id}/${slugify(titleOrName)}`;
                         });
@@ -1213,10 +1206,10 @@
 
         /**
          * Loads the streaming player iframe with the appropriate URL.
-         * @param {string} source - The streaming source type ('vidsrc.me', 'vidsrc.to-imdb', 'vidsrc.to-tmdb').
+         * @param {string} sourceKey - The key for the streaming source in STREAMING_URLS.
          */
-        function loadStreamingPlayer(source) {
-            if (!currentMediaId) {
+        function loadStreamingPlayer(sourceKey) {
+            if (!appState.currentMediaId) {
                 showMessageBox('errorTitle', 'noMediaSelected');
                 return;
             }
@@ -1226,18 +1219,17 @@
             loadingSpinnerLayer3.classList.remove('hidden');
 
             let streamingUrl = '';
-            if (source === 'vidsrc.me') {
-                streamingUrl = `https://vidsrc.me/embed/${currentMediaId}`;
-            } else if (source === 'vidsrc.to-imdb') {
-                if (!currentImdbId) {
+            if (sourceKey === 'vidsrc.me') {
+                streamingUrl = STREAMING_URLS['vidsrc.me'](appState.currentMediaId);
+            } else if (sourceKey === 'vidsrc.to-imdb') {
+                if (!appState.currentImdbId) {
                     showMessageBox('errorTitle', 'imdbIdNotAvailable');
                     loadingSpinnerLayer3.classList.add('hidden');
                     return;
                 }
-                streamingUrl = `https://vidsrc.to/embed/${currentMediaType === 'movie' ? 'movie' : 'tv'}?imdb=${currentImdbId}`;
-            } else if (source === 'vidsrc.to-tmdb') {
-                // vidsrc.to also supports TMDB IDs directly in the path
-                streamingUrl = `https://vidsrc.to/embed/${currentMediaType === 'movie' ? 'movie' : 'tv'}/${currentMediaId}`;
+                streamingUrl = STREAMING_URLS['vidsrc.to-imdb'](appState.currentImdbId, appState.currentMediaType);
+            } else if (sourceKey === 'vidsrc.to-tmdb') {
+                streamingUrl = STREAMING_URLS['vidsrc.to-tmdb'](appState.currentMediaId, appState.currentMediaType);
             }
 
             document.getElementById('streaming-player').src = streamingUrl;
@@ -1266,11 +1258,11 @@
 
                     if ((type === 'movie' || type === 'tv') && !isNaN(id)) {
                         // Prevent redundant calls if already on the same detail page
-                        if (currentMediaId === id && currentMediaType === type && layer2.style.display === 'block') {
+                        if (appState.currentMediaId === id && appState.currentMediaType === type && layer2.style.display === 'block') {
                             return;
                         }
-                        currentMediaId = id;
-                        currentMediaType = type;
+                        appState.currentMediaId = id;
+                        appState.currentMediaType = type;
                         // Hide all sections on Layer 1 when viewing details
                         document.getElementById('romance-movies-section').style.display = 'none';
                         document.getElementById('now-playing-section').style.display = 'none';
@@ -1284,18 +1276,18 @@
                     }
                 }
             } else if (hash === '#/movies') {
-                currentMediaType = 'movie';
+                appState.currentMediaType = 'movie';
                 loadAllSections(); // This will reset page counters and load movie sections
                 showLayer(layer1);
             } else if (hash === '#/tv') {
-                currentMediaType = 'tv';
+                appState.currentMediaType = 'tv';
                 // Hide all movie sections and genre buttons
                 document.getElementById('romance-movies-section').style.display = 'none';
                 document.getElementById('top-rated-section').style.display = 'none';
                 document.getElementById('now-playing-section').style.display = 'block'; // Use now-playing section for TV series
                 
                 // Reset page counter for now-playing when switching to TV
-                pageCounters['now-playing'] = 1; 
+                appState.pageCounters['now-playing'] = 1; 
                 loadMediaSection('tv', 'now-playing', 1);
                 document.getElementById('section-title-now-playing').textContent = TEXT_CONSTANTS.popularTvSeries; // Update title
                 showLayer(layer1);
@@ -1305,7 +1297,7 @@
             }
             else {
                 // Default: empty hash or unrecognized hash, load movies home
-                currentMediaType = 'movie'; // Default to movies
+                appState.currentMediaType = 'movie'; // Default to movies
                 loadAllSections();
                 showLayer(layer1);
             }
@@ -1314,10 +1306,10 @@
         // Function to load all sections on Layer 1
         function loadAllSections() {
             // Reset page counters for all sections
-            for (const key in pageCounters) {
-                pageCounters[key] = 1; // Ensure they are reset to 1
+            for (const key in appState.pageCounters) {
+                appState.pageCounters[key] = 1; // Ensure they are reset to 1
             }
-            currentSearchQuery = ''; // Clear search query when returning to home view
+            appState.currentSearchQuery = ''; // Clear search query when returning to home view
             searchInput.value = ''; // Clear search input field
 
             // Show all movie sections
@@ -1333,13 +1325,16 @@
 
         // Event Listeners for Load More Buttons
         document.getElementById('load-more-romance-movies').addEventListener('click', () => {
-            loadMediaSection('movie', 'romance-movies', pageCounters['romance-movies'] + 1, '', fixedMovieGenres.Romance);
+            triggerAd(); // Trigger ad on load more
+            loadMediaSection('movie', 'romance-movies', appState.pageCounters['romance-movies'] + 1, '', fixedMovieGenres.Romance);
         });
         document.getElementById('load-more-now-playing').addEventListener('click', () => {
-            loadMediaSection('movie', 'now-playing', pageCounters['now-playing'] + 1);
+            triggerAd(); // Trigger ad on load more
+            loadMediaSection('movie', 'now-playing', appState.pageCounters['now-playing'] + 1);
         });
         document.getElementById('load-more-top-rated').addEventListener('click', () => {
-            loadMediaSection('movie', 'top-rated', pageCounters['top-rated'] + 1);
+            triggerAd(); // Trigger ad on load more
+            loadMediaSection('movie', 'top-rated', appState.pageCounters['top-rated'] + 1);
         });
 
 
@@ -1362,25 +1357,22 @@
         });
 
         stream1Button.addEventListener('click', () => {
-            if (!adTriggeredMediaIds.has(currentMediaId)) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                adTriggeredMediaIds.add(currentMediaId);
-                return;
-            }
+            triggerAd(); // Trigger ad on stream button click
             loadStreamingPlayer('vidsrc.me');
         });
 
         stream2Button.addEventListener('click', () => {
-            if (!adTriggeredMediaIds.has(currentMediaId)) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                adTriggeredMediaIds.add(currentMediaId);
-                return;
+            triggerAd(); // Trigger ad on stream button click
+            if (appState.currentMediaId) { // Check if media is selected before trying to open ad
+                window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Open ad link directly
+            } else {
+                showMessageBox('errorTitle', 'noMediaSelected');
             }
-            loadStreamingPlayer('vidsrc.to-imdb');
         });
 
         stream3Button.addEventListener('click', () => {
-            if (currentMediaId) {
+            triggerAd(); // Trigger ad on stream button click
+            if (appState.currentMediaId) {
                 window.open(getNextAdLink(), '_blank', 'noopener noreferrer'); // Use rotating link for Adsterra
             } else {
                 showMessageBox('errorTitle', 'noMediaSelected');
@@ -1388,27 +1380,22 @@
         });
 
         stream4Button.addEventListener('click', () => {
-            if (!adTriggeredMediaIds.has(currentMediaId)) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                adTriggeredMediaIds.add(currentMediaId);
-                return;
-            }
+            triggerAd(); // Trigger ad on stream button click
             loadStreamingPlayer('vidsrc.to-tmdb'); // Now uses TMDB ID for vidsrc.to
         });
 
         searchButton.addEventListener('click', () => {
             const query = searchInput.value.trim();
             if (query) {
-                currentGenreId = null; // Clear genre filter
-                currentSearchQuery = query;
+                appState.currentGenreId = null; // Clear genre filter
+                appState.currentSearchQuery = query;
                 // Load search results into the now-playing section, clearing others
                 document.getElementById('romance-movies-section').style.display = 'none';
                 document.getElementById('top-rated-section').style.display = 'none';
                 document.getElementById('now-playing-section').style.display = 'block'; // Ensure now-playing is visible
-                loadMediaSection(currentMediaType, 'now-playing', 1, query); // Load search results into now-playing grid
-                document.getElementById('section-title-now-playing').textContent = `Search Results for "${query}"`; // Update title for search
+                loadMediaSection(appState.currentMediaType, 'now-playing', 1, query); // Load search results into now-playing grid
             } else {
-                currentSearchQuery = '';
+                appState.currentSearchQuery = '';
                 // If search input is empty, revert to showing all sections
                 loadAllSections();
             }
@@ -1436,27 +1423,23 @@
 
         // Handle navigation buttons (Movies/TV Series)
         navHomeButton.addEventListener('click', () => { // New Home button event listener
-            const buttonId = 'nav-home-button'; // Unique ID for this button's ad tracking
-            if (!homeButtonAdTriggered.has(buttonId)) {
-                window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                homeButtonAdTriggered.add(buttonId);
-                return; // Stop here for the first click (ad only)
-            }
-            // Subsequent clicks: navigate to Layer 4 (SEO content)
+            triggerAd(); // Trigger ad on Home button click
             window.location.hash = '#/home-seo'; // This will trigger handleHashChange to load Layer 4
         });
 
         navMoviesButton.addEventListener('click', () => {
-            currentSearchQuery = ''; // Clear search
+            triggerAd(); // Trigger ad on Movies button click
+            appState.currentSearchQuery = ''; // Clear search
             searchInput.value = ''; // Clear search input
-            currentGenreId = null; // Clear genre filter
+            appState.currentGenreId = null; // Clear genre filter
             window.location.hash = '#/movies'; // Just set hash, handleHashChange will do the rest
         });
 
         navTvSeriesButton.addEventListener('click', () => {
-            currentSearchQuery = ''; // Clear search
+            triggerAd(); // Trigger ad on TV Series button click
+            appState.currentSearchQuery = ''; // Clear search
             searchInput.value = ''; // Clear search input
-            currentGenreId = null; // Clear genre filter
+            appState.currentGenreId = null; // Clear genre filter
             window.location.hash = '#/tv'; // Just set hash, handleHashChange will do the rest
         });
 
@@ -1469,25 +1452,16 @@
                 const mediaTitle = clickedCard.querySelector('h3').textContent;
                 
                 if (mediaId && mediaType) {
-                    // Handle 'site' media type specifically
-                    if (mediaType === 'site') {
-                        // If it's the 123Movies UK card, just open the ad and prevent further action for this card type
-                        if (!staticAdTriggeredMediaIds.has(mediaId)) {
-                            window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                            staticAdTriggeredMediaIds.add(mediaId);
-                        }
-                        return; // Stop further processing for 'site' type
+                    triggerAd(); // Trigger ad on static card click
+                    // Handle 'home' media type specifically
+                    if (mediaType === 'home') {
+                        // If it's the 123Movies UK card, navigate to the home URL
+                        window.location.href = 'https://123movies-uk.pages.dev/';
+                        return; // Stop further processing for 'home' type
                     }
 
-                    if (!staticAdTriggeredMediaIds.has(mediaId)) {
-                        // First click for non-site media: Open ad
-                        window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                        staticAdTriggeredMediaIds.add(mediaId);
-                    } else {
-                        // Subsequent click for non-site media: Navigate to details
-                        // Update hash instead of direct call to prevent double loading
-                        window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
-                    }
+                    // Navigate to details for non-home media
+                    window.location.hash = `#/media/${mediaType}/${mediaId}/${slugify(mediaTitle)}`;
                 }
             }
         });
@@ -1546,7 +1520,7 @@
                 <p>Getting started with 123Movies UK is incredibly simple. Follow these easy steps to begin your free streaming journey:</p>
                 <ol>
                     <li><strong>Visit Our Website:</strong> Navigate to 123movies-uk.pages.dev in your web browser.</li>
-                    <li><strong>Browse or Search:</strong> Use our intuitive search bar to find specific titles or explore our categories and curated lists.</li>
+                    <li><strong>Browse or Search:</b> Use our intuitive search bar to find specific titles or explore our categories and curated lists.</li>
                     <li><strong>Select Your Content:</strong> Click on the movie or TV series you wish to watch.</li>
                     <li><strong>Start Streaming:</strong> Choose a streaming server (Stream 1 or Stream 2) and enjoy your free entertainment!</li>
                 </ol>
@@ -1558,7 +1532,7 @@
                 <h2>Why Choose 123Movies UK Over Paid Services?</h2>
                 <p>In a market dominated by subscription-based streaming services, you might wonder why 123Movies UK is a compelling alternative. Here’s why:</p>
                 <ul>
-                    <li><strong>Cost Savings:</strong> Eliminate multiple monthly subscriptions and save a significant amount of money.</li>
+                    <li><strong>Cost Savings:</b> Eliminate multiple monthly subscriptions and save a significant amount of money.</li>
                     <li><strong>Extensive Library:</strong> Access a diverse range of content that might not be available on any single paid platform.</li>
                     <li><strong>No Commitments:</strong> Enjoy flexibility without long-term contracts or cancellation hassles.</li>
                     <li><strong>Discover New Content:</strong> Our constantly updated library means you’ll always find something new to watch, from hidden gems to popular hits.</li>
@@ -1575,17 +1549,24 @@
             const seoBannerImage = document.getElementById('seo-banner-image');
             if (seoBannerImage) {
                 seoBannerImage.addEventListener('click', () => {
-                    const imageId = 'seo-banner-image'; // Unique ID for this image's ad tracking
-                    if (!layer4ImageAdTriggered.has(imageId)) {
-                        window.open(getNextAdLink(), '_blank', 'noopener noreferrer');
-                        layer4ImageAdTriggered.add(imageId);
-                        return; // Stop here for the first click (ad only)
-                    }
+                    triggerAd(); // Trigger ad on SEO banner image click
                     // Subsequent clicks: navigate to Layer 1 (movies home)
                     window.location.hash = '#/movies'; // This will trigger handleHashChange to load movies
                 });
             }
         }
     </script>
+    <!-- Histats.com  START  (aync)-->
+    <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,4966360,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4966360&101" alt="hit counter code" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
 </body>
 </html>
