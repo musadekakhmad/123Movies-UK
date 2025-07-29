@@ -1139,7 +1139,6 @@
                         document.getElementById('now-playing-movies-section').style.display = 'none';
                         document.getElementById('popular-movies-section').style.display = 'none';
                         document.getElementById('top-rated-movies-section').style.display = 'none';
-                        // Removed: document.getElementById('romance-movies-section').style.display = 'none'; // This line was causing the error
                         // Ensure these elements are checked for existence before attempting to access their style property
                         const romanceMoviesSection = document.getElementById('romance-movies-section');
                         if (romanceMoviesSection) {
@@ -1153,7 +1152,7 @@
                         await fetchAndDisplayMediaDetail(id, type);
                     } else {
                         // Invalid hash, revert to home (SEO content)
-                        window.location.hash = '#/home-seo';
+                        window.location.hash = ''; // Changed to empty hash for root URL
                     }
                 }
             } else if (hash === '#/movies') {
@@ -1168,14 +1167,14 @@
                 genreButtonsContainer.classList.remove('hidden'); // Show genre buttons for TV
                 loadAllTvSections(); // This will reset page counters and load TV sections
                 showLayer(layer1);
-            } else if (hash === '#/home-seo') { // New hash for Layer 4
+            } else if (hash === '' || hash === '#/home-seo') { // If hash is empty or explicitly #/home-seo
                 showLayer(layer4);
                 genreButtonsContainer.classList.add('hidden'); // Hide genre buttons
                 loadSeoContent(); // Call loadSeoContent when navigating to Layer 4
             }
             else {
-                // Default: empty hash or unrecognized hash, load home (SEO content)
-                window.location.hash = '#/home-seo';
+                // Default: unrecognized hash, load home (SEO content)
+                window.location.hash = ''; // Changed to empty hash for root URL
             }
         }
 
@@ -1404,8 +1403,8 @@
 
             // Check if there's an existing hash
             if (!window.location.hash) {
-                // If no hash, go to Layer 4 (Home SEO) by default
-                window.location.hash = '#/home-seo';
+                // If no hash, go to the root URL, which handleHashChange will interpret as home SEO
+                window.location.hash = ''; 
             } else {
                 // If there's an existing hash (e.g., direct link to a movie), handle it normally
                 handleHashChange();
@@ -1418,7 +1417,7 @@
         // Handle navigation buttons (Movies/TV Series)
         navHomeButton.addEventListener('click', () => { // New Home button event listener
             triggerAd(); // Trigger ad on Home button click
-            window.location.hash = '#/home-seo'; // This will trigger handleHashChange to load Layer 4
+            window.location.hash = ''; // Changed to empty hash for root URL
         });
 
         navMoviesButton.addEventListener('click', () => {
