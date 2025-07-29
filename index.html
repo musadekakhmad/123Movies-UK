@@ -1345,6 +1345,11 @@
         const debouncedSearch = debounce(() => {
             const query = searchInput.value.trim();
             if (query) {
+                // If currently on Layer 4 (SEO content), switch to Layer 1 before displaying search results
+                if (layer4.style.display === 'block') {
+                    showLayer(layer1);
+                }
+
                 appState.currentGenreId = null; // Clear genre filter
                 appState.currentSearchQuery = query;
                 
@@ -1445,7 +1450,7 @@
         function loadSeoContent() {
             const seoContentDiv = document.getElementById('seo-content');
             seoContentDiv.innerHTML = `
-                <h1 class="text-indigo-400">Welcome to 123Movies UK: Your Ultimate Free Streaming Destination 🎬</h1>
+                <h1 class="text-indigo-400" style="font-size: 33px;">Welcome to 123Movies UK: Your Ultimate Free Streaming Destination 🎬</h1>
                 <img id="seo-banner-image" src="https://live.staticflickr.com/65535/54681957653_d6819848ed_b.jpg" alt="123Movies UK Banner" class="w-full h-auto object-cover mb-6 rounded-lg cursor-pointer">
                 <p>In an era where entertainment is at our fingertips, finding a reliable and <strong class="text-green-400">free streaming platform</strong> can be a game-changer. Look no further than <strong>123Movies UK</strong>, your premier online destination for thousands of <strong class="text-green-400">free movies and TV series</strong>. We are dedicated to providing an unparalleled streaming experience, offering a vast library of content in <strong class="text-blue-400">high-definition quality</strong>, all without the need for subscriptions, hidden fees, or annoying sign-ups. Dive into the world of <strong class="text-purple-400">unlimited entertainment</strong> and discover why 123Movies UK is quickly becoming the go-to choice for viewers across the United Kingdom and beyond. Start <strong class="text-yellow-400">watching today</strong>!</p>
 
